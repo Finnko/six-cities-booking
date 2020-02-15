@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CityPlace = (props) => {
   const {title} = props;
@@ -39,6 +40,10 @@ const CityPlace = (props) => {
       </div>
     </article>
   );
+};
+
+CityPlace.propTypes = {
+  title: PropTypes.string
 };
 
 export default CityPlace;

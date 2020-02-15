@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CitiesList from '../cities-list/cities-list.jsx';
 
 const MainPage = (props) => {
@@ -97,6 +98,12 @@ const MainPage = (props) => {
       </main>
     </div>
   );
+};
+
+MainPage.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string
+  }))
 };
 
 export default MainPage;

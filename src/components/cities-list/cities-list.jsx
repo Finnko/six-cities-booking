@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CityPlace from '../city-place/city-place.jsx';
 
 const CitiesList = (props) => {
@@ -18,6 +19,12 @@ const CitiesList = (props) => {
       </div>
     </div>
   );
+};
+
+CitiesList.propTypes = {
+  placesCards: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string
+  }))
 };
 
 export default CitiesList;
