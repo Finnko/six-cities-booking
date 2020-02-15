@@ -2,12 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
 
-const Settings = {
-  RENTAL_OFFERS_COUNT: 310
-};
+const mockData = [
+  {title: `Beautiful & luxurious apartment at great location`},
+  {title: `Wood and stone place`},
+  {title: `Canal View Prinsengracht`},
+  {title: `Nice, cozy, warm big bed apartment`},
+];
 
 
 ReactDOM.render(
-    <App rentalOffersCount={Settings.RENTAL_OFFERS_COUNT}/>,
+    <App data={mockData}/>,
     document.querySelector(`#root`)
 );
