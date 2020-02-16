@@ -6,7 +6,7 @@ const mock = [
   {title: `Beautiful & luxurious apartment at great location`}
 ];
 
-it(`Render App`, () => {
+it(`Should App component render correctly`, () => {
   const tree = renderer
     .create(<App
       data={mock}

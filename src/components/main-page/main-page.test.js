@@ -6,7 +6,7 @@ const mock = [
   {title: `Beautiful & luxurious apartment at great location`}
 ];
 
-it(`Should MainPage render correctly`, () => {
+it(`Should MainPage component render correctly`, () => {
   const tree = renderer
     .create(<MainPage
       data={mock}
