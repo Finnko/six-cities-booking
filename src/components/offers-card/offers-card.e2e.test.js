@@ -9,19 +9,19 @@ Enzyme.configure({
 
 const mockTitle = `Hello world`;
 
-it(`Should city card link be pressed correctly`, () => {
+it(`Should OffersCard title link be pressed correctly`, () => {
   const onTitleLinkClick = jest.fn();
 
-  const cityPlace = shallow(
+  const offersCard = shallow(
       <OffersCard
         title = {mockTitle}
         onTitleLinkClick={onTitleLinkClick}
       />
   );
 
-  const cityPlaceTitleLink = cityPlace.find(`.place-card__name a`);
+  const offersCardTitleLink = offersCard.find(`.place-card__name a`);
 
-  cityPlaceTitleLink.props().onClick();
+  offersCardTitleLink.props().onClick();
 
   expect(onTitleLinkClick.mock.calls.length).toBe(1);
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OffersCard from '../city-place/offers-card.jsx';
+import OffersCard from '../offers-card/offers-card.jsx';
 
 const OffersList = (props) => {
   const {placesCards} = props;

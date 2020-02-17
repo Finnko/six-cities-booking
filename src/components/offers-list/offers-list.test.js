@@ -6,7 +6,7 @@ const mock = [
   {title: `Beautiful & luxurious apartment at great location`}
 ];
 
-it(`Should CitiesList component render correctly`, () => {
+it(`Should OffersList component render correctly`, () => {
   const tree = renderer
     .create(<OffersList
       placesCards={mock}

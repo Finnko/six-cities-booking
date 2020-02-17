@@ -4,7 +4,7 @@ import OffersCard from './offers-card.jsx';
 
 const mockTitle = `Beautiful & luxurious apartment at great location`;
 
-it(`Should CityPlace component render correctly`, () => {
+it(`Should OffersCard component render correctly`, () => {
   const tree = renderer
     .create(<OffersCard
       title={mockTitle}
