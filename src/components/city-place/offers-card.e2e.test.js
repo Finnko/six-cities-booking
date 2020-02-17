@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import CityPlace from "./city-place.jsx";
+import OffersCard from "./offers-card.jsx";
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -13,7 +13,7 @@ it(`Should city card link be pressed correctly`, () => {
   const onTitleLinkClick = jest.fn();
 
   const cityPlace = shallow(
-      <CityPlace
+      <OffersCard
         title = {mockTitle}
         onTitleLinkClick={onTitleLinkClick}
       />

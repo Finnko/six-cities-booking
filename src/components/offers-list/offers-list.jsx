@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CityPlace from '../city-place/city-place.jsx';
+import OffersCard from '../city-place/offers-card.jsx';
 
-const CitiesList = (props) => {
+const OffersList = (props) => {
   const {placesCards} = props;
   const places = placesCards.map((item, index) => {
     return (
-      <CityPlace
+      <OffersCard
         title={item.title}
         key={index}
       />);
@@ -21,10 +21,10 @@ const CitiesList = (props) => {
   );
 };
 
-CitiesList.propTypes = {
+OffersList.propTypes = {
   placesCards: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string
   }))
 };
 
-export default CitiesList;
+export default OffersList;

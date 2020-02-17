@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import CitiesList from './cities-list.jsx';
+import OffersList from './offers-list.jsx';
 
 const mock = [
   {title: `Beautiful & luxurious apartment at great location`}
@@ -8,7 +8,7 @@ const mock = [
 
 it(`Should CitiesList component render correctly`, () => {
   const tree = renderer
-    .create(<CitiesList
+    .create(<OffersList
       placesCards={mock}
     />)
     .toJSON();

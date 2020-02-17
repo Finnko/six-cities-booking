@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CityPlace = (props) => {
+const OffersCard = (props) => {
   const {title, onTitleLinkClick} = props;
 
   return (
@@ -42,9 +42,9 @@ const CityPlace = (props) => {
   );
 };
 
-CityPlace.propTypes = {
+OffersCard.propTypes = {
   title: PropTypes.string,
   onTitleLinkClick: PropTypes.func
 };
 
-export default CityPlace;
+export default OffersCard;

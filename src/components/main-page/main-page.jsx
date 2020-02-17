@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CitiesList from '../cities-list/cities-list.jsx';
+import OffersList from '../offers-list/offers-list.jsx';
 
 const MainPage = (props) => {
   const {data} = props;
@@ -88,7 +88,7 @@ const MainPage = (props) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <CitiesList placesCards={data}/>
+              <OffersList placesCards={data}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"/>
