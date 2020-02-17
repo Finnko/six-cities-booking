@@ -1,8 +1,10 @@
 import nanoid from 'nanoid';
 
+const ID_PREFIX = `id_`;
+
 const offers = [
   {
-    id: `id` + nanoid(10),
+    id: ID_PREFIX + nanoid(10),
     title: `Beautiful & luxurious apartment at great location`,
     price: `120`,
     type: `Apartment`,
@@ -10,7 +12,7 @@ const offers = [
     isPremium: true
   },
   {
-    id: `id` + nanoid(10),
+    id: ID_PREFIX + nanoid(10),
     title: `Wood and stone place`,
     price: `80`,
     type: `Private room`,
@@ -18,7 +20,7 @@ const offers = [
     isPremium: false
   },
   {
-    id: `id` + nanoid(10),
+    id: ID_PREFIX + nanoid(10),
     title: `Canal View Prinsengracht`,
     price: `132`,
     type: `Apartment`,
@@ -26,7 +28,7 @@ const offers = [
     isPremium: false
   },
   {
-    id: `id` + nanoid(10),
+    id: ID_PREFIX + nanoid(10),
     title: `Nice, cozy, warm big bed apartment`,
     price: `180`,
     type: `Apartment`,

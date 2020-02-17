@@ -88,7 +88,7 @@ const MainPage = (props) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <OffersList placesCards={data}/>
+              <OffersList offersCards={data}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"/>
@@ -101,9 +101,7 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string
-  }))
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MainPage;

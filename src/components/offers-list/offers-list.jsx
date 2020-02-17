@@ -1,30 +1,34 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import OffersCard from '../offers-card/offers-card.jsx';
 
-const OffersList = (props) => {
-  const {placesCards} = props;
-  const places = placesCards.map((item, index) => {
-    return (
-      <OffersCard
-        title={item.title}
-        key={index}
-      />);
-  });
+export default class OffersList extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div>
+    this.state = {
+      activeCard: null,
+    };
+  }
+
+  render() {
+    const {offersCards} = this.props;
+
+    const offers = offersCards.map((offer) => {
+      return <OffersCard
+        offer={offer}
+        key={offer.id}
+      />;
+    });
+
+    return (
       <div className="cities__places-list places__list tabs__content">
-        {places}
+        {offers}
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 OffersList.propTypes = {
-  placesCards: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string
-  }))
+  offersCards: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
-
-export default OffersList;
