@@ -2,12 +2,22 @@ import React from "react";
 import renderer from "react-test-renderer";
 import OffersCard from './offers-card.jsx';
 
-const mockTitle = `Beautiful & luxurious apartment at great location`;
+const mock = {
+  id: `id_11`,
+  title: `Beautiful & luxurious apartment at great location`,
+  price: `120`,
+  type: `Apartment`,
+  photo: `img/apartment-01.jpg`,
+  isPremium: true
+};
 
 it(`Should OffersCard component render correctly`, () => {
   const tree = renderer
     .create(<OffersCard
-      title={mockTitle}
+      offer={mock}
+      onCardClick={() => {}}
+      onCardMouseEnter={() => {}}
+      onCardMouseLeave={() => {}}
     />)
     .toJSON();
 

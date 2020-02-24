@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OffersCard = (props) => {
-  console.log(props);
-  const {offer} = props;
+const OffersCard = ({offer, onCardClick, onCardMouseEnter, onCardMouseLeave}) => {
   const {title, type, price, photo, isPremium} = offer;
 
   const premium = !isPremium ? `` : (
@@ -12,10 +10,18 @@ const OffersCard = (props) => {
     </div>);
 
   return (
-    <article className="cities__place-card place-card">
+    <article
+      onMouseEnter={() => {
+        onCardMouseEnter(offer);
+      }}
+      onMouseLeave={() => {
+        onCardMouseLeave();
+      }}
+      className="cities__place-card place-card"
+    >
       {premium}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <a href="#" onClick={onCardClick}>
           <img className="place-card__image" src={photo} width={260} height={200} alt="Place image" />
         </a>
       </div>
@@ -49,6 +55,8 @@ const OffersCard = (props) => {
 
 OffersCard.propTypes = {
   onCardClick: PropTypes.func,
+  onCardMouseEnter: PropTypes.func,
+  onCardMouseLeave: PropTypes.func,
   offer: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,

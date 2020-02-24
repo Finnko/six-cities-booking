@@ -7,22 +7,34 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-const mockTitle = `Hello world`;
+const mock = {
+  id: `id_11`,
+  title: `Beautiful & luxurious apartment at great location`,
+  price: `120`,
+  type: `Apartment`,
+  photo: `img/apartment-01.jpg`,
+  isPremium: true
+};
 
-it(`Should OffersCard title link be pressed correctly`, () => {
-  const onTitleLinkClick = jest.fn();
+describe(`Test e2e OffersCard component`, () => {
+  const onCardClick = jest.fn();
+  const onCardMouseEnter = jest.fn();
 
   const offersCard = shallow(
-      <OffersCard
-        title = {mockTitle}
-        onTitleLinkClick={onTitleLinkClick}
-      />
+      <OffersCard offer={mock} onCardClick={onCardClick} onCardMouseEnter={onCardMouseEnter}/>
   );
 
-  const offersCardTitleLink = offersCard.find(`.place-card__name a`);
+  const offersCardHeader = offersCard.find(`.place-card__image-wrapper a`);
+  const offer = offersCard.find(`.place-card`);
 
-  offersCardTitleLink.props().onClick();
+  it(`Should OffersCard be pressed correctly`, () => {
+    offersCardHeader.simulate(`click`);
+    expect(onCardClick).toHaveBeenCalledTimes(1);
+  });
 
-  expect(onTitleLinkClick.mock.calls.length).toBe(1);
+  it(`Should OffersCard info passed correctly on hover`, () => {
+    offer.simulate(`mouseenter`);
+    expect(onCardMouseEnter).toHaveBeenCalledTimes(1);
+    expect({activeOffer: onCardMouseEnter.mock.calls[0][0].id}).toMatchObject({activeOffer: mock.id});
+  });
 });
-
