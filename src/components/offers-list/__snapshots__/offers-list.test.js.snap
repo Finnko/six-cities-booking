@@ -26,6 +26,7 @@ exports[`Should OffersList component render correctly 1`] = `
           alt="Place image"
           className="place-card__image"
           height={200}
+          src="img/apartment-01.jpg"
           width={260}
         />
       </a>
@@ -80,7 +81,7 @@ exports[`Should OffersList component render correctly 1`] = `
           <span
             style={
               Object {
-                "width": "93%",
+                "width": "NaN%",
               }
             }
           />

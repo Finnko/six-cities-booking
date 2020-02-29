@@ -78,7 +78,7 @@ exports[`Should OffersCard component render correctly 1`] = `
         <span
           style={
             Object {
-              "width": "93%",
+              "width": "70%",
             }
           }
         />

@@ -11,26 +11,19 @@ export default class OffersList extends Component {
 
     bind(this,
         this.offerCardMouseEnterHandler,
-        this.offerCardMouseEnterHandler,
         this.offerCardMouseLeaveHandler);
   }
 
-  offerCardClickHandler() {}
-
   offerCardMouseEnterHandler(offer) {
-    this.setState({
-      activeOffer: offer
-    });
+    this.setState({activeOffer: offer});
   }
 
   offerCardMouseLeaveHandler() {
-    this.setState({
-      activeOffer: null
-    });
+    this.setState({activeOffer: null});
   }
 
   render() {
-    const {offersCards} = this.props;
+    const {offersCards, onOfferTitleClick} = this.props;
 
     return (
       <div className="cities__places-list places__list tabs__content">
@@ -38,9 +31,15 @@ export default class OffersList extends Component {
           <OffersCard
             offer={offer}
             key={offer.id}
-            onCardClick={this.offerCardClickHandler}
-            onCardMouseEnter={this.offerCardMouseEnterHandler}
-            onCardMouseLeave={this.offerCardMouseLeaveHandler}
+            onCardClick={() => {
+              onOfferTitleClick(offer);
+            }}
+            onCardMouseEnter={() => {
+              this.offerCardMouseEnterHandler(offer);
+            }}
+            onCardMouseLeave={() => {
+              this.offerCardMouseLeaveHandler();
+            }}
           />)}
       </div>
     );
@@ -48,5 +47,6 @@ export default class OffersList extends Component {
 }
 
 OffersList.propTypes = {
+  onOfferTitleClick: PropTypes.func,
   offersCards: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

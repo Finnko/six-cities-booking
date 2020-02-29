@@ -6,6 +6,10 @@ const bind = (thisArg, ...functions) => {
   });
 };
 
+const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
+
 const getRandomArrayNumber = (array) => Math.floor(Math.random() * array.length);
 
 const getRandomArray = (array) => {
@@ -13,6 +17,8 @@ const getRandomArray = (array) => {
   return array.slice(0, randomNumber);
 };
 
-const getRandomRating = () => (Math.random() * OFFER_MAX_RATING).toFixed(1);
+const getRandomRating = () => parseFloat((Math.random() * OFFER_MAX_RATING).toFixed(1));
 
-export {bind, getRandomRating, getRandomArray};
+const getRatingPercentage = (rating) => rating * 100 / OFFER_MAX_RATING;
+
+export {bind, extend, getRandomRating, getRandomArray, getRatingPercentage};

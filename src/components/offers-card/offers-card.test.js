@@ -8,7 +8,8 @@ const mock = {
   price: `120`,
   type: `Apartment`,
   promoImage: `img/apartment-01.jpg`,
-  isPremium: true
+  isPremium: true,
+  rating: 3.5
 };
 
 it(`Should OffersCard component render correctly`, () => {

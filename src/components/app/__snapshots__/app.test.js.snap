@@ -292,7 +292,7 @@ exports[`Should App component render correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "93%",
+                          "width": "NaN%",
                         }
                       }
                     />

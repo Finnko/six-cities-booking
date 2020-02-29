@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {getRatingPercentage} from '../../utils';
 
 const OffersCard = ({offer, onCardClick, onCardMouseEnter, onCardMouseLeave}) => {
-  const {title, type, price, promoImage, isPremium} = offer;
+  const {title, type, price, promoImage, rating, isPremium} = offer;
 
   const premium = !isPremium ? `` : (
     <div className="place-card__mark">
       <span>Premium</span>
     </div>);
 
+  const ratingPercent = getRatingPercentage(rating);
+
   return (
     <article
-      onMouseEnter={() => {
-        onCardMouseEnter(offer);
-      }}
-      onMouseLeave={() => {
-        onCardMouseLeave();
-      }}
+      onMouseEnter={onCardMouseEnter}
+      onMouseLeave={onCardMouseLeave}
       className="cities__place-card place-card"
     >
       {premium}
@@ -40,7 +39,7 @@ const OffersCard = ({offer, onCardClick, onCardMouseEnter, onCardMouseLeave}) =>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `93%`}} />
+            <span style={{width: `${ratingPercent}%`}} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -61,6 +60,7 @@ OffersCard.propTypes = {
     id: PropTypes.string,
     title: PropTypes.string,
     type: PropTypes.string,
+    rating: PropTypes.number,
     promoImage: PropTypes.string,
     price: PropTypes.string,
     isPremium: PropTypes.bool,
