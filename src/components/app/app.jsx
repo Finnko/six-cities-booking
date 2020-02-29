@@ -2,11 +2,15 @@ import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from "../main-page/main-page.jsx";
-import OfferDetail from '../offer-detail/offer-detail.jsx';
+import Offer from '../offer/offer.jsx';
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
+  }
+
+  _renderApp(data) {
+    return <MainPage data={data}/>;
   }
 
   render() {
@@ -16,10 +20,10 @@ class App extends PureComponent {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <MainPage data={data}/>
+            {this._renderApp(data)}
           </Route>
-          <Route exact path="/offers-detail">
-            <OfferDetail/>
+          <Route exact path="/offer">
+            <Offer/>
           </Route>
         </Switch>
       </BrowserRouter>

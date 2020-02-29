@@ -12,7 +12,7 @@ const mock = {
   title: `Beautiful & luxurious apartment at great location`,
   price: `120`,
   type: `Apartment`,
-  photo: `img/apartment-01.jpg`,
+  promoImage: `img/apartment-01.jpg`,
   isPremium: true
 };
 
@@ -24,7 +24,7 @@ describe(`Test e2e OffersCard component`, () => {
       <OffersCard offer={mock} onCardClick={onCardClick} onCardMouseEnter={onCardMouseEnter}/>
   );
 
-  const offersCardHeader = offersCard.find(`.place-card__image-wrapper a`);
+  const offersCardHeader = offersCard.find(`.place-card__name a`);
   const offer = offersCard.find(`.place-card`);
 
   it(`Should OffersCard be pressed correctly`, () => {

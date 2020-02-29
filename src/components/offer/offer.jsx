@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OfferDetail = () => {
+const Offer = () => {
   return (
     <section className="property">
       <div className="property__gallery-container container">
@@ -209,4 +209,4 @@ const OfferDetail = () => {
   );
 };
 
-export default OfferDetail;
+export default Offer;

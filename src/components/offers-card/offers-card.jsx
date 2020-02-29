@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const OffersCard = ({offer, onCardClick, onCardMouseEnter, onCardMouseLeave}) => {
-  const {title, type, price, photo, isPremium} = offer;
+  const {title, type, price, promoImage, isPremium} = offer;
 
   const premium = !isPremium ? `` : (
     <div className="place-card__mark">
@@ -21,8 +21,8 @@ const OffersCard = ({offer, onCardClick, onCardMouseEnter, onCardMouseLeave}) =>
     >
       {premium}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#" onClick={onCardClick}>
-          <img className="place-card__image" src={photo} width={260} height={200} alt="Place image" />
+        <a href="#">
+          <img className="place-card__image" src={promoImage} width={260} height={200} alt="Place image" />
         </a>
       </div>
       <div className="place-card__info">
@@ -45,7 +45,7 @@ const OffersCard = ({offer, onCardClick, onCardMouseEnter, onCardMouseLeave}) =>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <a href="#" onClick={onCardClick}>{title}</a>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -61,7 +61,7 @@ OffersCard.propTypes = {
     id: PropTypes.string,
     title: PropTypes.string,
     type: PropTypes.string,
-    photo: PropTypes.string,
+    promoImage: PropTypes.string,
     price: PropTypes.string,
     isPremium: PropTypes.bool,
   }).isRequired,

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import OffersCard from '../offers-card/offers-card.jsx';
+import {bind} from '../../utils';
 
 export default class OffersList extends Component {
   constructor(props) {
@@ -8,20 +9,21 @@ export default class OffersList extends Component {
 
     this.state = {activeOffer: null};
 
-    this._offerCardClickHandler = this._offerCardClickHandler.bind(this);
-    this._offerCardMouseEnterHandler = this._offerCardMouseEnterHandler.bind(this);
-    this._offerCardMouseLeaveHandler = this._offerCardMouseLeaveHandler.bind(this);
+    bind(this,
+        this.offerCardMouseEnterHandler,
+        this.offerCardMouseEnterHandler,
+        this.offerCardMouseLeaveHandler);
   }
 
-  _offerCardClickHandler() {}
+  offerCardClickHandler() {}
 
-  _offerCardMouseEnterHandler(offer) {
+  offerCardMouseEnterHandler(offer) {
     this.setState({
       activeOffer: offer
     });
   }
 
-  _offerCardMouseLeaveHandler() {
+  offerCardMouseLeaveHandler() {
     this.setState({
       activeOffer: null
     });
@@ -36,9 +38,9 @@ export default class OffersList extends Component {
           <OffersCard
             offer={offer}
             key={offer.id}
-            onCardClick={this._offerCardClickHandler}
-            onCardMouseEnter={this._offerCardMouseEnterHandler}
-            onCardMouseLeave={this._offerCardMouseLeaveHandler}
+            onCardClick={this.offerCardClickHandler}
+            onCardMouseEnter={this.offerCardMouseEnterHandler}
+            onCardMouseLeave={this.offerCardMouseLeaveHandler}
           />)}
       </div>
     );
