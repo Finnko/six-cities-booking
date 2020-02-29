@@ -5,6 +5,10 @@ import {getRatingPercentage} from '../../utils';
 const OffersCard = ({offer, onCardClick, onCardMouseEnter, onCardMouseLeave}) => {
   const {title, type, price, promoImage, rating, isPremium} = offer;
 
+  const handleTitleClick = () => onCardClick(offer);
+  const handleMouseEnter = () => onCardMouseEnter(offer);
+  const handleMouseLeave = () => onCardMouseLeave();
+
   const premium = !isPremium ? `` : (
     <div className="place-card__mark">
       <span>Premium</span>
@@ -14,8 +18,8 @@ const OffersCard = ({offer, onCardClick, onCardMouseEnter, onCardMouseLeave}) =>
 
   return (
     <article
-      onMouseEnter={onCardMouseEnter}
-      onMouseLeave={onCardMouseLeave}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       className="cities__place-card place-card"
     >
       {premium}
@@ -44,7 +48,7 @@ const OffersCard = ({offer, onCardClick, onCardMouseEnter, onCardMouseLeave}) =>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={onCardClick}>{title}</a>
+          <a href="#" onClick={handleTitleClick}>{title}</a>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -57,13 +61,12 @@ OffersCard.propTypes = {
   onCardMouseEnter: PropTypes.func,
   onCardMouseLeave: PropTypes.func,
   offer: PropTypes.shape({
-    id: PropTypes.string,
-    title: PropTypes.string,
-    type: PropTypes.string,
-    rating: PropTypes.number,
-    promoImage: PropTypes.string,
-    price: PropTypes.string,
-    isPremium: PropTypes.bool,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    promoImage: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    isPremium: PropTypes.bool.isRequired,
   }).isRequired,
 };
 

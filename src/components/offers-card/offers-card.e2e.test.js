@@ -7,13 +7,14 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-const mock = {
+const mockOffer = {
   id: `id_11`,
   title: `Beautiful & luxurious apartment at great location`,
   price: `120`,
   type: `Apartment`,
   promoImage: `img/apartment-01.jpg`,
-  isPremium: true
+  isPremium: true,
+  rating: 3.5
 };
 
 describe(`Test e2e OffersCard component`, () => {
@@ -21,7 +22,7 @@ describe(`Test e2e OffersCard component`, () => {
   const onCardMouseEnter = jest.fn();
 
   const offersCard = shallow(
-      <OffersCard offer={mock} onCardClick={onCardClick} onCardMouseEnter={onCardMouseEnter}/>
+      <OffersCard offer={mockOffer} onCardClick={onCardClick} onCardMouseEnter={onCardMouseEnter}/>
   );
 
   const offersCardHeader = offersCard.find(`.place-card__name a`);
@@ -34,7 +35,6 @@ describe(`Test e2e OffersCard component`, () => {
 
   it(`Should OffersCard info passed correctly on hover`, () => {
     offer.simulate(`mouseenter`);
-    expect(onCardMouseEnter).toHaveBeenCalledTimes(1);
-    expect({activeOffer: onCardMouseEnter.mock.calls[0][0].id}).toMatchObject({activeOffer: mock.id});
+    expect(onCardMouseEnter.mock.calls[0][0].id).toBe(mockOffer.id);
   });
 });

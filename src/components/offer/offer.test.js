@@ -1,8 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Offer from './offer';
-import {getRandomArray, getRandomRating} from '../../utils';
-import {FEATURES} from '../../const';
 
 const mock = {
   id: `id_11`,

@@ -31,15 +31,9 @@ export default class OffersList extends Component {
           <OffersCard
             offer={offer}
             key={offer.id}
-            onCardClick={() => {
-              onOfferTitleClick(offer);
-            }}
-            onCardMouseEnter={() => {
-              this.offerCardMouseEnterHandler(offer);
-            }}
-            onCardMouseLeave={() => {
-              this.offerCardMouseLeaveHandler();
-            }}
+            onCardClick={onOfferTitleClick}
+            onCardMouseEnter={this.offerCardMouseEnterHandler}
+            onCardMouseLeave={this.offerCardMouseLeaveHandler}
           />)}
       </div>
     );
