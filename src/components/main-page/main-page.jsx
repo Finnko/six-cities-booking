@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OffersList from '../offers-list/offers-list.jsx';
+import Map from '../map/map.jsx';
 
 const MainPage = ({data, onOfferTitleClick}) => {
   return (
@@ -89,7 +90,7 @@ const MainPage = ({data, onOfferTitleClick}) => {
               <OffersList offersCards={data} onOfferTitleClick={onOfferTitleClick}/>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"/>
+              <Map offers={data}/>
             </div>
           </div>
         </div>
