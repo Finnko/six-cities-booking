@@ -1,10 +1,10 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-import MainPage from "../main-page/main-page.jsx";
-import Offer from '../offer/offer.jsx';
 import {bind} from '../../utils';
 import offers from '../../mocks/offers'; // temp
+import MainPage from "../main-page/main-page.jsx";
+import Offer from '../offer/offer.jsx';
 
 class App extends PureComponent {
   constructor(props) {
