@@ -1,28 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {getRatingPercentage} from '../../utils';
 
 const OffersCard = ({offer, onCardClick, onCardMouseEnter, onCardMouseLeave}) => {
-  const {title, type, price, photo, isPremium} = offer;
+  const {title, type, price, promoImage, rating, isPremium} = offer;
+
+  const handleTitleClick = () => onCardClick(offer);
+  const handleMouseEnter = () => onCardMouseEnter(offer);
+  const handleMouseLeave = () => onCardMouseLeave();
 
   const premium = !isPremium ? `` : (
     <div className="place-card__mark">
       <span>Premium</span>
     </div>);
 
+  const ratingPercent = getRatingPercentage(rating);
+
   return (
     <article
-      onMouseEnter={() => {
-        onCardMouseEnter(offer);
-      }}
-      onMouseLeave={() => {
-        onCardMouseLeave();
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       className="cities__place-card place-card"
     >
       {premium}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#" onClick={onCardClick}>
-          <img className="place-card__image" src={photo} width={260} height={200} alt="Place image" />
+        <a href="#">
+          <img className="place-card__image" src={promoImage} width={260} height={200} alt="Place image" />
         </a>
       </div>
       <div className="place-card__info">
@@ -40,12 +43,12 @@ const OffersCard = ({offer, onCardClick, onCardMouseEnter, onCardMouseLeave}) =>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `93%`}} />
+            <span style={{width: `${ratingPercent}%`}} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <a href="#" onClick={handleTitleClick}>{title}</a>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -58,12 +61,12 @@ OffersCard.propTypes = {
   onCardMouseEnter: PropTypes.func,
   onCardMouseLeave: PropTypes.func,
   offer: PropTypes.shape({
-    id: PropTypes.string,
-    title: PropTypes.string,
-    type: PropTypes.string,
-    photo: PropTypes.string,
-    price: PropTypes.string,
-    isPremium: PropTypes.bool,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    promoImage: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    isPremium: PropTypes.bool.isRequired,
   }).isRequired,
 };
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import OffersCard from '../offers-card/offers-card.jsx';
+import {bind} from '../../utils';
 
 export default class OffersList extends Component {
   constructor(props) {
@@ -8,27 +9,21 @@ export default class OffersList extends Component {
 
     this.state = {activeOffer: null};
 
-    this._offerCardClickHandler = this._offerCardClickHandler.bind(this);
-    this._offerCardMouseEnterHandler = this._offerCardMouseEnterHandler.bind(this);
-    this._offerCardMouseLeaveHandler = this._offerCardMouseLeaveHandler.bind(this);
+    bind(this,
+        this.offerCardMouseEnterHandler,
+        this.offerCardMouseLeaveHandler);
   }
 
-  _offerCardClickHandler() {}
-
-  _offerCardMouseEnterHandler(offer) {
-    this.setState({
-      activeOffer: offer
-    });
+  offerCardMouseEnterHandler(offer) {
+    this.setState({activeOffer: offer});
   }
 
-  _offerCardMouseLeaveHandler() {
-    this.setState({
-      activeOffer: null
-    });
+  offerCardMouseLeaveHandler() {
+    this.setState({activeOffer: null});
   }
 
   render() {
-    const {offersCards} = this.props;
+    const {offersCards, onOfferTitleClick} = this.props;
 
     return (
       <div className="cities__places-list places__list tabs__content">
@@ -36,9 +31,9 @@ export default class OffersList extends Component {
           <OffersCard
             offer={offer}
             key={offer.id}
-            onCardClick={this._offerCardClickHandler}
-            onCardMouseEnter={this._offerCardMouseEnterHandler}
-            onCardMouseLeave={this._offerCardMouseLeaveHandler}
+            onCardClick={onOfferTitleClick}
+            onCardMouseEnter={this.offerCardMouseEnterHandler}
+            onCardMouseLeave={this.offerCardMouseLeaveHandler}
           />)}
       </div>
     );
@@ -46,5 +41,6 @@ export default class OffersList extends Component {
 }
 
 OffersList.propTypes = {
+  onOfferTitleClick: PropTypes.func,
   offersCards: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

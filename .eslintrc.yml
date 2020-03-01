@@ -18,3 +18,7 @@ plugins: ['react']
 settings:
   react:
     version: '16'
+
+rules:
+  react/sort-comp: [2]
+

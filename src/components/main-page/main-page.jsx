@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import OffersList from '../offers-list/offers-list.jsx';
 
-const MainPage = (props) => {
-  const {data} = props;
-
+const MainPage = ({data, onOfferTitleClick}) => {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -88,7 +86,7 @@ const MainPage = (props) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <OffersList offersCards={data}/>
+              <OffersList offersCards={data} onOfferTitleClick={onOfferTitleClick}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"/>
@@ -101,6 +99,7 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
+  onOfferTitleClick: PropTypes.func,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
