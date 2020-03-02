@@ -1,7 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-import {bind} from '../../utils';
 import offers from '../../mocks/offers'; // temp
 import MainPage from "../main-page/main-page.jsx";
 import Offer from '../offer/offer.jsx';
@@ -12,7 +11,7 @@ class App extends PureComponent {
 
     this.state = {selectedOffer: offers[0]};
 
-    bind(this, this.offerTitleClickHandler);
+    this.offerTitleClickHandler = this.offerTitleClickHandler.bind(this);
   }
 
   offerTitleClickHandler(offer) {

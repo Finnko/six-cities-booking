@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {bind} from '../../utils';
 import OffersCard from '../offers-card/offers-card.jsx';
 
 export default class OffersList extends PureComponent {
@@ -9,9 +8,8 @@ export default class OffersList extends PureComponent {
 
     this.state = {activeOffer: null};
 
-    bind(this,
-        this.offerCardMouseEnterHandler,
-        this.offerCardMouseLeaveHandler);
+    this.offerCardMouseEnterHandler = this.offerCardMouseEnterHandler.bind(this);
+    this.offerCardMouseLeaveHandler = this.offerCardMouseLeaveHandler.bind(this);
   }
 
   offerCardMouseEnterHandler(offer) {

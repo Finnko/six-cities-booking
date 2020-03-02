@@ -1,11 +1,5 @@
 const OFFER_MAX_RATING = 5;
 
-const bind = (thisArg, ...functions) => {
-  functions.forEach((currentFunction) => {
-    thisArg[currentFunction.name] = currentFunction.bind(thisArg);
-  });
-};
-
 const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
@@ -21,4 +15,4 @@ const getRandomRating = () => parseFloat((Math.random() * OFFER_MAX_RATING).toFi
 
 const getRatingPercentage = (rating) => rating * 100 / OFFER_MAX_RATING;
 
-export {bind, extend, getRandomRating, getRandomArray, getRatingPercentage};
+export {extend, getRandomRating, getRandomArray, getRatingPercentage};
