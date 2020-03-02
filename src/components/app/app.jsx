@@ -2,8 +2,10 @@ import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import offers from '../../mocks/offers'; // temp
+import reviews from '../../mocks/reviews';
 import MainPage from "../main-page/main-page.jsx";
 import Offer from '../offer/offer.jsx';
+console.log(reviews);
 
 class App extends PureComponent {
   constructor(props) {
