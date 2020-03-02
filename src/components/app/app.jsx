@@ -1,17 +1,15 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-import offers from '../../mocks/offers'; // temp
-import reviews from '../../mocks/reviews';
 import MainPage from "../main-page/main-page.jsx";
 import Offer from '../offer/offer.jsx';
-console.log(reviews);
+
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {selectedOffer: offers[0]};
+    this.state = {selectedOffer: undefined};
 
     this.offerTitleClickHandler = this.offerTitleClickHandler.bind(this);
   }
@@ -27,14 +25,33 @@ class App extends PureComponent {
   }
 
   renderOfferDetail() {
-    const offer = this.state.selectedOffer;
+    if (!this.state.selectedOffer) {
+      return null;
+    }
 
-    if (offer !== null) {
+    const {data, reviews} = this.props;
+
+    const activeOffer = data.find((item) => {
+      return item.id === this.state.selectedOffer;
+    });
+
+    if (activeOffer !== null) {
       return (
-        <Offer offer={offer} />
+        <Offer offer={activeOffer} reviews={reviews}/>
       );
     }
     return this.renderMainPage();
+  }
+
+  renderApp() {
+    if (this.state.selectedOffer) {
+      return (
+        this.renderOfferDetail()
+      );
+    }
+    return (
+      this.renderMainPage()
+    );
   }
 
   render() {
@@ -42,7 +59,7 @@ class App extends PureComponent {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            {this.renderMainPage()}
+            {this.renderApp()}
           </Route>
           <Route exact path="/dev-offer">
             {this.renderOfferDetail()}
@@ -56,6 +73,7 @@ class App extends PureComponent {
 App.propTypes = {
   onOfferTitleClick: PropTypes.func,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default App;
