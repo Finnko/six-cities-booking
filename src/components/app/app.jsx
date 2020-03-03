@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from "../main-page/main-page.jsx";
-import Offer from '../offer/offer.jsx';
+import Property from '../property/property.jsx';
 
 
 class App extends PureComponent {
@@ -32,12 +32,12 @@ class App extends PureComponent {
     const {data, reviews} = this.props;
 
     const activeOffer = data.find((item) => {
-      return item.id === this.state.selectedOffer;
+      return item === this.state.selectedOffer;
     });
 
     if (activeOffer !== null) {
       return (
-        <Offer offer={activeOffer} reviews={reviews}/>
+        <Property offer={activeOffer} reviews={reviews}/>
       );
     }
     return this.renderMainPage();
