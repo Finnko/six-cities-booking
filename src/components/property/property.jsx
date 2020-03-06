@@ -1,24 +1,23 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import Offer from '../offer/offer.jsx';
-import ReviewsList from '../reviews-list/reviews-list.jsx';
 import OffersList from '../offers-list/offers-list.jsx';
+import Map from '../map/map.jsx';
 
 const Property = ({offer, reviews, nearByOffers, onOfferTitleClick}) => {
   return (
     <Fragment>
-      <Offer offer={offer}/>
-      <section className="property__reviews reviews">
-        <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
-        <ReviewsList reviews={reviews}/>
-
-        <div className="container">
-          <section className="near-places places">
-            <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <OffersList offersCards={nearByOffers} isNearByView={true} onOfferTitleClick={onOfferTitleClick}/>
-          </section>
-        </div>
+      <section className="property">
+        <Offer offer={offer} reviews={reviews}/>
+        <Map isNearByView={true} offers={nearByOffers}/>
       </section>
+
+      <div className="container">
+        <section className="near-places places">
+          <h2 className="near-places__title">Other places in the neighbourhood</h2>
+          <OffersList offersCards={nearByOffers} isNearByView={true} onOfferTitleClick={onOfferTitleClick}/>
+        </section>
+      </div>
     </Fragment>
   );
 };

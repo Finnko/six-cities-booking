@@ -90,7 +90,7 @@ const MainPage = ({data, onOfferTitleClick}) => {
               <OffersList offersCards={data} isNearByView={false} onOfferTitleClick={onOfferTitleClick}/>
             </section>
             <div className="cities__right-section">
-              <Map offers={data}/>
+              <Map offers={data} isNearByView={false}/>
             </div>
           </div>
         </div>
