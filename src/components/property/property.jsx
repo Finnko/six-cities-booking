@@ -1,21 +1,30 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import Offer from '../offer/offer.jsx';
 import ReviewsList from '../reviews-list/reviews-list.jsx';
+import OffersList from '../offers-list/offers-list.jsx';
 
-const Property = ({offer, reviews}) => {
+const Property = ({offer, reviews, nearByOffers, onOfferTitleClick}) => {
   return (
-    <React.Fragment>
+    <Fragment>
       <Offer offer={offer}/>
       <section className="property__reviews reviews">
         <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
         <ReviewsList reviews={reviews}/>
+
+        <div className="container">
+          <section className="near-places places">
+            <h2 className="near-places__title">Other places in the neighbourhood</h2>
+            <OffersList offersCards={nearByOffers} isNearByView={true} onOfferTitleClick={onOfferTitleClick}/>
+          </section>
+        </div>
       </section>
-    </React.Fragment>
+    </Fragment>
   );
 };
 
 Property.propTypes = {
+  onOfferTitleClick: PropTypes.func,
   offer: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -42,6 +51,25 @@ Property.propTypes = {
     description: PropTypes.string.isRequired,
     date: PropTypes.number.isRequired,
   })).isRequired,
+  nearByOffers: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    promoImage: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    roomsCount: PropTypes.number.isRequired,
+    guestsCount: PropTypes.number.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    features: PropTypes.arrayOf(PropTypes.string).isRequired,
+    owner: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
+      description: PropTypes.arrayOf(PropTypes.string).isRequired,
+      isPro: PropTypes.bool.isRequired
+    })
+  }).isRequired),
 };
 
 export default Property;

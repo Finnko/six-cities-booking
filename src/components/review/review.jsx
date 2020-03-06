@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {getRatingPercentage} from '../../utils';
 
 const Review = ({review}) => {
-  const {name, avatar, rating, description} = review;
+  const {name, avatar, rating, description, date} = review;
 
   const ratingPercent = getRatingPercentage(rating);
 

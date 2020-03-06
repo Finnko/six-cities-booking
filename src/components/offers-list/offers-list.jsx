@@ -21,13 +21,14 @@ export default class OffersList extends PureComponent {
   }
 
   render() {
-    const {offersCards, onOfferTitleClick} = this.props;
+    const {offersCards, isNearByView, onOfferTitleClick} = this.props;
 
     return (
-      <div className="cities__places-list places__list tabs__content">
+      <div className={`places__list ${isNearByView ? `near-places__list` : `cities__places-list tabs__content` }`}>
         {offersCards.map((offer) =>
           <OffersCard
             offer={offer}
+            isNearByView={isNearByView}
             key={offer.id}
             onCardClick={onOfferTitleClick}
             onCardMouseEnter={this.offerCardMouseEnterHandler}
@@ -40,5 +41,24 @@ export default class OffersList extends PureComponent {
 
 OffersList.propTypes = {
   onOfferTitleClick: PropTypes.func,
-  offersCards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isNearByView: PropTypes.bool.isRequired,
+  offersCards: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    promoImage: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    roomsCount: PropTypes.number.isRequired,
+    guestsCount: PropTypes.number.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    features: PropTypes.arrayOf(PropTypes.string).isRequired,
+    owner: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
+      description: PropTypes.arrayOf(PropTypes.string).isRequired,
+      isPro: PropTypes.bool.isRequired
+    })
+  }).isRequired),
 };

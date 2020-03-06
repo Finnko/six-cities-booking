@@ -87,7 +87,7 @@ const MainPage = ({data, onOfferTitleClick}) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <OffersList offersCards={data} onOfferTitleClick={onOfferTitleClick}/>
+              <OffersList offersCards={data} isNearByView={false} onOfferTitleClick={onOfferTitleClick}/>
             </section>
             <div className="cities__right-section">
               <Map offers={data}/>

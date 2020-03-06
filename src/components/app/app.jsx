@@ -31,13 +31,16 @@ class App extends PureComponent {
 
     const {data, reviews} = this.props;
 
-    const activeOffer = data.find((item) => {
-      return item === this.state.selectedOffer;
-    });
+    const activeOffer = data.find((item) => item === this.state.selectedOffer);
+
+    //temp
+    const index = data.findIndex((item) => item.id === this.state.selectedOffer.id);
+
+    const nearByOffers = [].concat(data.slice(0, index), data.slice(index + 1));
 
     if (activeOffer !== null) {
       return (
-        <Property offer={activeOffer} reviews={reviews}/>
+        <Property offer={activeOffer} reviews={reviews} nearByOffers={nearByOffers} onOfferTitleClick={this.offerTitleClickHandler}/>
       );
     }
     return this.renderMainPage();

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {getRatingPercentage} from '../../utils';
 
-const OffersCard = ({offer, onCardClick, onCardMouseEnter, onCardMouseLeave}) => {
+const OffersCard = ({offer, isNearByView, onCardClick, onCardMouseEnter, onCardMouseLeave}) => {
   const {title, type, price, promoImage, rating, isPremium} = offer;
 
   const handleTitleClick = () => onCardClick(offer);
@@ -20,10 +20,10 @@ const OffersCard = ({offer, onCardClick, onCardMouseEnter, onCardMouseLeave}) =>
     <article
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="cities__place-card place-card"
+      className={`place-card ${isNearByView ? `near-places__card` : `cities__place-card`}`}
     >
       {premium}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`place-card__image-wrapper ${isNearByView ? `near-places__image-wrapper` : `cities__image-wrapper`}`}>
         <a href="#">
           <img className="place-card__image" src={promoImage} width={260} height={200} alt="Place image" />
         </a>
@@ -60,6 +60,7 @@ OffersCard.propTypes = {
   onCardClick: PropTypes.func,
   onCardMouseEnter: PropTypes.func,
   onCardMouseLeave: PropTypes.func,
+  isNearByView: PropTypes.bool.isRequired,
   offer: PropTypes.shape({
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
