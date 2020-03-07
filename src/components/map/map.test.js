@@ -9,7 +9,7 @@ const mocks = [
 ];
 
 it(`<Map /> should be render correctly`, () => {
-  const map = renderer.create(<Map offers={mocks} />, {
+  const map = renderer.create(<Map offers={mocks} isNearByView={false}/>, {
     createNodeMock: () => {
       return document.createElement(`div`);
     }

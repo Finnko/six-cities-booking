@@ -33,10 +33,10 @@ class App extends PureComponent {
 
     const activeOffer = data.find((item) => item === this.state.selectedOffer);
 
-    //temp
+    //  temp
     const index = data.findIndex((item) => item.id === this.state.selectedOffer.id);
 
-    const nearByOffers = [].concat(data.slice(0, index), data.slice(index + 1));
+    const nearByOffers = [...data.slice(0, index), ...data.slice(index + 1)];
 
     if (activeOffer !== null) {
       return (

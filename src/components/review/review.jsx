@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getRatingPercentage} from '../../utils';
+import {getFormattedDate, getRatingPercentage, getTimeTagFormatted} from '../../utils';
 
 const Review = ({review}) => {
   const {name, avatar, rating, description, date} = review;
 
   const ratingPercent = getRatingPercentage(rating);
+  const formattedDate = getFormattedDate(date);
+  const timeTagFormatted = getTimeTagFormatted(date);
 
   return (
     <ul className="reviews__list">
@@ -29,7 +31,7 @@ const Review = ({review}) => {
           <p className="reviews__text">
             {description}
           </p>
-          <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
+          <time className="reviews__time" dateTime={timeTagFormatted}>{formattedDate}</time>
         </div>
       </li>
     </ul>

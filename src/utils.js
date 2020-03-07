@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const OFFER_MAX_RATING = 5;
 
 const extend = (a, b) => {
@@ -17,15 +19,21 @@ const getRandomInRange = function (min, max) {
 
 const getRandomDate = () => {
   const targetDate = new Date();
-
-  const sign = Math.random() > 0.5 ? 1 : -1;
-  const diffValue = sign * getRandomInRange(0, 1000);
+  const diffValue = getRandomInRange(0, 5000);
 
   return targetDate.getTime() + diffValue;
+};
+
+const getTimeTagFormatted = (date) => {
+  return moment(date).format(`YYYY-MM-DD`);
+};
+
+const getFormattedDate = (date) => {
+  return moment(date).format(`MMMM, YYYY`);
 };
 
 const getRandomRating = () => parseFloat((Math.random() * OFFER_MAX_RATING).toFixed(1));
 
 const getRatingPercentage = (rating) => rating * 100 / OFFER_MAX_RATING;
 
-export {extend, getRandomRating, getRandomArray, getRatingPercentage, getRandomDate};
+export {extend, getRandomRating, getRandomArray, getRatingPercentage, getRandomDate, getTimeTagFormatted, getFormattedDate};

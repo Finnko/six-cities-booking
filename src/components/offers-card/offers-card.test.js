@@ -16,6 +16,7 @@ it(`Should OffersCard component render correctly`, () => {
   const tree = renderer
     .create(<OffersCard
       offer={mock}
+      isNearByView={false}
       onCardClick={() => {}}
       onCardMouseEnter={() => {}}
       onCardMouseLeave={() => {}}
