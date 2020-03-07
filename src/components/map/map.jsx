@@ -66,14 +66,17 @@ class Map extends PureComponent {
   }
 
   render() {
+    const {isNearByView} = this.props;
+
     return (
-      <section className='cities__map map'>
+      <section className={`map ${isNearByView ? `property__map` : `cities__map`}`}>
         <div id='map' style={{height: `100%`}} ref={this._mapRef}/>
       </section>);
   }
 }
 
 Map.propTypes = {
+  isNearByView: PropTypes.bool,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

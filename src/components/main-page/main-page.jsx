@@ -71,7 +71,7 @@ const MainPage = ({data, onOfferTitleClick}) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">310 places to stay in Amsterdam</b>
+              <b className="places__found">{data.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -87,10 +87,10 @@ const MainPage = ({data, onOfferTitleClick}) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <OffersList offersCards={data} onOfferTitleClick={onOfferTitleClick}/>
+              <OffersList offersCards={data} isNearByView={false} onOfferTitleClick={onOfferTitleClick}/>
             </section>
             <div className="cities__right-section">
-              <Map offers={data}/>
+              <Map offers={data} isNearByView={false}/>
             </div>
           </div>
         </div>

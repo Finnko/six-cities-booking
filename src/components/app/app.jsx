@@ -1,18 +1,17 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-import {bind} from '../../utils';
-import offers from '../../mocks/offers'; // temp
 import MainPage from "../main-page/main-page.jsx";
-import Offer from '../offer/offer.jsx';
+import Property from '../property/property.jsx';
+
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {selectedOffer: offers[0]};
+    this.state = {selectedOffer: undefined};
 
-    bind(this, this.offerTitleClickHandler);
+    this.offerTitleClickHandler = this.offerTitleClickHandler.bind(this);
   }
 
   offerTitleClickHandler(offer) {
@@ -26,14 +25,36 @@ class App extends PureComponent {
   }
 
   renderOfferDetail() {
-    const offer = this.state.selectedOffer;
+    if (!this.state.selectedOffer) {
+      return null;
+    }
 
-    if (offer !== null) {
+    const {data, reviews} = this.props;
+
+    const activeOffer = data.find((item) => item === this.state.selectedOffer);
+
+    //  temp
+    const index = data.findIndex((item) => item.id === this.state.selectedOffer.id);
+
+    const nearByOffers = [...data.slice(0, index), ...data.slice(index + 1)];
+
+    if (activeOffer !== null) {
       return (
-        <Offer offer={offer} />
+        <Property offer={activeOffer} reviews={reviews} nearByOffers={nearByOffers} onOfferTitleClick={this.offerTitleClickHandler}/>
       );
     }
     return this.renderMainPage();
+  }
+
+  renderApp() {
+    if (this.state.selectedOffer) {
+      return (
+        this.renderOfferDetail()
+      );
+    }
+    return (
+      this.renderMainPage()
+    );
   }
 
   render() {
@@ -41,7 +62,7 @@ class App extends PureComponent {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            {this.renderMainPage()}
+            {this.renderApp()}
           </Route>
           <Route exact path="/dev-offer">
             {this.renderOfferDetail()}
@@ -55,6 +76,7 @@ class App extends PureComponent {
 App.propTypes = {
   onOfferTitleClick: PropTypes.func,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default App;
