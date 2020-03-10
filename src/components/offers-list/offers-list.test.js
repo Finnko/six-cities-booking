@@ -1,9 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {FEATURES} from '../../const';
-import App from "./app.jsx";
+import OffersList from './offers-list.jsx';
 
-const mocks = [
+const mock = [
   {
     id: `id_11`,
     title: `Beautiful & luxurious apartment at great location`,
@@ -93,39 +93,12 @@ const mocks = [
   },
 ];
 
-const mockDate = new Date(1583591483969).valueOf();
-
-const reviewMocks = [
-  {
-    id: 1,
-    name: `Max`,
-    avatar: `img/avatar-max.jpg`,
-    rating: 1.5,
-    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
-    date: mockDate
-  },
-  {
-    id: 2,
-    name: `Alexey`,
-    avatar: `img/avatar-max.jpg`,
-    rating: 0.5,
-    description: `The building is green and from 18th century.`,
-    date: mockDate
-  },
-  {
-    id: 3,
-    name: `Anastasia`,
-    avatar: `img/avatar-max.jpg`,
-    rating: 4.5,
-    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-    date: mockDate
-  }];
-
-it(`Should App component render correctly`, () => {
+it(`Should OffersList component render correctly`, () => {
   const tree = renderer
-    .create(<App
-      data={mocks}
-      reviews={reviewMocks}
+    .create(<OffersList
+      isNearByView={false}
+      offersCards={mock}
+      onOfferTitleClick={() => { }}
     />)
     .toJSON();
 

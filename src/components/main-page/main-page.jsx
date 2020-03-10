@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CitiesList from '../cities-list/cities-list.jsx';
+import OffersList from '../offers-list/offers-list.jsx';
+import Map from '../map/map.jsx';
 
-const MainPage = (props) => {
-  const {data} = props;
-
+const MainPage = ({data, onOfferTitleClick}) => {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -72,7 +71,7 @@ const MainPage = (props) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">310 places to stay in Amsterdam</b>
+              <b className="places__found">{data.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -88,10 +87,10 @@ const MainPage = (props) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <CitiesList placesCards={data}/>
+              <OffersList offersCards={data} isNearByView={false} onOfferTitleClick={onOfferTitleClick}/>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"/>
+              <Map offers={data} isNearByView={false}/>
             </div>
           </div>
         </div>
@@ -101,9 +100,8 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string
-  }))
+  onOfferTitleClick: PropTypes.func,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MainPage;
