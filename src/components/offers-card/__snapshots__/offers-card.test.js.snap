@@ -2,7 +2,7 @@
 
 exports[`Should OffersCard component render correctly 1`] = `
 <article
-  className="cities__place-card place-card"
+  className="place-card cities__place-card"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
@@ -14,7 +14,7 @@ exports[`Should OffersCard component render correctly 1`] = `
     </span>
   </div>
   <div
-    className="cities__image-wrapper place-card__image-wrapper"
+    className="place-card__image-wrapper cities__image-wrapper"
   >
     <a
       href="#"

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {getRatingPercentage} from '../../utils';
+import ReviewsList from '../reviews-list/reviews-list.jsx';
 
-const Offer = ({offer}) => {
+const Offer = ({offer, reviews}) => {
   const {title, type, price, isPremium, rating, roomsCount, guestsCount, features, images} = offer;
   const {name, avatar, description, isPro} = offer.owner;
 
@@ -17,7 +18,7 @@ const Offer = ({offer}) => {
   const ratingPercent = getRatingPercentage(rating);
 
   return (
-    <section className="property">
+    <Fragment>
       <div className="property__gallery-container container">
         <div className="property__gallery">
           {displayedImages.map((imageSrc, index) => (
@@ -87,9 +88,13 @@ const Offer = ({offer}) => {
               ))}
             </div>
           </div>
+          <section className="property__reviews reviews">
+            <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
+            <ReviewsList reviews={reviews}/>
+          </section>
         </div>
       </div>
-    </section>
+    </Fragment>
   );
 };
 
@@ -113,6 +118,13 @@ Offer.propTypes = {
       isPro: PropTypes.bool.isRequired
     }).isRequired,
   }).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    date: PropTypes.number.isRequired,
+  })).isRequired,
 };
 
 export default Offer;
