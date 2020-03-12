@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import OffersCard from '../offers-card/offers-card.jsx';
 import {bind} from '../../utils';
+import OffersCard from '../offers-card/offers-card.jsx';
 
-export default class OffersList extends Component {
+export default class OffersList extends PureComponent {
   constructor(props) {
     super(props);
 

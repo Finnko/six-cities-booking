@@ -26,6 +26,7 @@ const offers = [
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
     features: FEATURES,
+    coords: [52.3909553943508, 4.85309666406198],
     owner: {
       name: `Angelina`,
       avatar: `img/avatar-angelina.jpg`,
@@ -53,6 +54,7 @@ const offers = [
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
     features: getRandomArray(FEATURES),
+    coords: [52.369553943508, 4.85309666406198],
     owner: {
       name: `Angelina 2`,
       avatar: `img/avatar-angelina.jpg`,
@@ -81,6 +83,7 @@ const offers = [
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
     features: getRandomArray(FEATURES),
+    coords: [52.3909553943508, 4.929309666406198],
     owner: {
       name: `Angelina 3`,
       avatar: `img/avatar-angelina.jpg`,
@@ -110,6 +113,7 @@ const offers = [
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
     features: getRandomArray(FEATURES),
+    coords: [52.3809553943508, 4.939309666406198],
     owner: {
       name: `Angelina 4`,
       avatar: `img/avatar-angelina.jpg`,
