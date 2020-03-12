@@ -1,197 +1,211 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should ReviewsList component render correctly 1`] = `
-<ul
-  className="reviews__list"
+<section
+  className="property__reviews reviews"
 >
+  <h2
+    className="reviews__title"
+  >
+    Reviews · 
+    <span
+      className="reviews__amount"
+    >
+      3
+    </span>
+  </h2>
   <ul
     className="reviews__list"
   >
-    <li
-      className="reviews__item"
+    <ul
+      className="reviews__list"
     >
-      <div
-        className="reviews__user user"
+      <li
+        className="reviews__item"
       >
         <div
-          className="reviews__avatar-wrapper user__avatar-wrapper"
-        >
-          <img
-            alt="Reviews avatar"
-            className="reviews__avatar user__avatar"
-            height="54"
-            src="img/avatar-max.jpg"
-            width="54"
-          />
-        </div>
-        <span
-          className="reviews__user-name"
-        >
-          Max
-        </span>
-      </div>
-      <div
-        className="reviews__info"
-      >
-        <div
-          className="reviews__rating rating"
+          className="reviews__user user"
         >
           <div
-            className="reviews__stars rating__stars"
+            className="reviews__avatar-wrapper user__avatar-wrapper"
           >
-            <span
-              style={
-                Object {
-                  "width": 30,
-                }
-              }
+            <img
+              alt="Reviews avatar"
+              className="reviews__avatar user__avatar"
+              height="54"
+              src="img/avatar-max.jpg"
+              width="54"
             />
-            <span
-              className="visually-hidden"
-            >
-              Rating
-            </span>
           </div>
+          <span
+            className="reviews__user-name"
+          >
+            Max
+          </span>
         </div>
-        <p
-          className="reviews__text"
-        >
-          A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-        </p>
-        <time
-          className="reviews__time"
-          dateTime="2020-03-07"
-        >
-          March, 2020
-        </time>
-      </div>
-    </li>
-  </ul>
-  <ul
-    className="reviews__list"
-  >
-    <li
-      className="reviews__item"
-    >
-      <div
-        className="reviews__user user"
-      >
         <div
-          className="reviews__avatar-wrapper user__avatar-wrapper"
-        >
-          <img
-            alt="Reviews avatar"
-            className="reviews__avatar user__avatar"
-            height="54"
-            src="img/avatar-max.jpg"
-            width="54"
-          />
-        </div>
-        <span
-          className="reviews__user-name"
-        >
-          Alexey
-        </span>
-      </div>
-      <div
-        className="reviews__info"
-      >
-        <div
-          className="reviews__rating rating"
+          className="reviews__info"
         >
           <div
-            className="reviews__stars rating__stars"
+            className="reviews__rating rating"
           >
-            <span
-              style={
-                Object {
-                  "width": 10,
-                }
-              }
-            />
-            <span
-              className="visually-hidden"
+            <div
+              className="reviews__stars rating__stars"
             >
-              Rating
-            </span>
+              <span
+                style={
+                  Object {
+                    "width": 30,
+                  }
+                }
+              />
+              <span
+                className="visually-hidden"
+              >
+                Rating
+              </span>
+            </div>
           </div>
+          <p
+            className="reviews__text"
+          >
+            A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+          </p>
+          <time
+            className="reviews__time"
+            dateTime="2020-03-07"
+          >
+            March, 2020
+          </time>
         </div>
-        <p
-          className="reviews__text"
-        >
-          The building is green and from 18th century.
-        </p>
-        <time
-          className="reviews__time"
-          dateTime="2020-03-07"
-        >
-          March, 2020
-        </time>
-      </div>
-    </li>
-  </ul>
-  <ul
-    className="reviews__list"
-  >
-    <li
-      className="reviews__item"
+      </li>
+    </ul>
+    <ul
+      className="reviews__list"
     >
-      <div
-        className="reviews__user user"
+      <li
+        className="reviews__item"
       >
         <div
-          className="reviews__avatar-wrapper user__avatar-wrapper"
-        >
-          <img
-            alt="Reviews avatar"
-            className="reviews__avatar user__avatar"
-            height="54"
-            src="img/avatar-max.jpg"
-            width="54"
-          />
-        </div>
-        <span
-          className="reviews__user-name"
-        >
-          Anastasia
-        </span>
-      </div>
-      <div
-        className="reviews__info"
-      >
-        <div
-          className="reviews__rating rating"
+          className="reviews__user user"
         >
           <div
-            className="reviews__stars rating__stars"
+            className="reviews__avatar-wrapper user__avatar-wrapper"
           >
-            <span
-              style={
-                Object {
-                  "width": 90,
-                }
-              }
+            <img
+              alt="Reviews avatar"
+              className="reviews__avatar user__avatar"
+              height="54"
+              src="img/avatar-max.jpg"
+              width="54"
             />
-            <span
-              className="visually-hidden"
-            >
-              Rating
-            </span>
           </div>
+          <span
+            className="reviews__user-name"
+          >
+            Alexey
+          </span>
         </div>
-        <p
-          className="reviews__text"
+        <div
+          className="reviews__info"
         >
-          A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-        </p>
-        <time
-          className="reviews__time"
-          dateTime="2020-03-07"
+          <div
+            className="reviews__rating rating"
+          >
+            <div
+              className="reviews__stars rating__stars"
+            >
+              <span
+                style={
+                  Object {
+                    "width": 10,
+                  }
+                }
+              />
+              <span
+                className="visually-hidden"
+              >
+                Rating
+              </span>
+            </div>
+          </div>
+          <p
+            className="reviews__text"
+          >
+            The building is green and from 18th century.
+          </p>
+          <time
+            className="reviews__time"
+            dateTime="2020-03-07"
+          >
+            March, 2020
+          </time>
+        </div>
+      </li>
+    </ul>
+    <ul
+      className="reviews__list"
+    >
+      <li
+        className="reviews__item"
+      >
+        <div
+          className="reviews__user user"
         >
-          March, 2020
-        </time>
-      </div>
-    </li>
+          <div
+            className="reviews__avatar-wrapper user__avatar-wrapper"
+          >
+            <img
+              alt="Reviews avatar"
+              className="reviews__avatar user__avatar"
+              height="54"
+              src="img/avatar-max.jpg"
+              width="54"
+            />
+          </div>
+          <span
+            className="reviews__user-name"
+          >
+            Anastasia
+          </span>
+        </div>
+        <div
+          className="reviews__info"
+        >
+          <div
+            className="reviews__rating rating"
+          >
+            <div
+              className="reviews__stars rating__stars"
+            >
+              <span
+                style={
+                  Object {
+                    "width": 90,
+                  }
+                }
+              />
+              <span
+                className="visually-hidden"
+              >
+                Rating
+              </span>
+            </div>
+          </div>
+          <p
+            className="reviews__text"
+          >
+            A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+          </p>
+          <time
+            className="reviews__time"
+            dateTime="2020-03-07"
+          >
+            March, 2020
+          </time>
+        </div>
+      </li>
+    </ul>
   </ul>
-</ul>
+</section>
 `;

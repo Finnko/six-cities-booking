@@ -22,7 +22,7 @@ describe(`Test e2e OffersCard component`, () => {
   const onCardMouseEnter = jest.fn();
 
   const offersCard = shallow(
-      <OffersCard offer={mockOffer} onCardClick={onCardClick} onCardMouseEnter={onCardMouseEnter}/>
+      <OffersCard offer={mockOffer} isNearByView={false} onCardClick={onCardClick} onCardMouseEnter={onCardMouseEnter}/>
   );
 
   const offersCardHeader = offersCard.find(`.place-card__name a`);
