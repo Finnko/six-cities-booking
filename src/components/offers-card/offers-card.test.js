@@ -7,8 +7,9 @@ const mock = {
   title: `Beautiful & luxurious apartment at great location`,
   price: `120`,
   type: `Apartment`,
-  photo: `img/apartment-01.jpg`,
-  isPremium: true
+  promoImage: `img/apartment-01.jpg`,
+  isPremium: true,
+  rating: 3.5
 };
 
 it(`Should OffersCard component render correctly`, () => {

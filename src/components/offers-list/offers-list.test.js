@@ -7,7 +7,7 @@ const mock = [{
   title: `Beautiful & luxurious apartment at great location`,
   price: `120`,
   type: `Apartment`,
-  photo: `img/apartment-01.jpg`,
+  promoImage: `img/apartment-01.jpg`,
   isPremium: true
 }];
 
