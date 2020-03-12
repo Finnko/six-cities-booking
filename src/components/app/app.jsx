@@ -11,9 +11,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string
-  }))
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default App;
