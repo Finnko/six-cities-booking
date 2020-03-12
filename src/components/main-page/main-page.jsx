@@ -6,7 +6,6 @@ import Map from '../map/map.jsx';
 import Header from '../header/header.jsx';
 
 const MainPage = (props) => {
-  console.log(props);
   const {offers, cities, chosenCity} = props;
 
   return (
