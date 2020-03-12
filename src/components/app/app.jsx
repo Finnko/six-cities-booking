@@ -61,22 +61,12 @@ class App extends PureComponent {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
-            {this.renderApp()}
-          </Route>
-          <Route exact path="/dev-offer">
-            {this.renderOfferDetail()}
-          </Route>
+          <Route exact path="/" component={MainPage}/>
+          <Route path="/offer/:id" component={OfferDetails}/>
         </Switch>
       </BrowserRouter>
     );
   }
 }
-
-App.propTypes = {
-  onOfferTitleClick: PropTypes.func,
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
 
 export default App;

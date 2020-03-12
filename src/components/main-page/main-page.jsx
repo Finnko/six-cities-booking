@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import OffersList from '../offers-list/offers-list.jsx';
 import Map from '../map/map.jsx';
 import Header from '../header/header.jsx';
 
-const MainPage = ({data, onOfferTitleClick}) => {
+const MainPage = (props) => {
+  console.log(props);
+  const {offers, cities, chosenCity} = props;
+
   return (
     <div className="page page--gray page--main">
       <Header/>
@@ -51,7 +55,7 @@ const MainPage = ({data, onOfferTitleClick}) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{data.length} places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in {chosenCity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -67,10 +71,10 @@ const MainPage = ({data, onOfferTitleClick}) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <OffersList offersCards={data} isNearByView={false} onOfferTitleClick={onOfferTitleClick}/>
+              <OffersList offersCards={offers} isNearByView={false}/>
             </section>
             <div className="cities__right-section">
-              <Map offers={data} isNearByView={false}/>
+              <Map offers={offers} isNearByView={false}/>
             </div>
           </div>
         </div>
@@ -79,9 +83,23 @@ const MainPage = ({data, onOfferTitleClick}) => {
   );
 };
 
-MainPage.propTypes = {
-  onOfferTitleClick: PropTypes.func,
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+// MainPage.propTypes = {
+//   onOfferTitleClick: PropTypes.func,
+//   data: PropTypes.arrayOf(PropTypes.object).isRequired,
+// };
+
+const mapStateToProps = (state) => {
+  return {
+    offers: state.data.offers,
+    chosenCity: state.data.chosenCity,
+    cities: state.data.cities
+  };
 };
 
-export default MainPage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
