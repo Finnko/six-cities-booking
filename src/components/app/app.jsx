@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from "../main-page/main-page.jsx";
-import Property from '../property/property.jsx';
+import OfferDetails from '../offer-details/offer-details.jsx';
 
 
 class App extends PureComponent {
@@ -40,7 +40,7 @@ class App extends PureComponent {
 
     if (activeOffer !== null) {
       return (
-        <Property offer={activeOffer} reviews={reviews} nearByOffers={nearByOffers} onOfferTitleClick={this.offerTitleClickHandler}/>
+        <OfferDetails offer={activeOffer} reviews={reviews} nearByOffers={nearByOffers} onOfferTitleClick={this.offerTitleClickHandler}/>
       );
     }
     return this.renderMainPage();

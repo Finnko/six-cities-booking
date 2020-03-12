@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Property from "./property.jsx";
+import OfferDetails from "./offer-details.jsx";
 import {FEATURES} from '../../const';
 
 const mock = {
@@ -147,7 +147,7 @@ const nearByOfferMocks = [
 
 it(`Should Property component render correctly`, () => {
 
-  const tree = renderer.create(<Property
+  const tree = renderer.create(<OfferDetails
     offer={mock}
     reviews={reviewMocks}
     nearByOffers={nearByOfferMocks}

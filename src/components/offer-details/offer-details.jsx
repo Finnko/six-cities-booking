@@ -3,12 +3,22 @@ import PropTypes from 'prop-types';
 import Offer from '../offer/offer.jsx';
 import OffersList from '../offers-list/offers-list.jsx';
 import Map from '../map/map.jsx';
+import OfferGallery from '../offer-gallery/offer-gallery.jsx';
+import ReviewsList from '../reviews-list/reviews-list.jsx';
 
-const Property = ({offer, reviews, nearByOffers, onOfferTitleClick}) => {
+const OfferDetails = ({offer, reviews, nearByOffers, onOfferTitleClick}) => {
+  const {images} = offer;
+
   return (
     <Fragment>
       <section className="property">
-        <Offer offer={offer} reviews={reviews}/>
+        <OfferGallery images={images}/>
+        <div className="property__container container">
+          <div className="property__wrapper">
+            <Offer offer={offer}/>
+            <ReviewsList reviews={reviews}/>
+          </div>
+        </div>
         <Map isNearByView={true} offers={nearByOffers}/>
       </section>
 
@@ -22,7 +32,7 @@ const Property = ({offer, reviews, nearByOffers, onOfferTitleClick}) => {
   );
 };
 
-Property.propTypes = {
+OfferDetails.propTypes = {
   onOfferTitleClick: PropTypes.func,
   offer: PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -71,4 +81,4 @@ Property.propTypes = {
   }).isRequired),
 };
 
-export default Property;
+export default OfferDetails;
