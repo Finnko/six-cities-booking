@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/actions/actions';
-import {getOffersByCity} from '../../store/reducers/data/data-reducer';
 import OffersList from '../offers-list/offers-list.jsx';
 import Map from '../map/map.jsx';
 import Header from '../header/header.jsx';

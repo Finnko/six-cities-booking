@@ -6,13 +6,22 @@ const getCities = (initialOffers) => [...new Set(initialOffers.map((offer) => of
 
 const getOffersByCity = (initialOffers, chosenCity) => initialOffers.filter((offer) => offer.city === chosenCity);
 
-const getOfferById = (initialOffers, id) => initialOffers.filter((offer) => offer.city === id);
+const getOfferById = (initialOffers, id) => initialOffers.find((offer) => offer.id === id);
 
+const getNearByOffers = (initialOffers, id) => {
+  const index = initialOffers.findIndex((offer) => offer.id === id);
+
+  if (!index) {
+    return [];
+  }
+  return [...initialOffers.slice(0, index), ...initialOffers.slice(index + 1)];
+
+};
 
 const initialState = {
   offers: getOffersByCity(offers, getCities(offers)[0]),
   chosenCity: getCities(offers)[0],
-  cities: getCities(offers)
+  cities: getCities(offers),
 };
 
 export default function dataReducer(state = initialState, action) {
@@ -27,4 +36,4 @@ export default function dataReducer(state = initialState, action) {
   }
 }
 
-export {getOffersByCity};
+export {getOffersByCity, getNearByOffers, getOfferById};
