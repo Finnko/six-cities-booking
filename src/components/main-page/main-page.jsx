@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {ActionCreator} from '../../store/actions/actions';
+import {getOffersByCity} from '../../store/reducers/data/data-reducer';
 import OffersList from '../offers-list/offers-list.jsx';
 import Map from '../map/map.jsx';
 import Header from '../header/header.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
 
 const MainPage = (props) => {
-  const {offers, cities, chosenCity} = props;
+  const {offers, cities, chosenCity, onChangeCity} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -15,7 +17,7 @@ const MainPage = (props) => {
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <CitiesList cities={cities} chosenCity={chosenCity}/>
+        <CitiesList cities={cities} chosenCity={chosenCity} onChangeCity={onChangeCity}/>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
@@ -36,7 +38,7 @@ const MainPage = (props) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <OffersList offersCards={offers} isNearByView={false}/>
+              <OffersList offersCards={offers} isNearByView={false} onChangeCity={onChangeCity}/>
             </section>
             <div className="cities__right-section">
               <Map offers={offers} isNearByView={false}/>
@@ -48,10 +50,12 @@ const MainPage = (props) => {
   );
 };
 
-// MainPage.propTypes = {
-//   onOfferTitleClick: PropTypes.func,
-//   data: PropTypes.arrayOf(PropTypes.object).isRequired,
-// };
+MainPage.propTypes = {
+  onChangeCity: PropTypes.func,
+  offers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  chosenCity: PropTypes.string.isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -63,7 +67,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    onChangeCity(city) {
+      dispatch(ActionCreator.changeCity(city));
+    }
   };
 };
 

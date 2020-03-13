@@ -6,7 +6,6 @@ import {getRatingPercentage} from '../../utils';
 const OffersCard = ({offer, isNearByView, onCardClick, onCardMouseEnter, onCardMouseLeave}) => {
   const {id, title, type, price, promoImage, rating, isPremium} = offer;
 
-  const handleTitleClick = () => onCardClick(offer);
   const handleMouseEnter = () => onCardMouseEnter(offer);
   const handleMouseLeave = () => onCardMouseLeave();
 
@@ -49,8 +48,7 @@ const OffersCard = ({offer, isNearByView, onCardClick, onCardMouseEnter, onCardM
           </div>
         </div>
         <h2 className="place-card__name">
-          {/*<Link to={`/offer/${id}`} />*/}
-          <a href="#" onClick={handleTitleClick}>{title}</a>
+          <Link to={`/offer/${id}`} >{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -59,7 +57,6 @@ const OffersCard = ({offer, isNearByView, onCardClick, onCardMouseEnter, onCardM
 };
 
 OffersCard.propTypes = {
-  onCardClick: PropTypes.func,
   onCardMouseEnter: PropTypes.func,
   onCardMouseLeave: PropTypes.func,
   isNearByView: PropTypes.bool.isRequired,
