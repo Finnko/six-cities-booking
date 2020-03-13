@@ -1,12 +1,10 @@
-import offers from '../../mocks/offers';
-import reviews from '../../mocks/reviews';
+import {extend} from '../../../utils';
+import offers from '../../../mocks/offers';
 
 const getCities = (initialOffers) => [...new Set(initialOffers.map((offer) => offer.city))];
 
-
 const initialState = {
   offers,
-  reviews,
   chosenCity: getCities(offers)[0],
   cities: getCities(offers)
 };
