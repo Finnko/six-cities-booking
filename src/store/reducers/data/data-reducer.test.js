@@ -1,6 +1,6 @@
 import {dataReducer} from './data-reducer';
 import {actionTypes} from '../../actions/actionTypes';
-import {FEATURES} from '../../../const';
+import {features} from '../../../const';
 
 const mockDate = new Date(1583591483969).valueOf();
 
@@ -24,7 +24,7 @@ const mocks = [
     ],
     roomsCount: 2,
     guestsCount: 3,
-    features: FEATURES,
+    features: features,
     coords: [52.3909553943508, 4.85309666406198],
     owner: {
       name: `Angelina`,
@@ -77,7 +77,7 @@ const mocks = [
     ],
     roomsCount: 1,
     guestsCount: 2,
-    features: FEATURES,
+    features: features,
     coords: [52.3909553943508, 4.86309666406198],
     owner: {
       name: `Angelina 2`,
@@ -125,7 +125,7 @@ const mocks = [
     ],
     roomsCount: 3,
     guestsCount: 2,
-    features: FEATURES,
+    features: features,
     coords: [52.3909553943508, 4.84309666406198],
     owner: {
       name: `Angelina 3`,
