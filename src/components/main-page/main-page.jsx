@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../store/actions/actions';
+import {ActionCreator} from '../../store/actions/action-creator';
 import OffersList from '../offers-list/offers-list.jsx';
 import Map from '../map/map.jsx';
 import Header from '../header/header.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
 
 const MainPage = (props) => {
-  const {offers, cities, chosenCity, onChangeCity} = props;
+  const {currentOffers, cities, chosenCity, onChangeCity} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -21,7 +21,7 @@ const MainPage = (props) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offers.length} places to stay in {chosenCity}</b>
+              <b className="places__found">{currentOffers.length} places to stay in {chosenCity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -37,10 +37,10 @@ const MainPage = (props) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <OffersList offersCards={offers} isNearByView={false} onChangeCity={onChangeCity}/>
+              <OffersList offersCards={currentOffers} isNearByView={false}/>
             </section>
             <div className="cities__right-section">
-              <Map offers={offers} isNearByView={false}/>
+              <Map offers={currentOffers} isNearByView={false}/>
             </div>
           </div>
         </div>
@@ -51,14 +51,14 @@ const MainPage = (props) => {
 
 MainPage.propTypes = {
   onChangeCity: PropTypes.func,
-  offers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  currentOffers: PropTypes.arrayOf(PropTypes.object).isRequired,
   chosenCity: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
-    offers: state.data.offers,
+    currentOffers: state.data.currentOffers,
     chosenCity: state.data.chosenCity,
     cities: state.data.cities
   };

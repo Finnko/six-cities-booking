@@ -18,22 +18,26 @@ const getNearByOffers = (initialOffers, id) => {
 
 };
 
+const cities = getCities(offers);
+const currentOffers = getOffersByCity(offers, getCities(offers)[0]);
+
 const initialState = {
-  offers: getOffersByCity(offers, getCities(offers)[0]),
-  chosenCity: getCities(offers)[0],
-  cities: getCities(offers),
+  offers,
+  currentOffers,
+  chosenCity: cities[0],
+  cities,
 };
 
-export default function dataReducer(state = initialState, action) {
+const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CHANGE_CITY:
       return extend(state, {
         chosenCity: action.payload,
-        offers: getOffersByCity(offers, action.payload),
+        currentOffers: getOffersByCity(state.offers, action.payload),
       });
     default:
       return state;
   }
-}
+};
 
-export {getOffersByCity, getNearByOffers, getOfferById};
+export {dataReducer, getOffersByCity, getNearByOffers, getOfferById, getCities};

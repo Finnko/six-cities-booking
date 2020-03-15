@@ -34,35 +34,36 @@ const OfferDetails = ({currentOffer, nearByOffers}) => {
   );
 };
 
-// OfferDetails.propTypes = {
-//   currentOffer: PropTypes.shape({
-//     id: PropTypes.string.isRequired,
-//     title: PropTypes.string.isRequired,
-//     type: PropTypes.string.isRequired,
-//     rating: PropTypes.number.isRequired,
-//     promoImage: PropTypes.string.isRequired,
-//     price: PropTypes.string.isRequired,
-//     isPremium: PropTypes.bool.isRequired,
-//     roomsCount: PropTypes.number.isRequired,
-//     guestsCount: PropTypes.number.isRequired,
-//     images: PropTypes.arrayOf(PropTypes.string).isRequired,
-//     features: PropTypes.arrayOf(PropTypes.string).isRequired,
-//     owner: PropTypes.shape({
-//       name: PropTypes.string.isRequired,
-//       avatar: PropTypes.string.isRequired,
-//       description: PropTypes.arrayOf(PropTypes.string).isRequired,
-//       isPro: PropTypes.bool.isRequired
-//     }).isRequired,
-//     reviews: PropTypes.arrayOf(PropTypes.shape({
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//       avatar: PropTypes.string.isRequired,
-//       rating: PropTypes.number.isRequired,
-//       description: PropTypes.string.isRequired,
-//       date: PropTypes.number.isRequired,
-//     })).isRequired,
-//   }).isRequired,
-// };
+OfferDetails.propTypes = {
+  currentOffer: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    promoImage: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    roomsCount: PropTypes.number.isRequired,
+    guestsCount: PropTypes.number.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    features: PropTypes.arrayOf(PropTypes.string).isRequired,
+    owner: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
+      description: PropTypes.arrayOf(PropTypes.string).isRequired,
+      isPro: PropTypes.bool.isRequired
+    }).isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+      description: PropTypes.string.isRequired,
+      date: PropTypes.number.isRequired,
+    })).isRequired,
+  }).isRequired,
+  nearByOffers: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 const mapStateToProps = (state, props) => {
   const id = props.match.params.id;
