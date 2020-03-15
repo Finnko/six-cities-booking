@@ -36,7 +36,6 @@ const OfferDetails = ({currentOffer, nearByOffers}) => {
 
 OfferDetails.propTypes = {
   currentOffer: PropTypes.shape({
-    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
@@ -77,4 +76,5 @@ const mapStateToProps = (state, props) => {
   };
 };
 
+export {OfferDetails};
 export default connect(mapStateToProps)(OfferDetails);

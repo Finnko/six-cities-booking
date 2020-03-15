@@ -28,7 +28,7 @@ const initialState = {
   cities,
 };
 
-const dataReducer = (state = initialState, action) => {
+export default function dataReducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.CHANGE_CITY:
       return extend(state, {
@@ -40,4 +40,4 @@ const dataReducer = (state = initialState, action) => {
   }
 };
 
-export {dataReducer, getOffersByCity, getNearByOffers, getOfferById, getCities};
+export {getOffersByCity, getNearByOffers, getOfferById, getCities};

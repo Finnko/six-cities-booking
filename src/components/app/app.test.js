@@ -4,7 +4,6 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {FEATURES} from '../../const';
 import App from "./app.jsx";
-import {BrowserRouter} from 'react-router-dom';
 
 const mockDate = new Date(1583591483969).valueOf();
 const mocks = [
@@ -153,19 +152,17 @@ const mocks = [
 
 const mockStore = configureStore([]);
 
-it(`Should App component render correctly`, () => {
-  const store = mockStore({
-    offers: mocks,
-    chosenCity: `Amsterdam`,
-    cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
-    currentOffers: [mocks[0], mocks[2]]
-  });
+const store = mockStore({
+  offers: mocks,
+  chosenCity: `Amsterdam`,
+  cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
+  currentOffers: [mocks[0], mocks[2]]
+});
 
+it(`Should App component render correctly`, () => {
   const tree = renderer.create(
       <Provider store={store}>
-        <BrowserRouter>
-          <App/>
-        </BrowserRouter>
+        <App />
       </Provider>
   ).toJSON();
 

@@ -1,9 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MainPage from './main-page.jsx';
+import {MainPage} from './main-page.jsx';
 import {FEATURES} from '../../const';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
 
 const mockDate = new Date(1583591483969).valueOf();
 const mocks = [
@@ -156,13 +157,24 @@ const store = mockStore({
   offers: mocks,
   chosenCity: `Amsterdam`,
   cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
-  currentOffers: []
+  currentOffers: [mocks[0], mocks[2]]
 });
+
+const props = {
+  cities: [`Amsterdam`, `Dusseldorf`],
+  chosenCity: `Amsterdam`,
+  currentOffers: [mocks[0], mocks[2]],
+  onChangeCity: () => {}
+};
 
 it(`Should MainPage component render correctly`, () => {
   const tree = renderer
     .create(
-      <MainPage />
+        <Provider store={store}>
+          <BrowserRouter>
+            <MainPage {...props}/>
+          </BrowserRouter>
+        </Provider>
     )
     .toJSON();
 
