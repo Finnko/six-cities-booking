@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {SortType} from '../../const';
 
-const OffersSorting = ({isActive, activeSortType, onSortTypeChange}) => {
-  const handleSortTypeChange = (sortType) => onSortTypeChange(sortType);
-
+const OffersSorting = ({isActive, activeSortType, onSortTypeChange, onActiveChange}) => {
   const renderSortOptions = () => {
     return Object.keys(SortType).map((sortItem, index) => (
       <li
         className={`places__option ${sortItem === activeSortType && `places__option--active`}`}
         tabIndex="0"
-        onClick={() => handleSortTypeChange(sortItem)}
+        onClick={() => {
+          onActiveChange();
+          onSortTypeChange(SortType[sortItem]);
+        }}
         key={`${sortItem}${index}`}
       >
         {SortType[sortItem]}
@@ -23,17 +24,14 @@ const OffersSorting = ({isActive, activeSortType, onSortTypeChange}) => {
     <div>
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
-        <span className="places__sorting-type" tabIndex="0">
-          Popular
+        <span className="places__sorting-type" tabIndex="0" onClick={onActiveChange}>
+          {activeSortType}
           <svg className="places__sorting-arrow" width="7" height="4">
             <use xlinkHref="#icon-arrow-select"/>
           </svg>
         </span>
         <ul className={listClassName}>
-          <li className="places__option places__option--active" tabIndex="0">Popular</li>
-          <li className="places__option" tabIndex="0">Price: low to high</li>
-          <li className="places__option" tabIndex="0">Price: high to low</li>
-          <li className="places__option" tabIndex="0">Top rated first</li>
+          {renderSortOptions()}
         </ul>
       </form>
     </div>
@@ -42,6 +40,7 @@ const OffersSorting = ({isActive, activeSortType, onSortTypeChange}) => {
 
 OffersSorting.propTypes = {
   onSortTypeChange: PropTypes.func,
+  onActiveChange: PropTypes.func,
   activeSortType: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired
 };

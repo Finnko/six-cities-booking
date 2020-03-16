@@ -27,7 +27,7 @@ const offers = [
     ],
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
-    features: features,
+    features,
     coords: [52.3909553943508, 4.86309666406198],
     owner: {
       name: `Angelina`,
@@ -152,7 +152,7 @@ const offers = [
     ],
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
-    features: features,
+    features,
     coords: [52.5909553943508, 4.85309666406198],
     owner: {
       name: `Angelina`,

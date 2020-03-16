@@ -12,7 +12,7 @@ import withActiveFlag from '../../hocs/withActiveFlag';
 const OffersSortingWithActiveFlag = withActiveFlag(OffersSorting);
 
 const MainPage = (props) => {
-  const {currentOffers, cities, chosenCity, sortType, onChangeCity} = props;
+  const {currentOffers, cities, chosenCity, sortType, onChangeCity, onSortTypeChange} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -26,7 +26,7 @@ const MainPage = (props) => {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{currentOffers.length} places to stay in {chosenCity}</b>
-              <OffersSortingWithActiveFlag activeSortType={sortType}/>
+              <OffersSortingWithActiveFlag activeSortType={sortType} onSortTypeChange={onSortTypeChange}/>
               <OffersList offersCards={currentOffers} isNearByView={false}/>
             </section>
             <div className="cities__right-section">
@@ -41,6 +41,7 @@ const MainPage = (props) => {
 
 MainPage.propTypes = {
   onChangeCity: PropTypes.func,
+  onSortTypeChange: PropTypes.func,
   currentOffers: PropTypes.arrayOf(PropTypes.object).isRequired,
   chosenCity: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -49,8 +50,8 @@ MainPage.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    currentOffers: state.data.currentOffers,
     chosenCity: state.data.chosenCity,
+    currentOffers: state.data.currentOffers,
     cities: state.data.cities,
     sortType: state.data.sortType
   };
@@ -60,6 +61,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onChangeCity(city) {
       dispatch(ActionCreator.changeCity(city));
+    },
+    onSortTypeChange(sortType) {
+      dispatch(ActionCreator.changeSortType(sortType));
     }
   };
 };
