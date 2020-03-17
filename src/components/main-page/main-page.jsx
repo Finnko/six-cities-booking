@@ -5,10 +5,15 @@ import {ActionCreator} from '../../store/actions/action-creator';
 import OffersList from '../offers-list/offers-list.jsx';
 import Map from '../map/map.jsx';
 import Header from '../header/header.jsx';
+import OffersSorting from '../offers-sorting/offers-sorting.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
+import withActiveFlag from '../../hocs/withActiveFlag/withActiveFlag';
+import NameSpace from '../../store/name-space';
+
+const OffersSortingWithActiveFlag = withActiveFlag(OffersSorting);
 
 const MainPage = (props) => {
-  const {currentOffers, cities, chosenCity, onChangeCity} = props;
+  const {currentOffers, cities, chosenCity, sortType, onChangeCity, onSortTypeChange} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -22,21 +27,7 @@ const MainPage = (props) => {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{currentOffers.length} places to stay in {chosenCity}</b>
-              <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex="0">
-                  Popular
-                  <svg className="places__sorting-arrow" width="7" height="4">
-                    <use xlinkHref="#icon-arrow-select"/>
-                  </svg>
-                </span>
-                <ul className="places__options places__options--custom">
-                  <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                  <li className="places__option" tabIndex="0">Price: low to high</li>
-                  <li className="places__option" tabIndex="0">Price: high to low</li>
-                  <li className="places__option" tabIndex="0">Top rated first</li>
-                </ul>
-              </form>
+              <OffersSortingWithActiveFlag activeSortType={sortType} onSortTypeChange={onSortTypeChange}/>
               <OffersList offersCards={currentOffers} isNearByView={false}/>
             </section>
             <div className="cities__right-section">
@@ -51,16 +42,19 @@ const MainPage = (props) => {
 
 MainPage.propTypes = {
   onChangeCity: PropTypes.func,
+  onSortTypeChange: PropTypes.func,
   currentOffers: PropTypes.arrayOf(PropTypes.object).isRequired,
   chosenCity: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  sortType: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
-    currentOffers: state.data.currentOffers,
-    chosenCity: state.data.chosenCity,
-    cities: state.data.cities
+    chosenCity: state[NameSpace.DATA].chosenCity,
+    currentOffers: state[NameSpace.DATA].currentOffers,
+    cities: state[NameSpace.DATA].cities,
+    sortType: state[NameSpace.DATA].sortType
   };
 };
 
@@ -68,6 +62,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onChangeCity(city) {
       dispatch(ActionCreator.changeCity(city));
+    },
+    onSortTypeChange(sortType) {
+      dispatch(ActionCreator.changeSortType(sortType));
     }
   };
 };

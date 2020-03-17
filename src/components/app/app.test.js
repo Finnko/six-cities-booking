@@ -2,8 +2,9 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {FEATURES} from '../../const';
+import {features, SortType} from '../../const';
 import App from "./app.jsx";
+import NameSpace from '../../store/name-space';
 
 const mockDate = new Date(1583591483969).valueOf();
 const mocks = [
@@ -26,7 +27,7 @@ const mocks = [
     ],
     roomsCount: 2,
     guestsCount: 3,
-    features: FEATURES,
+    features,
     coords: [52.3909553943508, 4.85309666406198],
     owner: {
       name: `Angelina`,
@@ -79,7 +80,7 @@ const mocks = [
     ],
     roomsCount: 1,
     guestsCount: 2,
-    features: FEATURES,
+    features,
     coords: [52.3909553943508, 4.86309666406198],
     owner: {
       name: `Angelina 2`,
@@ -127,7 +128,7 @@ const mocks = [
     ],
     roomsCount: 3,
     guestsCount: 2,
-    features: FEATURES,
+    features,
     coords: [52.3909553943508, 4.84309666406198],
     owner: {
       name: `Angelina 3`,
@@ -153,17 +154,20 @@ const mocks = [
 const mockStore = configureStore([]);
 
 const store = mockStore({
-  offers: mocks,
-  chosenCity: `Amsterdam`,
-  cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
-  currentOffers: [mocks[0], mocks[2]]
+  [NameSpace.DATA]: {
+    offers: mocks,
+    chosenCity: `Amsterdam`,
+    cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
+    currentOffers: [mocks[0], mocks[2]],
+    sortType: SortType.POPULAR,
+  }
 });
 
 it(`Should App component render correctly`, () => {
   const tree = renderer.create(
       <Provider store={store}>
         <App />
-      </Provider>
+      </Provider>, {createNodeMock: () => document.createElement(`div`)}
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

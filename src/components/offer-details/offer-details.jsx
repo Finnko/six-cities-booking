@@ -7,6 +7,7 @@ import Map from '../map/map.jsx';
 import OfferGallery from '../offer-gallery/offer-gallery.jsx';
 import ReviewsList from '../reviews-list/reviews-list.jsx';
 import {getNearByOffers, getOfferById} from '../../store/reducers/data/data-reducer';
+import NameSpace from '../../store/name-space';
 
 const OfferDetails = ({currentOffer, nearByOffers}) => {
   const {images, reviews} = currentOffer;
@@ -67,8 +68,8 @@ OfferDetails.propTypes = {
 const mapStateToProps = (state, props) => {
   const id = props.match.params.id;
 
-  const currentOffer = getOfferById(state.data.offers, id);
-  const nearByOffers = getNearByOffers(state.data.offers, id);
+  const currentOffer = getOfferById(state[NameSpace.DATA].offers, id);
+  const nearByOffers = getNearByOffers(state[NameSpace.DATA].offers, id);
 
   return {
     currentOffer,
