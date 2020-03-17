@@ -21,7 +21,7 @@ export default class OffersList extends PureComponent {
   }
 
   render() {
-    const {offersCards, isNearByView, onOfferTitleClick} = this.props;
+    const {offersCards, isNearByView} = this.props;
 
     return (
       <div className={`places__list ${isNearByView ? `near-places__list` : `cities__places-list tabs__content` }`}>
@@ -30,7 +30,6 @@ export default class OffersList extends PureComponent {
             offer={offer}
             isNearByView={isNearByView}
             key={offer.id}
-            onCardClick={onOfferTitleClick}
             onCardMouseEnter={this.offerCardMouseEnterHandler}
             onCardMouseLeave={this.offerCardMouseLeaveHandler}
           />)}
@@ -40,7 +39,6 @@ export default class OffersList extends PureComponent {
 }
 
 OffersList.propTypes = {
-  onOfferTitleClick: PropTypes.func,
   isNearByView: PropTypes.bool.isRequired,
   offersCards: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,

@@ -16,7 +16,7 @@ class Map extends PureComponent {
     this._mapRef = createRef();
 
     this._pinTemplate = leaflet.icon({
-      iconUrl: `img/pin.svg`,
+      iconUrl: `/img/pin.svg`,
       iconSize: [30, 30]
     });
   }

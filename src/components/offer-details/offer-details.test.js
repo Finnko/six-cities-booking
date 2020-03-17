@@ -1,10 +1,60 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import {OfferDetails} from "./offer-details.jsx";
 import {FEATURES} from '../../const';
-import OffersList from './offers-list.jsx';
+import configureStore from 'redux-mock-store';
+import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 
 const mockDate = new Date(1583591483969).valueOf();
+const mock = {
+  id: `id_11`,
+  title: `Beautiful & luxurious apartment at great location`,
+  price: `120`,
+  type: `Apartment`,
+  promoImage: `img/apartment-01.jpg`,
+  isPremium: true,
+  rating: 2.5,
+  images: [
+    `img/room.jpg`,
+    `img/apartment-01.jpg`,
+    `img/apartment-01.jpg`,
+  ],
+  roomsCount: 2,
+  guestsCount: 4,
+  features: [`Wi-Fi`, `Baby seat`, `Cabel TV`, `Fridge`],
+  owner: {
+    name: `Dominika`,
+    avatar: `img/avatar-angelina.jpg`,
+    description: [`A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`],
+    isPro: true
+  },
+  reviews: [
+    {
+      id: 1,
+      name: `Max`,
+      avatar: `/img/avatar-max.jpg`,
+      rating: 1.5,
+      description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
+      date: mockDate
+    },
+    {
+      id: 2,
+      name: `Alexey`,
+      avatar: `/img/avatar-max.jpg`,
+      rating: 0.5,
+      description: `The building is green and from 18th century.`,
+      date: mockDate
+    },
+    {
+      id: 3,
+      name: `Anastasia`,
+      avatar: `/img/avatar-max.jpg`,
+      rating: 4.5,
+      description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+      date: mockDate
+    }]
+};
 const mocks = [
   {
     id: `id_11`,
@@ -107,35 +157,34 @@ const mocks = [
         date: mockDate
       }]
   },
+];
+const nearByOfferMocks = [
   {
-    id: `id_13`,
-    city: `Amsterdam`,
+    id: `id_12`,
+    city: `Dusseldorf`,
     title: `Beautiful & luxurious apartment at great location`,
-    price: `125`,
+    price: `70`,
     type: `Apartment`,
     promoImage: `/img/apartment-01.jpg`,
-    isPremium: true,
-    rating: 4.5,
+    isPremium: false,
+    rating: 3.5,
     images: [
       `/img/room.jpg`,
       `/img/apartment-01.jpg`,
       `/img/apartment-02.jpg`,
-      `/img/apartment-03.jpg`,
-      `/img/studio-01.jpg`,
-      `/img/apartment-01.jpg`,
     ],
-    roomsCount: 3,
+    roomsCount: 1,
     guestsCount: 2,
     features: FEATURES,
-    coords: [52.3909553943508, 4.84309666406198],
+    coords: [52.3909553943508, 4.86309666406198],
     owner: {
-      name: `Angelina 3`,
+      name: `Angelina 2`,
       avatar: `/img/avatar-angelina.jpg`,
       description: [
         `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
         `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`
       ],
-      isPro: false
+      isPro: true
     },
     reviews: [
       {
@@ -145,20 +194,35 @@ const mocks = [
         rating: 1.5,
         description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
         date: mockDate
+      },
+      {
+        id: 3,
+        name: `Anastasia`,
+        avatar: `/img/avatar-max.jpg`,
+        rating: 4.5,
+        description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        date: mockDate
       }]
   },
 ];
 
-it(`Should OffersList component render correctly`, () => {
-  const tree = renderer
-    .create(
+const mockStore = configureStore([]);
+
+const store = mockStore({
+  offers: mocks,
+  chosenCity: `Amsterdam`,
+  cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
+  currentOffers: [mocks[0], mocks[2]]
+});
+
+it(`Should OfferDetails component render correctly`, () => {
+  const tree = renderer.create(
+      <Provider store={store}>
         <BrowserRouter>
-          <OffersList
-            isNearByView={false}
-            offersCards={mocks}
-          />
-        </BrowserRouter>)
-    .toJSON();
+          <OfferDetails currentOffer={mock} nearByOffers={nearByOfferMocks}/>
+        </BrowserRouter>
+      </Provider>)
+  .toJSON();
 
   expect(tree).toMatchSnapshot();
 });
