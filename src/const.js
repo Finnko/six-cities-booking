@@ -29,4 +29,11 @@ const SortType = {
   TOPRATED: `Top rated first`
 };
 
-export {features, SortType};
+const sortTypes = [
+  SortType.POPULAR,
+  SortType.PRICE_TO_HIGH,
+  SortType.PRICE_TO_LOW,
+  SortType.TOPRATED
+];
+
+export {features, SortType, sortTypes};

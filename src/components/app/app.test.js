@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {features} from '../../const';
-import {App} from "./app.jsx";
+import App from "./app.jsx";
 
 const mockDate = new Date(1583591483969).valueOf();
 const mocks = [

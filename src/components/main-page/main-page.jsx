@@ -7,7 +7,7 @@ import Map from '../map/map.jsx';
 import Header from '../header/header.jsx';
 import OffersSorting from '../offers-sorting/offers-sorting.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
-import withActiveFlag from '../../hocs/withActiveFlag';
+import withActiveFlag from '../../hocs/withActiveFlag/withActiveFlag';
 
 const OffersSortingWithActiveFlag = withActiveFlag(OffersSorting);
 

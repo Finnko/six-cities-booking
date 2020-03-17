@@ -4,8 +4,6 @@ import OffersSorting from './offers-sorting';
 
 const props = {
   activeSortType: `Popular`,
-  isActive: false,
-  onActiveChange: () => {},
   onSortTypeChange: () => {}
 };
 
