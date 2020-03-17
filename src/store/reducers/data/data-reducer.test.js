@@ -1,10 +1,9 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import {FEATURES} from '../../const';
-import OffersList from './offers-list.jsx';
-import {BrowserRouter} from 'react-router-dom';
+import {dataReducer} from './data-reducer';
+import {actionTypes} from '../../actions/actionTypes';
+import {FEATURES} from '../../../const';
 
 const mockDate = new Date(1583591483969).valueOf();
+
 const mocks = [
   {
     id: `id_11`,
@@ -149,16 +148,32 @@ const mocks = [
   },
 ];
 
-it(`Should OffersList component render correctly`, () => {
-  const tree = renderer
-    .create(
-        <BrowserRouter>
-          <OffersList
-            isNearByView={false}
-            offersCards={mocks}
-          />
-        </BrowserRouter>)
-    .toJSON();
+const initialState = {
+  offers: [],
+  currentOffers: [],
+  chosenCity: ``,
+  cities: [],
+};
 
-  expect(tree).toMatchSnapshot();
+describe(`Data Reducer works correctly`, () => {
+  it(`Reducer without additional parameters should return initial state`, () => {
+    expect(dataReducer(initialState, {type: undefined})).toEqual(initialState);
+  });
+
+  it(`Reducer should correctly change city according to the given value`, () => {
+    expect(dataReducer({
+      offers: mocks,
+      currentOffers: [mocks[0], mocks[2]],
+      chosenCity: `Amsterdam`,
+      cities: [`Amsterdam`, `Dusseldorf`]
+    }, {
+      type: actionTypes.CHANGE_CITY,
+      payload: `Dusseldorf`,
+    })).toEqual({
+      offers: mocks,
+      currentOffers: [mocks[1]],
+      chosenCity: `Dusseldorf`,
+      cities: [`Amsterdam`, `Dusseldorf`]
+    });
+  });
 });

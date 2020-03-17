@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import {getRatingPercentage} from '../../utils';
 
-const OffersCard = ({offer, isNearByView, onCardClick, onCardMouseEnter, onCardMouseLeave}) => {
-  const {title, type, price, promoImage, rating, isPremium} = offer;
+const OffersCard = ({offer, isNearByView, onCardMouseEnter, onCardMouseLeave}) => {
+  const {id, title, type, price, promoImage, rating, isPremium} = offer;
 
-  const handleTitleClick = () => onCardClick(offer);
   const handleMouseEnter = () => onCardMouseEnter(offer);
   const handleMouseLeave = () => onCardMouseLeave();
 
@@ -48,7 +48,7 @@ const OffersCard = ({offer, isNearByView, onCardClick, onCardMouseEnter, onCardM
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={handleTitleClick}>{title}</a>
+          <Link to={`/offer/${id}`} >{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -57,11 +57,11 @@ const OffersCard = ({offer, isNearByView, onCardClick, onCardMouseEnter, onCardM
 };
 
 OffersCard.propTypes = {
-  onCardClick: PropTypes.func,
   onCardMouseEnter: PropTypes.func,
   onCardMouseLeave: PropTypes.func,
   isNearByView: PropTypes.bool.isRequired,
   offer: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
