@@ -1,6 +1,6 @@
 import nanoid from 'nanoid';
 import {getRandomRating, getRandomArray} from '../utils';
-import {FEATURES} from '../const';
+import {features} from '../const';
 import reviews from './reviews';
 
 const ID_PREFIX = `id_`;
@@ -27,7 +27,7 @@ const offers = [
     ],
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
-    features: FEATURES,
+    features,
     coords: [52.3909553943508, 4.86309666406198],
     owner: {
       name: `Angelina`,
@@ -57,7 +57,7 @@ const offers = [
     ],
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
-    features: getRandomArray(FEATURES),
+    features: getRandomArray(features),
     coords: [52.369553943508, 4.84309666406198],
     owner: {
       name: `Angelina 2`,
@@ -88,7 +88,7 @@ const offers = [
     ],
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
-    features: getRandomArray(FEATURES),
+    features: getRandomArray(features),
     coords: [52.3909553943508, 4.929309666406198],
     owner: {
       name: `Angelina 3`,
@@ -120,7 +120,7 @@ const offers = [
     ],
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
-    features: getRandomArray(FEATURES),
+    features: getRandomArray(features),
     coords: [52.3809553943508, 4.939309666406198],
     owner: {
       name: `Angelina 4`,
@@ -152,7 +152,7 @@ const offers = [
     ],
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
-    features: FEATURES,
+    features,
     coords: [52.5909553943508, 4.85309666406198],
     owner: {
       name: `Angelina`,
@@ -182,7 +182,7 @@ const offers = [
     ],
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
-    features: getRandomArray(FEATURES),
+    features: getRandomArray(features),
     coords: [52.469553943508, 4.85309666406198],
     owner: {
       name: `Angelina 2`,
@@ -213,7 +213,7 @@ const offers = [
     ],
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
-    features: getRandomArray(FEATURES),
+    features: getRandomArray(features),
     coords: [52.3709553943508, 4.929309666406198],
     owner: {
       name: `Angelina 3`,
@@ -245,7 +245,7 @@ const offers = [
     ],
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
-    features: getRandomArray(FEATURES),
+    features: getRandomArray(features),
     coords: [52.4009553943508, 4.939309666406198],
     owner: {
       name: `Angelina 4`,

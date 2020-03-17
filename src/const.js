@@ -11,7 +11,7 @@ const Feature = {
   FRIDGE: `Fridge`
 };
 
-const FEATURES = [
+const features = [
   Feature.WIFI,
   Feature.WASHINGMACHINE,
   Feature.HEATING,
@@ -22,4 +22,18 @@ const FEATURES = [
   Feature.FRIDGE
 ];
 
-export {FEATURES};
+const SortType = {
+  POPULAR: `Popular`,
+  PRICE_TO_HIGH: `Price: low to high`,
+  PRICE_TO_LOW: `Price: high to low`,
+  TOPRATED: `Top rated first`
+};
+
+const sortTypes = [
+  SortType.POPULAR,
+  SortType.PRICE_TO_HIGH,
+  SortType.PRICE_TO_LOW,
+  SortType.TOPRATED
+];
+
+export {features, SortType, sortTypes};

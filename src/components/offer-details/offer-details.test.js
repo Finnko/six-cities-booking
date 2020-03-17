@@ -1,10 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {OfferDetails} from "./offer-details.jsx";
-import {FEATURES} from '../../const';
+import {features} from '../../const';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
+import NameSpace from '../../store/name-space';
 
 const mockDate = new Date(1583591483969).valueOf();
 const mock = {
@@ -75,7 +76,7 @@ const mocks = [
     ],
     roomsCount: 2,
     guestsCount: 3,
-    features: FEATURES,
+    features,
     coords: [52.3909553943508, 4.85309666406198],
     owner: {
       name: `Angelina`,
@@ -128,7 +129,7 @@ const mocks = [
     ],
     roomsCount: 1,
     guestsCount: 2,
-    features: FEATURES,
+    features,
     coords: [52.3909553943508, 4.86309666406198],
     owner: {
       name: `Angelina 2`,
@@ -175,7 +176,7 @@ const nearByOfferMocks = [
     ],
     roomsCount: 1,
     guestsCount: 2,
-    features: FEATURES,
+    features,
     coords: [52.3909553943508, 4.86309666406198],
     owner: {
       name: `Angelina 2`,
@@ -209,10 +210,12 @@ const nearByOfferMocks = [
 const mockStore = configureStore([]);
 
 const store = mockStore({
-  offers: mocks,
-  chosenCity: `Amsterdam`,
-  cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
-  currentOffers: [mocks[0], mocks[2]]
+  [NameSpace.DATA]: {
+    offers: mocks,
+    chosenCity: `Amsterdam`,
+    cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
+    currentOffers: [mocks[0], mocks[2]]
+  }
 });
 
 it(`Should OfferDetails component render correctly`, () => {

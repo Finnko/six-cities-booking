@@ -5,6 +5,10 @@ const ActionCreator = {
     type: actionTypes.CHANGE_CITY,
     payload: city,
   }),
+  changeSortType: (sortType) => ({
+    type: actionTypes.CHANGE_SORTING_TYPE,
+    payload: sortType,
+  }),
 };
 
 export {ActionCreator};
