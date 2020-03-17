@@ -1,4 +1,4 @@
-import {dataReducer} from './data-reducer';
+import dataReducer from './data-reducer';
 import {actionTypes} from '../../actions/actionTypes';
 import {features} from '../../../const';
 

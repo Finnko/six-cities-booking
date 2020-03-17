@@ -8,6 +8,7 @@ import Header from '../header/header.jsx';
 import OffersSorting from '../offers-sorting/offers-sorting.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
 import withActiveFlag from '../../hocs/withActiveFlag/withActiveFlag';
+import NameSpace from '../../store/name-space';
 
 const OffersSortingWithActiveFlag = withActiveFlag(OffersSorting);
 
@@ -50,10 +51,10 @@ MainPage.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    chosenCity: state.data.chosenCity,
-    currentOffers: state.data.currentOffers,
-    cities: state.data.cities,
-    sortType: state.data.sortType
+    chosenCity: state[NameSpace.DATA].chosenCity,
+    currentOffers: state[NameSpace.DATA].currentOffers,
+    cities: state[NameSpace.DATA].cities,
+    sortType: state[NameSpace.DATA].sortType
   };
 };
 

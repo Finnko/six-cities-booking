@@ -1,10 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {MainPage} from './main-page.jsx';
-import {features} from '../../const';
+import {features, SortType} from '../../const';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
+import NameSpace from '../../store/name-space';
 
 const mockDate = new Date(1583591483969).valueOf();
 const mocks = [
@@ -154,17 +155,22 @@ const mocks = [
 const mockStore = configureStore([]);
 
 const store = mockStore({
-  offers: mocks,
-  chosenCity: `Amsterdam`,
-  cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
-  currentOffers: [mocks[0], mocks[2]]
+  [NameSpace.DATA]: {
+    offers: mocks,
+    chosenCity: `Amsterdam`,
+    cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
+    currentOffers: [mocks[0], mocks[2]],
+    sortType: SortType.POPULAR
+  }
 });
 
 const props = {
   cities: [`Amsterdam`, `Dusseldorf`],
   chosenCity: `Amsterdam`,
   currentOffers: [mocks[0], mocks[2]],
-  onChangeCity: () => {}
+  onChangeCity: () => {},
+  sortType: SortType.POPULAR,
+  onSortTypeChange: () => {}
 };
 
 it(`Should MainPage component render correctly`, () => {

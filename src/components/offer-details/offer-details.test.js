@@ -5,6 +5,7 @@ import {features} from '../../const';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
+import NameSpace from '../../store/name-space';
 
 const mockDate = new Date(1583591483969).valueOf();
 const mock = {
@@ -209,10 +210,12 @@ const nearByOfferMocks = [
 const mockStore = configureStore([]);
 
 const store = mockStore({
-  offers: mocks,
-  chosenCity: `Amsterdam`,
-  cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
-  currentOffers: [mocks[0], mocks[2]]
+  [NameSpace.DATA]: {
+    offers: mocks,
+    chosenCity: `Amsterdam`,
+    cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
+    currentOffers: [mocks[0], mocks[2]]
+  }
 });
 
 it(`Should OfferDetails component render correctly`, () => {

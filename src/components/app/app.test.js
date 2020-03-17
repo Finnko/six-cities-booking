@@ -2,8 +2,9 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {features} from '../../const';
+import {features, SortType} from '../../const';
 import App from "./app.jsx";
+import NameSpace from '../../store/name-space';
 
 const mockDate = new Date(1583591483969).valueOf();
 const mocks = [
@@ -153,17 +154,20 @@ const mocks = [
 const mockStore = configureStore([]);
 
 const store = mockStore({
-  offers: mocks,
-  chosenCity: `Amsterdam`,
-  cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
-  currentOffers: [mocks[0], mocks[2]]
+  [NameSpace.DATA]: {
+    offers: mocks,
+    chosenCity: `Amsterdam`,
+    cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
+    currentOffers: [mocks[0], mocks[2]],
+    sortType: SortType.POPULAR,
+  }
 });
 
 it(`Should App component render correctly`, () => {
   const tree = renderer.create(
       <Provider store={store}>
         <App />
-      </Provider>
+      </Provider>, {createNodeMock: () => document.createElement(`div`)}
   ).toJSON();
 
   expect(tree).toMatchSnapshot();
