@@ -18,6 +18,7 @@ const OffersSorting = ({isActive, activeSortType, onSortTypeChange, onActiveChan
       </li>
     ));
   };
+
   const listClassName = `places__options places__options--custom ${isActive ? `places__options--opened` : ``}`;
 
   return (

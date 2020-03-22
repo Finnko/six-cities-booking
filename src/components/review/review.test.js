@@ -5,7 +5,7 @@ import Review from './review.jsx';
 const mockDate = new Date(1583591483969).valueOf();
 
 const mock = {
-  id: `id_11`,
+  id: 11,
   name: `Alexey`,
   avatar: `img/avatar-max.jpg`,
   rating: 5,

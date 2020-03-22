@@ -9,7 +9,7 @@ const OfferPropType = PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
     zoom: PropTypes.number,
-  }).isRequired,
+  }),
   city: CityPropType.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,

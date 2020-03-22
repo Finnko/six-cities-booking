@@ -11,12 +11,25 @@ const mockDate = new Date(1583591483969).valueOf();
 const mocks = [
   {
     id: `id_11`,
-    city: `Amsterdam`,
+    coords: {
+      latitude: 52.3909553943508,
+      longitude: 4.86309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Amsterdam`,
+    },
     title: `Beautiful & luxurious apartment at great location`,
     price: `120`,
     type: `Apartment`,
     promoImage: `/img/apartment-01.jpg`,
     isPremium: true,
+    isFavorite: true,
     rating: 1.5,
     images: [
       `/img/room.jpg`,
@@ -29,7 +42,6 @@ const mocks = [
     roomsCount: 2,
     guestsCount: 3,
     features,
-    coords: [52.3909553943508, 4.85309666406198],
     owner: {
       name: `Angelina`,
       avatar: `/img/avatar-angelina.jpg`,
@@ -67,12 +79,25 @@ const mocks = [
   },
   {
     id: `id_12`,
-    city: `Dusseldorf`,
+    coords: {
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Brussels`,
+    },
     title: `Beautiful & luxurious apartment at great location`,
     price: `70`,
     type: `Apartment`,
     promoImage: `/img/apartment-01.jpg`,
     isPremium: false,
+    isFavorite: false,
     rating: 3.5,
     images: [
       `/img/room.jpg`,
@@ -82,7 +107,6 @@ const mocks = [
     roomsCount: 1,
     guestsCount: 2,
     features,
-    coords: [52.3909553943508, 4.86309666406198],
     owner: {
       name: `Angelina 2`,
       avatar: `/img/avatar-angelina.jpg`,
@@ -112,12 +136,25 @@ const mocks = [
   },
   {
     id: `id_13`,
-    city: `Amsterdam`,
+    coords: {
+      latitude: 52.3709553943508,
+      longitude: 4.929309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Hamburg`,
+    },
     title: `Beautiful & luxurious apartment at great location`,
     price: `125`,
     type: `Apartment`,
     promoImage: `/img/apartment-01.jpg`,
     isPremium: true,
+    isFavorite: false,
     rating: 4.5,
     images: [
       `/img/room.jpg`,
@@ -130,7 +167,6 @@ const mocks = [
     roomsCount: 3,
     guestsCount: 2,
     features,
-    coords: [52.3909553943508, 4.84309666406198],
     owner: {
       name: `Angelina 3`,
       avatar: `/img/avatar-angelina.jpg`,
@@ -157,17 +193,17 @@ const mockStore = configureStore([]);
 const store = mockStore({
   [NameSpace.DATA]: {
     offers: mocks,
-    chosenCity: `Amsterdam`,
-    cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
-    currentOffers: [mocks[0], mocks[2]],
+    currentCity: mocks[0].city,
+    cities: [`Amsterdam`, `Brussels`, `Hamburg`],
+    currentOffers: [mocks[0]],
     sortType: SortType.POPULAR
   }
 });
 
 const props = {
-  cities: [`Amsterdam`, `Dusseldorf`],
-  chosenCity: `Amsterdam`,
-  currentOffers: [mocks[0], mocks[2]],
+  cities: [`Amsterdam`, `Brussels`, `Hamburg`],
+  currentCity: mocks[0].city,
+  currentOffers: [mocks[0]],
   onChangeCity: () => {},
   sortType: SortType.POPULAR,
   onSortTypeChange: () => {}
@@ -180,9 +216,11 @@ it(`Should MainPage component render correctly`, () => {
           <BrowserRouter>
             <MainPage {...props}/>
           </BrowserRouter>
-        </Provider>
-    )
-    .toJSON();
+        </Provider>, {
+          createNodeMock: () => {
+            return document.createElement(`div`);
+          },
+        }).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
