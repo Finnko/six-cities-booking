@@ -10,12 +10,25 @@ const MAX_GUESTS_QUANTITY = 4;
 const offers = [
   {
     id: ID_PREFIX + nanoid(10),
-    city: `Amsterdam`,
+    coords: {
+      latitude: 52.3909553943508,
+      longitude: 4.86309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Amsterdam`,
+    },
     title: `Beautiful & luxurious apartment at great location`,
     price: `120`,
     type: `Apartment`,
     promoImage: `/img/apartment-01.jpg`,
     isPremium: Math.random() > 0.5,
+    isFavorite: Math.random() > 0.5,
     rating: getRandomRating(),
     images: [
       `/img/room.jpg`,
@@ -28,7 +41,6 @@ const offers = [
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
     features,
-    coords: [52.3909553943508, 4.86309666406198],
     owner: {
       name: `Angelina`,
       avatar: `/img/avatar-angelina.jpg`,
@@ -42,12 +54,25 @@ const offers = [
   },
   {
     id: ID_PREFIX + nanoid(10),
-    city: `Amsterdam`,
+    coords: {
+      latitude: 52.369553943508,
+      longitude: 4.84309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Amsterdam`,
+    },
     title: `Wood and stone place`,
     price: `80`,
     type: `Private room`,
     promoImage: `/img/room.jpg`,
     isPremium: Math.random() > 0.5,
+    isFavorite: Math.random() > 0.5,
     rating: getRandomRating(),
     images: [
       `/img/apartment-01.jpg`,
@@ -58,7 +83,6 @@ const offers = [
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
     features: getRandomArray(features),
-    coords: [52.369553943508, 4.84309666406198],
     owner: {
       name: `Angelina 2`,
       avatar: `/img/avatar-angelina.jpg`,
@@ -71,12 +95,25 @@ const offers = [
   },
   {
     id: ID_PREFIX + nanoid(10),
-    city: `Cologne`,
+    coords: {
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Cologne`,
+    },
     title: `Canal View Prinsengracht`,
     price: `132`,
     type: `Apartment`,
     promoImage: `/img/apartment-02.jpg`,
     isPremium: Math.random() > 0.5,
+    isFavorite: Math.random() > 0.5,
     rating: getRandomRating(),
     images: [
       `/img/room.jpg`,
@@ -89,7 +126,6 @@ const offers = [
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
     features: getRandomArray(features),
-    coords: [52.3909553943508, 4.929309666406198],
     owner: {
       name: `Angelina 3`,
       avatar: `/img/avatar-angelina.jpg`,
@@ -103,12 +139,25 @@ const offers = [
   },
   {
     id: ID_PREFIX + nanoid(10),
-    city: `Brussels`,
+    coords: {
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Brussels`,
+    },
     title: `Nice, cozy, warm big bed apartment`,
     price: `180`,
     type: `Apartment`,
     promoImage: `/img/apartment-03.jpg`,
     isPremium: Math.random() > 0.5,
+    isFavorite: Math.random() > 0.5,
     rating: getRandomRating(),
     images: [
       `/img/room.jpg`,
@@ -121,7 +170,6 @@ const offers = [
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
     features: getRandomArray(features),
-    coords: [52.3809553943508, 4.939309666406198],
     owner: {
       name: `Angelina 4`,
       avatar: `/img/avatar-angelina.jpg`,
@@ -135,12 +183,25 @@ const offers = [
   },
   {
     id: ID_PREFIX + nanoid(10),
-    city: `Dusseldorf`,
+    coords: {
+      latitude: 52.5909553943508,
+      longitude: 4.85309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Dusseldorf`,
+    },
     title: `Beautiful & luxurious apartment at great location`,
     price: `120`,
     type: `Apartment`,
     promoImage: `/img/apartment-01.jpg`,
     isPremium: Math.random() > 0.5,
+    isFavorite: Math.random() > 0.5,
     rating: getRandomRating(),
     images: [
       `/img/room.jpg`,
@@ -153,7 +214,6 @@ const offers = [
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
     features,
-    coords: [52.5909553943508, 4.85309666406198],
     owner: {
       name: `Angelina`,
       avatar: `/img/avatar-angelina.jpg`,
@@ -167,12 +227,25 @@ const offers = [
   },
   {
     id: ID_PREFIX + nanoid(10),
-    city: `Paris`,
+    coords: {
+      latitude: 52.469553943508,
+      longitude: 4.85309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Paris`,
+    },
     title: `Wood and stone place`,
     price: `80`,
     type: `Private room`,
     promoImage: `/img/room.jpg`,
     isPremium: Math.random() > 0.5,
+    isFavorite: Math.random() > 0.5,
     rating: getRandomRating(),
     images: [
       `/img/apartment-01.jpg`,
@@ -183,7 +256,6 @@ const offers = [
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
     features: getRandomArray(features),
-    coords: [52.469553943508, 4.85309666406198],
     owner: {
       name: `Angelina 2`,
       avatar: `/img/avatar-angelina.jpg`,
@@ -196,12 +268,25 @@ const offers = [
   },
   {
     id: ID_PREFIX + nanoid(10),
-    city: `Hamburg`,
+    coords: {
+      latitude: 52.3709553943508,
+      longitude: 4.929309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Hamburg`,
+    },
     title: `Canal View Prinsengracht`,
     price: `132`,
     type: `Apartment`,
     promoImage: `/img/apartment-02.jpg`,
     isPremium: Math.random() > 0.5,
+    isFavorite: Math.random() > 0.5,
     rating: getRandomRating(),
     images: [
       `/img/room.jpg`,
@@ -214,7 +299,6 @@ const offers = [
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
     features: getRandomArray(features),
-    coords: [52.3709553943508, 4.929309666406198],
     owner: {
       name: `Angelina 3`,
       avatar: `/img/avatar-angelina.jpg`,
@@ -228,12 +312,25 @@ const offers = [
   },
   {
     id: ID_PREFIX + nanoid(10),
-    city: `Amsterdam`,
+    coords: {
+      latitude: 52.4009553943508,
+      longitude: 4.939309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Amsterdam`,
+    },
     title: `Nice, cozy, warm big bed apartment`,
     price: `180`,
     type: `Apartment`,
     promoImage: `/img/apartment-03.jpg`,
     isPremium: Math.random() > 0.5,
+    isFavorite: Math.random() > 0.5,
     rating: getRandomRating(),
     images: [
       `/img/room.jpg`,
@@ -246,7 +343,6 @@ const offers = [
     roomsCount: Math.ceil(Math.random() * MAX_ROOMS_QUANTITY),
     guestsCount: Math.ceil(Math.random() * MAX_GUESTS_QUANTITY),
     features: getRandomArray(features),
-    coords: [52.4009553943508, 4.939309666406198],
     owner: {
       name: `Angelina 4`,
       avatar: `/img/avatar-angelina.jpg`,

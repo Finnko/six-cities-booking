@@ -31,9 +31,13 @@ const getSortedOffers = (initialOffers, sortType) => {
   return initialOffers;
 };
 
-const getCities = (initialOffers) => [...new Set(initialOffers.map((offer) => offer.city))];
+const getCitiesNames = (initialOffers) => [...new Set(initialOffers.map((offer) => offer.city.name))];
 
-const getOffersByCity = (initialOffers, chosenCity) => initialOffers.filter((offer) => offer.city === chosenCity);
+const getCityByName = (initialOffers, name) => initialOffers
+  .map((offer) => offer.city)
+  .find((city) => city.name === name);
+
+const getOffersByCity = (initialOffers, currentCity) => initialOffers.filter((offer) => offer.city.name === currentCity);
 
 const getOfferById = (initialOffers, id) => initialOffers.find((offer) => offer.id === id);
 
@@ -47,14 +51,15 @@ const getNearByOffers = (initialOffers, id) => {
 
 };
 
-const cities = getCities(offers);
-const currentOffers = getOffersByCity(offers, getCities(offers)[0]);
+const citiesNames = getCitiesNames(offers);
+const currentOffers = getOffersByCity(offers, getCitiesNames(offers)[0]);
+const currentCity = getCityByName(offers, getCitiesNames(offers)[0]);
 
 const initialState = {
   offers,
   currentOffers,
-  chosenCity: cities[0],
-  cities,
+  currentCity,
+  cities: citiesNames,
   sortType: SortType.POPULAR
 };
 
@@ -62,7 +67,7 @@ export default function dataReducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.CHANGE_CITY:
       return extend(state, {
-        chosenCity: action.payload,
+        currentCity: getCityByName(state.offers, action.payload),
         currentOffers: getOffersByCity(state.offers, action.payload),
       });
     case actionTypes.CHANGE_SORTING_TYPE:
@@ -75,4 +80,4 @@ export default function dataReducer(state = initialState, action) {
   }
 }
 
-export {getOffersByCity, getNearByOffers, getOfferById, getCities};
+export {getOffersByCity, getNearByOffers, getOfferById};

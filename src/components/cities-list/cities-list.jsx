@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CityPropType from '../../prop-types/city';
 
-const CitiesList = ({cities, chosenCity, onChangeCity}) => {
+const CitiesList = ({cities, currentCity, onChangeCity}) => {
   return (
     <div className="tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
           {cities.map((city, index) => {
-            const isActive = city === chosenCity;
+            const isActive = city === currentCity.name;
             return (
               <li className="locations__item" key={city + index}>
                 <a className={`locations__item-link tabs__item ${isActive ? `tabs__item--active` : ``}`}
@@ -30,7 +31,7 @@ const CitiesList = ({cities, chosenCity, onChangeCity}) => {
 
 CitiesList.propTypes = {
   onChangeCity: PropTypes.func.isRequired,
-  chosenCity: PropTypes.string.isRequired,
+  currentCity: CityPropType,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 

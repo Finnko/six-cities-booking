@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import OffersCard from '../offers-card/offers-card.jsx';
+import OfferPropType from '../../prop-types/offer';
 
 export default class OffersList extends PureComponent {
   constructor(props) {
@@ -40,23 +41,5 @@ export default class OffersList extends PureComponent {
 
 OffersList.propTypes = {
   isNearByView: PropTypes.bool.isRequired,
-  offersCards: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    promoImage: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    roomsCount: PropTypes.number.isRequired,
-    guestsCount: PropTypes.number.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    features: PropTypes.arrayOf(PropTypes.string).isRequired,
-    owner: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      avatar: PropTypes.string.isRequired,
-      description: PropTypes.arrayOf(PropTypes.string).isRequired,
-      isPro: PropTypes.bool.isRequired
-    })
-  }).isRequired),
+  offersCards: PropTypes.arrayOf(OfferPropType).isRequired,
 };
