@@ -1,11 +1,9 @@
-import nanoid from 'nanoid';
 import {getRandomRating, getRandomDate} from '../utils';
 
-const ID_PREFIX = `id_`;
 
 const reviews = [
   {
-    id: ID_PREFIX + nanoid(10),
+    id: 1,
     name: `Max`,
     avatar: `/img/avatar-max.jpg`,
     rating: getRandomRating(),
@@ -13,7 +11,7 @@ const reviews = [
     date: getRandomDate()
   },
   {
-    id: ID_PREFIX + nanoid(10),
+    id: 2,
     name: `Alex`,
     avatar: `/img/avatar-max.jpg`,
     rating: getRandomRating(),
@@ -21,7 +19,7 @@ const reviews = [
     date: getRandomDate()
   },
   {
-    id: ID_PREFIX + nanoid(10),
+    id: 3,
     name: `Alex 1`,
     avatar: `/img/avatar-max.jpg`,
     rating: getRandomRating(),
@@ -29,7 +27,7 @@ const reviews = [
     date: getRandomDate()
   },
   {
-    id: ID_PREFIX + nanoid(10),
+    id: 4,
     name: `Alex 3`,
     avatar: `/img/avatar-max.jpg`,
     rating: getRandomRating(),
@@ -37,7 +35,7 @@ const reviews = [
     date: getRandomDate()
   },
   {
-    id: ID_PREFIX + nanoid(10),
+    id: 5,
     name: `Max`,
     avatar: `/img/avatar-max.jpg`,
     rating: getRandomRating(),
@@ -45,7 +43,7 @@ const reviews = [
     date: getRandomDate()
   },
   {
-    id: ID_PREFIX + nanoid(10),
+    id: 6,
     name: `Alex 2`,
     avatar: `/img/avatar-max.jpg`,
     rating: getRandomRating(),
@@ -53,7 +51,7 @@ const reviews = [
     date: getRandomDate()
   },
   {
-    id: ID_PREFIX + nanoid(10),
+    id: 7,
     name: `Alex 4`,
     avatar: `/img/avatar-max.jpg`,
     rating: getRandomRating(),
@@ -61,7 +59,7 @@ const reviews = [
     date: getRandomDate()
   },
   {
-    id: ID_PREFIX + nanoid(10),
+    id: 8,
     name: `Alex 5`,
     avatar: `/img/avatar-max.jpg`,
     rating: getRandomRating(),
@@ -69,7 +67,7 @@ const reviews = [
     date: getRandomDate()
   },
   {
-    id: ID_PREFIX + nanoid(10),
+    id: 9,
     name: `Max`,
     avatar: `/img/avatar-max.jpg`,
     rating: getRandomRating(),
@@ -77,7 +75,7 @@ const reviews = [
     date: getRandomDate()
   },
   {
-    id: ID_PREFIX + nanoid(10),
+    id: 10,
     name: `Alex 6`,
     avatar: `/img/avatar-max.jpg`,
     rating: getRandomRating(),
@@ -85,7 +83,7 @@ const reviews = [
     date: getRandomDate()
   },
   {
-    id: ID_PREFIX + nanoid(10),
+    id: 11,
     name: `Alex 7`,
     avatar: `/img/avatar-max.jpg`,
     rating: getRandomRating(),
@@ -93,7 +91,7 @@ const reviews = [
     date: getRandomDate()
   },
   {
-    id: ID_PREFIX + nanoid(10),
+    id: 12,
     name: `Alex 8`,
     avatar: `/img/avatar-max.jpg`,
     rating: getRandomRating(),

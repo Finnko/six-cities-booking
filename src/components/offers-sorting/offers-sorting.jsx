@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import {SortType} from '../../const';
+import NameSpace from '../../store/name-space';
+import {ActionCreator} from '../../store/actions/action-creator';
 
 const OffersSorting = ({isActive, activeSortType, onSortTypeChange, onActiveChange}) => {
   const renderSortOptions = () => {
@@ -40,10 +43,20 @@ const OffersSorting = ({isActive, activeSortType, onSortTypeChange, onActiveChan
 };
 
 OffersSorting.propTypes = {
-  onSortTypeChange: PropTypes.func.isRequired,
+  onSortTypeChange: PropTypes.func,
   onActiveChange: PropTypes.func,
   activeSortType: PropTypes.string.isRequired,
   isActive: PropTypes.bool
 };
 
-export default OffersSorting;
+const mapStateToProps = (state) => ({
+  activeSortType: state[NameSpace.DATA].sortType,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSortTypeChange(sortType) {
+    dispatch(ActionCreator.changeSortType(sortType));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(OffersSorting);
