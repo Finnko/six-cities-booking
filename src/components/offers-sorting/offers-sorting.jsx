@@ -43,7 +43,7 @@ const OffersSorting = ({isActive, activeSortType, onSortTypeChange, onActiveChan
 };
 
 OffersSorting.propTypes = {
-  onSortTypeChange: PropTypes.func,
+  onSortTypeChange: PropTypes.func.isRequired,
   onActiveChange: PropTypes.func,
   activeSortType: PropTypes.string.isRequired,
   isActive: PropTypes.bool
@@ -59,4 +59,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
+export {OffersSorting};
 export default connect(mapStateToProps, mapDispatchToProps)(OffersSorting);

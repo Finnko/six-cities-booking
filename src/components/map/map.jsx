@@ -69,7 +69,6 @@ class Map extends PureComponent {
     offers.forEach((offer) => {
       const {coords: {latitude, longitude}} = offer;
       const coordinates = [latitude, longitude];
-      //const isActive = offer.id === activeOfferId;
 
       const icon = this.getMarkerTemplate();
       const marker = leaflet.marker(coordinates, {icon}).addTo(this._map);
