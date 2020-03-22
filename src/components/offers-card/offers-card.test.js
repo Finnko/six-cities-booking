@@ -6,6 +6,19 @@ import OffersCard from './offers-card.jsx';
 const mockDate = new Date(1583591483969).valueOf();
 const mock = {
   id: `id_11`,
+  coords: {
+    latitude: 52.3909553943508,
+    longitude: 4.86309666406198,
+    zoom: 8
+  },
+  city: {
+    coords: {
+      latitude: 52.370216,
+      longitude: 4.895168,
+      zoom: 10
+    },
+    name: `Amsterdam`,
+  },
   title: `Beautiful & luxurious apartment at great location`,
   price: `120`,
   type: `Apartment`,

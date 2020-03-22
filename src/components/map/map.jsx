@@ -1,68 +1,84 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
+import CityPropType from '../../prop-types/city';
 import leaflet from "leaflet";
 
-const mapSettings = {
-  center: [52.38333, 4.9],
-  zoom: 12,
-  zoomControl: false,
-  marker: true
+const MAP_PIN = {
+  size: [28, 38],
+  url: `img/pin.svg`,
+  activeUrl: `img/pin-active.svg`,
+};
+
+const MAP_LAYER = {
+  url: `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`,
+  attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
 };
 
 class Map extends PureComponent {
   constructor(props) {
     super(props);
-
     this._mapRef = createRef();
-
-    this._pinTemplate = leaflet.icon({
-      iconUrl: `/img/pin.svg`,
-      iconSize: [30, 30]
-    });
+    this._map = null;
+    this._markers = [];
   }
 
   componentDidMount() {
-    const {offers} = this.props;
+    this.initMap();
+  }
 
-    if (offers !== null) {
-      const pinCoords = offers.map((offer) => {
-        return offer.coords;
-      });
-
-      this.init(pinCoords);
-    }
+  componentDidUpdate() {
+    this.clearMarkers();
+    this.addMarkers();
   }
 
   componentWillUnmount() {
     this._map.remove();
   }
 
-  init(coords) {
-    if (!this._mapRef || !this._mapRef.current) {
-      return;
-    }
-
-    this._map = leaflet.map(this._mapRef.current, mapSettings);
-
-    const {center, zoom} = mapSettings;
-    this._map.setView(center, zoom);
-
-    leaflet.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-    }).addTo(this._map);
-
-    this.addMapPins(coords);
-  }
-
-  addMapPins(coords) {
-    coords.forEach((pinCoord) => {
-      this.addPin(pinCoord);
+  getMarkerTemplate(isActive = false) {
+    return leaflet.icon({
+      iconUrl: isActive ? MAP_PIN.activeUrl : MAP_PIN.url,
+      iconSize: MAP_PIN.size,
     });
   }
 
-  addPin(pinCoord) {
-    const icon = this._pinTemplate;
-    leaflet.marker(pinCoord, {icon}).addTo(this._map);
+  initMap() {
+    const {currentCity: {coords}} = this.props;
+    const city = [coords.latitude, coords.longitude];
+    const zoom = coords.zoom;
+
+    this._map = leaflet.map(this._mapRef.current, {
+      center: city,
+      zoom,
+      zoomControl: false,
+      marker: true,
+    });
+
+    this._map.setView(city, zoom);
+
+    leaflet.tileLayer(MAP_LAYER.url, {
+      attribution: MAP_LAYER.attribution,
+    }).addTo(this._map);
+
+    this.addMarkers();
+  }
+
+  addMarkers() {
+    const {offers} = this.props;
+
+    offers.forEach((offer) => {
+      const {coords: {latitude, longitude}} = offer;
+      const coordinates = [latitude, longitude];
+
+      const icon = this.getMarkerTemplate();
+      const marker = leaflet.marker(coordinates, {icon}).addTo(this._map);
+      this._markers.push(marker);
+    });
+  }
+
+  clearMarkers() {
+    this._markers.forEach((marker) => this._map.removeLayer(marker));
+    this._markers = [];
   }
 
   render() {
@@ -76,6 +92,7 @@ class Map extends PureComponent {
 }
 
 Map.propTypes = {
+  currentCity: CityPropType.isRequired,
   isNearByView: PropTypes.bool,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

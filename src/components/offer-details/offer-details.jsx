@@ -1,15 +1,17 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {getNearByOffers, getOfferById} from '../../store/reducers/data/data-reducer';
+import NameSpace from '../../store/name-space';
+import OfferPropType from '../../prop-types/offer';
+import CityPropType from '../../prop-types/city';
 import Offer from '../offer/offer.jsx';
 import OffersList from '../offers-list/offers-list.jsx';
 import Map from '../map/map.jsx';
 import OfferGallery from '../offer-gallery/offer-gallery.jsx';
 import ReviewsList from '../reviews-list/reviews-list.jsx';
-import {getNearByOffers, getOfferById} from '../../store/reducers/data/data-reducer';
-import NameSpace from '../../store/name-space';
 
-const OfferDetails = ({currentOffer, nearByOffers}) => {
+const OfferDetails = ({currentOffer, nearByOffers, currentCity}) => {
   const {images, reviews} = currentOffer;
 
   return (
@@ -22,7 +24,7 @@ const OfferDetails = ({currentOffer, nearByOffers}) => {
             <ReviewsList reviews={reviews}/>
           </div>
         </div>
-        <Map isNearByView={true} offers={nearByOffers}/>
+        <Map isNearByView={true} currentCity={currentCity} offers={nearByOffers}/>
       </section>
 
       <div className="container">
@@ -36,33 +38,9 @@ const OfferDetails = ({currentOffer, nearByOffers}) => {
 };
 
 OfferDetails.propTypes = {
-  currentOffer: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    promoImage: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    roomsCount: PropTypes.number.isRequired,
-    guestsCount: PropTypes.number.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    features: PropTypes.arrayOf(PropTypes.string).isRequired,
-    owner: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      avatar: PropTypes.string.isRequired,
-      description: PropTypes.arrayOf(PropTypes.string).isRequired,
-      isPro: PropTypes.bool.isRequired
-    }).isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      avatar: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-      description: PropTypes.string.isRequired,
-      date: PropTypes.number.isRequired,
-    })).isRequired,
-  }).isRequired,
-  nearByOffers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  currentOffer: OfferPropType.isRequired,
+  currentCity: CityPropType.isRequired,
+  nearByOffers: PropTypes.arrayOf(OfferPropType).isRequired,
 };
 
 const mapStateToProps = (state, props) => {
@@ -73,6 +51,7 @@ const mapStateToProps = (state, props) => {
 
   return {
     currentOffer,
+    currentCity: state[NameSpace.DATA].currentCity,
     nearByOffers
   };
 };

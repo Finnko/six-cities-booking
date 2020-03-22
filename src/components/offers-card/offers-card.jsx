@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {getRatingPercentage} from '../../utils';
+import OfferPropType from '../../prop-types/offer';
 
 const OffersCard = ({offer, isNearByView, onCardMouseEnter, onCardMouseLeave}) => {
-  const {id, title, type, price, promoImage, rating, isPremium} = offer;
+  const {id, title, type, price, promoImage, rating, isPremium, isFavorite} = offer;
 
   const handleMouseEnter = () => onCardMouseEnter(offer);
   const handleMouseLeave = () => onCardMouseLeave();
@@ -34,7 +35,7 @@ const OffersCard = ({offer, isNearByView, onCardMouseEnter, onCardMouseLeave}) =
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
+          <button className={`place-card__bookmark-button button ${isFavorite ? `place-card__bookmark-button--active` : ``}`} type="button">
             <svg className="place-card__bookmark-icon" width={18} height={19}>
               <use xlinkHref="#icon-bookmark" />
             </svg>
@@ -60,15 +61,7 @@ OffersCard.propTypes = {
   onCardMouseEnter: PropTypes.func,
   onCardMouseLeave: PropTypes.func,
   isNearByView: PropTypes.bool.isRequired,
-  offer: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    promoImage: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-  }).isRequired,
+  offer: OfferPropType.isRequired,
 };
 
 export default OffersCard;

@@ -8,8 +8,15 @@ Enzyme.configure({
 });
 
 const props = {
-  cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
-  chosenCity: `Amsterdam`,
+  cities: [`Amsterdam`, `Brussels`, `Hamburg`],
+  currentCity: {
+    coords: {
+      latitude: 52.370216,
+      longitude: 4.895168,
+      zoom: 10
+    },
+    name: `Amsterdam`,
+  },
 };
 
 describe(`Test e2e CitiesList component`, () => {
