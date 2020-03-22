@@ -36,4 +36,9 @@ const sortTypes = [
   SortType.TOPRATED
 ];
 
-export {features, SortType, sortTypes};
+const AppViewMode = {
+  MAIN: `Main`,
+  DETAILS: `Details`
+};
+
+export {features, SortType, sortTypes, AppViewMode};

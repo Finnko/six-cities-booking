@@ -7,6 +7,7 @@ import Map from '../map/map.jsx';
 import Header from '../header/header.jsx';
 import OffersSorting from '../offers-sorting/offers-sorting.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
+import MainEmpty from '../main-empty/main-empty.jsx';
 import withActiveFlag from '../../hocs/withActiveFlag/withActiveFlag';
 import NameSpace from '../../store/name-space';
 import CityPropType from '../../prop-types/city';
@@ -15,6 +16,7 @@ const OffersSortingWithActiveFlag = withActiveFlag(OffersSorting);
 
 const MainPage = (props) => {
   const {currentOffers, cities, currentCity, sortType, onChangeCity, onSortTypeChange} = props;
+
 
   return (
     <div className="page page--gray page--main">
@@ -36,6 +38,7 @@ const MainPage = (props) => {
             </div>
           </div>
         </div>
+        <MainEmpty currentCity={currentCity}/>
       </main>
     </div>
   );
