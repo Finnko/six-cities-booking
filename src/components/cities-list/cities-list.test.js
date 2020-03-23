@@ -3,8 +3,15 @@ import renderer from 'react-test-renderer';
 import CitiesList from './cities-list.jsx';
 
 const props = {
-  cities: [`Amsterdam`, `Cologne`, `Brussels`, `Dusseldorf`],
-  chosenCity: `Amsterdam`,
+  cities: [`Amsterdam`, `Brussels`, `Hamburg`],
+  currentCity: {
+    coords: {
+      latitude: 52.370216,
+      longitude: 4.895168,
+      zoom: 10
+    },
+    name: `Amsterdam`,
+  },
   onChangeCity: () => {}
 };
 

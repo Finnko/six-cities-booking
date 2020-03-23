@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReviewPropType from '../../prop-types/review';
 import Review from '../review/review.jsx';
 
 const MAX_REVIEWS_TO_SHOW = 10;
@@ -23,13 +24,7 @@ const ReviewsList = ({reviews}) => {
 };
 
 ReviewsList.propTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    date: PropTypes.number.isRequired,
-  })).isRequired,
+  reviews: PropTypes.arrayOf(ReviewPropType).isRequired,
 };
 
 export default ReviewsList;

@@ -3,16 +3,28 @@ import {actionTypes} from '../../actions/actionTypes';
 import {features} from '../../../const';
 
 const mockDate = new Date(1583591483969).valueOf();
-
 const mocks = [
   {
     id: `id_11`,
-    city: `Amsterdam`,
+    coords: {
+      latitude: 52.3909553943508,
+      longitude: 4.86309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Amsterdam`,
+    },
     title: `Beautiful & luxurious apartment at great location`,
     price: `120`,
     type: `Apartment`,
     promoImage: `/img/apartment-01.jpg`,
     isPremium: true,
+    isFavorite: true,
     rating: 1.5,
     images: [
       `/img/room.jpg`,
@@ -25,7 +37,6 @@ const mocks = [
     roomsCount: 2,
     guestsCount: 3,
     features,
-    coords: [52.3909553943508, 4.85309666406198],
     owner: {
       name: `Angelina`,
       avatar: `/img/avatar-angelina.jpg`,
@@ -63,12 +74,25 @@ const mocks = [
   },
   {
     id: `id_12`,
-    city: `Dusseldorf`,
+    coords: {
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Brussels`,
+    },
     title: `Beautiful & luxurious apartment at great location`,
     price: `70`,
     type: `Apartment`,
     promoImage: `/img/apartment-01.jpg`,
     isPremium: false,
+    isFavorite: false,
     rating: 3.5,
     images: [
       `/img/room.jpg`,
@@ -78,7 +102,6 @@ const mocks = [
     roomsCount: 1,
     guestsCount: 2,
     features,
-    coords: [52.3909553943508, 4.86309666406198],
     owner: {
       name: `Angelina 2`,
       avatar: `/img/avatar-angelina.jpg`,
@@ -108,12 +131,25 @@ const mocks = [
   },
   {
     id: `id_13`,
-    city: `Amsterdam`,
+    coords: {
+      latitude: 52.3709553943508,
+      longitude: 4.929309666406198,
+      zoom: 8
+    },
+    city: {
+      coords: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `Amsterdam`,
+    },
     title: `Beautiful & luxurious apartment at great location`,
     price: `125`,
     type: `Apartment`,
     promoImage: `/img/apartment-01.jpg`,
     isPremium: true,
+    isFavorite: false,
     rating: 4.5,
     images: [
       `/img/room.jpg`,
@@ -126,7 +162,6 @@ const mocks = [
     roomsCount: 3,
     guestsCount: 2,
     features,
-    coords: [52.3909553943508, 4.84309666406198],
     owner: {
       name: `Angelina 3`,
       avatar: `/img/avatar-angelina.jpg`,
@@ -151,7 +186,7 @@ const mocks = [
 const initialState = {
   offers: [],
   currentOffers: [],
-  chosenCity: ``,
+  currentCity: ``,
   cities: [],
 };
 
@@ -164,16 +199,16 @@ describe(`Data Reducer works correctly`, () => {
     expect(dataReducer({
       offers: mocks,
       currentOffers: [mocks[0], mocks[2]],
-      chosenCity: `Amsterdam`,
-      cities: [`Amsterdam`, `Dusseldorf`]
+      currentCity: mocks[0].city,
+      cities: [`Amsterdam`, `Brussels`],
     }, {
       type: actionTypes.CHANGE_CITY,
-      payload: `Dusseldorf`,
+      payload: `Brussels`,
     })).toEqual({
       offers: mocks,
       currentOffers: [mocks[1]],
-      chosenCity: `Dusseldorf`,
-      cities: [`Amsterdam`, `Dusseldorf`]
+      currentCity: mocks[1].city,
+      cities: [`Amsterdam`, `Brussels`],
     });
   });
 });

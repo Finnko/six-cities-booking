@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {getFormattedDate, getRatingPercentage, getTimeTagFormatted} from '../../utils';
+import ReviewPropType from '../../prop-types/review';
 
 const Review = ({review}) => {
   const {name, avatar, rating, description, date} = review;
@@ -39,13 +39,7 @@ const Review = ({review}) => {
 };
 
 Review.propTypes = {
-  review: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    date: PropTypes.number.isRequired,
-  }).isRequired,
+  review: ReviewPropType.isRequired,
 };
 
 export default Review;
