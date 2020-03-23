@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {MainPage} from './main-page.jsx';
-import {features, SortType} from '../../const';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
+import {features, SortType} from '../../const';
 import NameSpace from '../../store/name-space';
+import MainOffers from './main-offers.jsx';
 
 const mockDate = new Date(1583591483969).valueOf();
 const mocks = [
@@ -201,18 +201,16 @@ const store = mockStore({
 });
 
 const props = {
-  cities: [`Amsterdam`, `Brussels`, `Hamburg`],
   currentCity: mocks[0].city,
   currentOffers: [mocks[0]],
-  onChangeCity: () => {},
 };
 
-it(`Should MainPage component render correctly`, () => {
+it(`Should MainOffers component render correctly`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
           <BrowserRouter>
-            <MainPage {...props}/>
+            <MainOffers {...props}/>
           </BrowserRouter>
         </Provider>, {
           createNodeMock: () => {

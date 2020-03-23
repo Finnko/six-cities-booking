@@ -279,7 +279,7 @@ const offers = [
         longitude: 4.895168,
         zoom: 10
       },
-      name: `Hamburg`,
+      name: `Amsterdam`,
     },
     title: `Canal View Prinsengracht`,
     price: `132`,
