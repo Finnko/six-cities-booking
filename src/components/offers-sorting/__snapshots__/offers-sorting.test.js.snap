@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should OffersSorting render correctly 1`] = `
+exports[`Should OffersSorting component render correctly 1`] = `
 <div>
   <form
     action="#"

@@ -7,7 +7,7 @@ import OfferPropType from '../../prop-types/offer';
 const OffersCard = ({offer, isNearByView, onCardMouseEnter, onCardMouseLeave}) => {
   const {id, title, type, price, promoImage, rating, isPremium, isFavorite} = offer;
 
-  const handleMouseEnter = () => onCardMouseEnter(offer);
+  const handleMouseEnter = () => onCardMouseEnter(id);
   const handleMouseLeave = () => onCardMouseLeave();
 
   const premium = !isPremium ? `` : (

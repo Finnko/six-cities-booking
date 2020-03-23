@@ -35,9 +35,9 @@ class Map extends PureComponent {
     this._map.remove();
   }
 
-  getMarkerTemplate(isActive = false) {
+  getMarkerTemplate(isActivePin) {
     return leaflet.icon({
-      iconUrl: isActive ? MAP_PIN.activeUrl : MAP_PIN.url,
+      iconUrl: isActivePin ? MAP_PIN.activeUrl : MAP_PIN.url,
       iconSize: MAP_PIN.size,
     });
   }
@@ -64,13 +64,18 @@ class Map extends PureComponent {
   }
 
   addMarkers() {
-    const {offers} = this.props;
+    const {offers, activeItemId} = this.props;
 
     offers.forEach((offer) => {
       const {coords: {latitude, longitude}} = offer;
       const coordinates = [latitude, longitude];
+      let isActivePin = false;
 
-      const icon = this.getMarkerTemplate();
+      if (activeItemId) {
+        isActivePin = offer.id === activeItemId;
+      }
+
+      const icon = this.getMarkerTemplate(isActivePin);
       const marker = leaflet.marker(coordinates, {icon}).addTo(this._map);
       this._markers.push(marker);
     });
@@ -94,6 +99,7 @@ class Map extends PureComponent {
 Map.propTypes = {
   currentCity: CityPropType.isRequired,
   isNearByView: PropTypes.bool,
+  activeItemId: PropTypes.string,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
