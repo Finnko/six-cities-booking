@@ -2,14 +2,15 @@ import React from 'react';
 import CityPropType from '../../prop-types/city';
 import PropTypes from 'prop-types';
 import OfferPropType from '../../prop-types/offer';
-import OffersList from '../offers-list/offers-list.jsx';
 import Map from '../map/map.jsx';
 import OffersSorting from '../offers-sorting/offers-sorting.jsx';
-import withActiveFlag from '../../hocs/withActiveFlag/withActiveFlag';
+import OffersList from '../offers-list/offers-list.jsx';
+import withActiveFlag from '../../hocs/withActiveFlag/withActiveFlag.js';
+import withHoveredItem from '../../hocs/withHoveredItem/withHoveredItem.js';
 
 const OffersSortingWithActiveFlag = withActiveFlag(OffersSorting);
 
-const MainOffers = ({currentCity, currentOffers}) => {
+const MainOffers = ({currentCity, currentOffers, hoveredItem, onMouseEnter, onMouseLeave}) => {
 
   return (
     <div className="cities">
@@ -18,10 +19,10 @@ const MainOffers = ({currentCity, currentOffers}) => {
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">{currentOffers.length} places to stay in {currentCity.name}</b>
           <OffersSortingWithActiveFlag/>
-          <OffersList offersCards={currentOffers} isNearByView={false}/>
+          <OffersList offersCards={currentOffers} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} isNearByView={false}/>
         </section>
         <div className="cities__right-section">
-          <Map offers={currentOffers} currentCity={currentCity} isNearByView={false}/>
+          <Map offers={currentOffers} activeItemId={hoveredItem} currentCity={currentCity} isNearByView={false}/>
         </div>
       </div>
     </div>
@@ -30,7 +31,10 @@ const MainOffers = ({currentCity, currentOffers}) => {
 
 MainOffers.propTypes = {
   currentCity: CityPropType.isRequired,
+  hoveredItem: PropTypes.string,
+  onMouseLeave: PropTypes.func,
+  onMouseEnter: PropTypes.func,
   currentOffers: PropTypes.arrayOf(OfferPropType).isRequired,
 };
 
-export default MainOffers;
+export default withHoveredItem(MainOffers);

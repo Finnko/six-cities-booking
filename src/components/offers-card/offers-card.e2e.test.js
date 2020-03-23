@@ -72,9 +72,10 @@ const mock = {
 
 describe(`Test e2e OffersCard component`, () => {
   const onCardMouseEnter = jest.fn();
+  const onCardMouseLeave = jest.fn();
 
   const offersCard = shallow(
-      <OffersCard offer={mock} isNearByView={false} onCardMouseEnter={onCardMouseEnter}/>
+      <OffersCard offer={mock} isNearByView={false} onCardMouseEnter={onCardMouseEnter} onCardMouseLeave={onCardMouseLeave}/>
   );
 
   const offer = offersCard.find(`.place-card`);
