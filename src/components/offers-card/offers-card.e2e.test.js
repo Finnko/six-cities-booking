@@ -82,6 +82,6 @@ describe(`Test e2e OffersCard component`, () => {
 
   it(`Should OffersCard info passed correctly on hover`, () => {
     offer.simulate(`mouseenter`);
-    expect(onCardMouseEnter).toHaveBeenCalledWith(mock);
+    expect(onCardMouseEnter).toHaveBeenCalledWith(mock.id);
   });
 });
