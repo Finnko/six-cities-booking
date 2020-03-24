@@ -41,4 +41,7 @@ const AppViewMode = {
   DETAILS: `Details`
 };
 
-export {features, SortType, sortTypes, AppViewMode};
+const END_POINT = `https://htmlacademy-react-3.appspot.com/six-cities`;
+const TIMEOUT = 1000 * 5;
+
+export {features, SortType, sortTypes, AppViewMode, END_POINT, TIMEOUT};
