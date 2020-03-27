@@ -5,7 +5,7 @@ const Error = {
   UNAUTHORIZED: 401
 };
 
-export const createAPI = (onUnauthorized) => {
+const createAPI = (onUnauthorized) => {
   const api = axios.create({
     baseURL: END_POINT,
     timeout: TIMEOUT,
@@ -32,3 +32,5 @@ export const createAPI = (onUnauthorized) => {
 
   return api;
 };
+
+export {createAPI};
