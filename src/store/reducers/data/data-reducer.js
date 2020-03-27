@@ -1,7 +1,9 @@
 import {extend} from '../../../utils';
-import {actionTypes} from '../../actions/actionTypes';
+import {actionTypes} from '../../actions/action-types';
+import {ActionCreator} from '../../actions/action-creator';
 import {SortType} from '../../../const';
 import offers from '../../../mocks/offers';
+import Adapter from '../../../adapter/adapter';
 
 
 const getOffersSortedByPriceToHigh = (initialOffers) => {
@@ -63,6 +65,16 @@ const initialState = {
   sortType: SortType.POPULAR
 };
 
+const Operation = {
+  loadOffers: () => (dispatch, getState, api) => {
+    return api.get(`/hotels`)
+      .then((response) => {
+        console.log(Adapter.parseOffers(response.data));
+        dispatch(ActionCreator.loadOffers(response.data));
+      });
+  },
+};
+
 export default function dataReducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.CHANGE_CITY:
@@ -75,9 +87,13 @@ export default function dataReducer(state = initialState, action) {
         sortType: action.payload,
         currentOffers: getSortedOffers(state.currentOffers, action.payload),
       });
+    case actionTypes.LOAD_OFFERS:
+      return extend(state, {
+        offers: action.payload,
+      });
     default:
       return state;
   }
 }
 
-export {getOffersByCity, getNearByOffers, getOfferById};
+export {getOffersByCity, getNearByOffers, getOfferById, Operation};

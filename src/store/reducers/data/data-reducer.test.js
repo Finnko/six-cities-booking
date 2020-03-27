@@ -1,5 +1,5 @@
 import dataReducer from './data-reducer';
-import {actionTypes} from '../../actions/actionTypes';
+import {actionTypes} from '../../actions/action-types';
 import {features} from '../../../const';
 
 const mockDate = new Date(1583591483969).valueOf();
