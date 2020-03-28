@@ -27,7 +27,12 @@ class Map extends PureComponent {
   }
 
   componentDidUpdate() {
+    const {currentCity: {coords}} = this.props;
+    const city = [coords.latitude, coords.longitude];
+    const zoom = coords.zoom;
+
     this.clearMarkers();
+    this._map.setView(city, zoom);
     this.addMarkers();
   }
 
@@ -99,7 +104,7 @@ class Map extends PureComponent {
 Map.propTypes = {
   currentCity: CityPropType.isRequired,
   isNearByView: PropTypes.bool,
-  activeItemId: PropTypes.string,
+  activeItemId: PropTypes.number,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

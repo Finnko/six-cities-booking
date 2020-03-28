@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {getRatingPercentage} from '../../utils';
+import {getRatingPercentage} from '../../utils/common';
 import OfferPropType from '../../prop-types/offer';
 
 const OffersCard = ({offer, isNearByView, onCardMouseEnter, onCardMouseLeave}) => {

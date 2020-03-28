@@ -1,4 +1,4 @@
-import {actionTypes} from './actionTypes';
+import {actionTypes} from './action-types';
 
 const ActionCreator = {
   changeCity: (city) => ({
@@ -8,6 +8,10 @@ const ActionCreator = {
   changeSortType: (sortType) => ({
     type: actionTypes.CHANGE_SORTING_TYPE,
     payload: sortType,
+  }),
+  loadOffers: (offers) => ({
+    type: actionTypes.LOAD_OFFERS,
+    payload: offers,
   }),
 };
 

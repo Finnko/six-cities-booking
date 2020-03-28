@@ -6,6 +6,20 @@ const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
+const getUpperCaseFirstLetter = (str) => str.substr(0, 1).toUpperCase() + str.slice(1);
+
+const getCities = (items) => {
+  const cityMap = {};
+
+  items.forEach((item) => {
+    if (!cityMap[item.city.name]) {
+      cityMap[item.city.name] = item.city;
+    }
+  });
+
+  return Object.values(cityMap);
+};
+
 const getRandomArrayNumber = (array) => Math.floor(Math.random() * array.length);
 
 const getRandomArray = (array) => {
@@ -36,4 +50,6 @@ const getRandomRating = () => parseFloat((Math.random() * OFFER_MAX_RATING).toFi
 
 const getRatingPercentage = (rating) => rating * 100 / OFFER_MAX_RATING;
 
-export {extend, getRandomRating, getRandomArray, getRatingPercentage, getRandomDate, getTimeTagFormatted, getFormattedDate};
+export {extend, getRandomRating, getRandomArray, getRatingPercentage, getRandomDate,
+  getTimeTagFormatted, getFormattedDate, getUpperCaseFirstLetter, getCities,
+};

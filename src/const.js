@@ -41,4 +41,16 @@ const AppViewMode = {
   DETAILS: `Details`
 };
 
-export {features, SortType, sortTypes, AppViewMode};
+const INITIAL_CITY = {
+  "name": `Amsterdam`,
+  "coords": {
+    "latitude": 52.37454,
+    "longitude": 4.897976,
+    "zoom": 13
+  }
+};
+
+const END_POINT = `https://htmlacademy-react-3.appspot.com/six-cities`;
+const TIMEOUT = 1000 * 5;
+
+export {features, SortType, sortTypes, AppViewMode, END_POINT, TIMEOUT, INITIAL_CITY};
