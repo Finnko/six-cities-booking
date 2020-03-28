@@ -17,23 +17,6 @@ export default class Adapter {
     this.description = data[`description`];
     this.owner = data[`host`];
   }
-  //
-  // toRAW() {
-  //   return {
-  //     'id': this.id,
-  //     'base_price': this.price,
-  //     'date_from': new Date(this.dateStart).toISOString(),
-  //     'date_to': new Date(this.dateEnd).toISOString(),
-  //     'destination': {
-  //       description: this.description,
-  //       name: this.city,
-  //       pictures: this.photos
-  //     },
-  //     'is_favorite': this.isFavorite,
-  //     'offers': this.eventOffers,
-  //     'type': this.type
-  //   };
-  // }
 
   _parseCity(city) {
     return {

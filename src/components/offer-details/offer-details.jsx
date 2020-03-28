@@ -21,7 +21,7 @@ const OfferDetails = ({currentOffer, nearByOffers, currentCity}) => {
         <div className="property__container container">
           <div className="property__wrapper">
             <Offer offer={currentOffer}/>
-            <ReviewsList reviews={reviews}/>
+            {/*<ReviewsList reviews={reviews}/>*/}
           </div>
         </div>
         <Map isNearByView={true} currentCity={currentCity} offers={nearByOffers}/>

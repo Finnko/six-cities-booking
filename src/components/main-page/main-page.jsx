@@ -9,11 +9,11 @@ import Header from '../header/header.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
 import MainOffers from '../main-offers/main-offers.jsx';
 import MainEmpty from '../main-empty/main-empty.jsx';
+import {getCitiesList, getCurrentCity, getCurrentOffers} from '../../store/reducers/data/selectors';
 
 
 const MainPage = (props) => {
   const {currentOffers, cities, currentCity, onChangeCity} = props;
-
 
   return (
     <div className="page page--gray page--main">
@@ -34,14 +34,14 @@ MainPage.propTypes = {
   onChangeCity: PropTypes.func,
   currentOffers: PropTypes.arrayOf(OfferPropType).isRequired,
   currentCity: CityPropType.isRequired,
-  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  cities: PropTypes.arrayOf(CityPropType).isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
-    currentCity: state[NameSpace.DATA].currentCity,
-    currentOffers: state[NameSpace.DATA].currentOffers,
-    cities: state[NameSpace.DATA].cities,
+    currentCity: getCurrentCity(state),
+    currentOffers: getCurrentOffers(state),
+    cities: getCitiesList(state),
   };
 };
 

@@ -8,17 +8,17 @@ const CitiesList = ({cities, currentCity, onChangeCity}) => {
       <section className="locations container">
         <ul className="locations__list tabs__list">
           {cities.map((city, index) => {
-            const isActive = city === currentCity.name;
+            const isActive = city.name === currentCity.name;
             return (
-              <li className="locations__item" key={city + index}>
+              <li className="locations__item" key={city.name + index}>
                 <a className={`locations__item-link tabs__item ${isActive ? `tabs__item--active` : ``}`}
                   href="#"
                   onClick={(evt) => {
                     evt.preventDefault();
-                    onChangeCity(city);
+                    onChangeCity(city.name);
                   }}
                 >
-                  <span>{city}</span>
+                  <span>{city.name}</span>
                 </a>
               </li>
             );
@@ -32,7 +32,7 @@ const CitiesList = ({cities, currentCity, onChangeCity}) => {
 CitiesList.propTypes = {
   onChangeCity: PropTypes.func.isRequired,
   currentCity: CityPropType,
-  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  cities: PropTypes.arrayOf(CityPropType).isRequired,
 };
 
 export default CitiesList;

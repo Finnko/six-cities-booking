@@ -1,5 +1,5 @@
 import React from 'react';
-import {getFormattedDate, getRatingPercentage, getTimeTagFormatted} from '../../utils';
+import {getFormattedDate, getRatingPercentage, getTimeTagFormatted} from '../../utils/common';
 import ReviewPropType from '../../prop-types/review';
 
 const Review = ({review}) => {
