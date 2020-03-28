@@ -2,6 +2,7 @@ import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import CityPropType from '../../prop-types/city';
 import leaflet from "leaflet";
+import {AppViewMode} from '../../const';
 
 const MAP_PIN = {
   size: [28, 38],
@@ -92,7 +93,8 @@ class Map extends PureComponent {
   }
 
   render() {
-    const {isNearByView} = this.props;
+    const {viewMode} = this.props;
+    const isNearByView = viewMode === AppViewMode.DETAILS;
 
     return (
       <section className={`map ${isNearByView ? `property__map` : `cities__map`}`}>
@@ -103,7 +105,7 @@ class Map extends PureComponent {
 
 Map.propTypes = {
   currentCity: CityPropType.isRequired,
-  isNearByView: PropTypes.bool,
+  viewMode: PropTypes.string.isRequired,
   activeItemId: PropTypes.number,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
