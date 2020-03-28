@@ -1,5 +1,6 @@
 import {createSelector} from "reselect";
 import NameSpace from '../../name-space';
+import {getSortedOffers} from '../../../utils/sorting';
 
 const NAME_SPACE = NameSpace.DATA;
 
@@ -15,39 +16,17 @@ const getCitiesList = (state) => {
   return state[NAME_SPACE].cities;
 };
 
-
-// export const getArtistQuestions = createSelector(
-//     // Функция принимает state и возвращает результат
-//     getOffers,
-//     // Функция так же принимает state и возвращает результат.
-//     // Таких функций (геттеров) может быть множество
-//     randomFilter,
-//     // Последняя функция уже не геттер, а комбайнер,
-//     // она принимает результаты всех предыдущих функций
-//     // и возвращает результат на их основе
-//     (resultOne, resultTwo) => {
-//       return resultOne.filter((it) => resultTwo && it.type === `artist`);
-//     }
-// );
-
-// // Example of composing selectors
-// const getTotalTax = createSelector(
-//   [ getSelectedState, getItemSubtotal ],
-//   (selectedState, subtotal) => {
-//     return subtotal * taxRates[selectedState];
-//   },
-// );
-
-// const getCitiesNames = createSelector(
-//   getOffers,
-//   (offers) => {
-//     return offers.map((offer) => offer.city);
-//   }
-// );
+const getActiveSortType = (state) => {
+  return state[NAME_SPACE].sortType;
+};
 
 const getCurrentOffers = createSelector(
-    [getCurrentCity, getOffers],
-    (activeCity, offers) => offers.filter((offer) => offer.city.name === activeCity.name)
+    [getCurrentCity, getActiveSortType, getOffers],
+    (activeCity, activeSortType, offers) => {
+      const filteredOffers = offers.filter((offer) => offer.city.name === activeCity.name);
+
+      return getSortedOffers(filteredOffers, activeSortType);
+    }
 );
 
 export {getCurrentOffers, getCurrentCity, getCitiesList};

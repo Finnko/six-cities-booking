@@ -15,7 +15,7 @@ const CitiesList = ({cities, currentCity, onChangeCity}) => {
                   href="#"
                   onClick={(evt) => {
                     evt.preventDefault();
-                    onChangeCity(city.name);
+                    onChangeCity(city);
                   }}
                 >
                   <span>{city.name}</span>

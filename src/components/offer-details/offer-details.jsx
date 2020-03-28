@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getNearByOffers, getOfferById} from '../../store/reducers/data/data-reducer';
+import {getOfferById} from '../../store/reducers/data/data-reducer';
 import NameSpace from '../../store/name-space';
 import OfferPropType from '../../prop-types/offer';
 import CityPropType from '../../prop-types/city';

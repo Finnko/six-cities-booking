@@ -31,7 +31,7 @@ const MainOffers = ({currentCity, currentOffers, hoveredItem, onMouseEnter, onMo
 
 MainOffers.propTypes = {
   currentCity: CityPropType.isRequired,
-  hoveredItem: PropTypes.string,
+  hoveredItem: PropTypes.number,
   onMouseLeave: PropTypes.func,
   onMouseEnter: PropTypes.func,
   currentOffers: PropTypes.arrayOf(OfferPropType).isRequired,

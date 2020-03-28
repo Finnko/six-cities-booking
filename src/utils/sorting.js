@@ -14,17 +14,15 @@ const getOffersSortedByTopRating = (offers) => {
 
 const getSortedOffers = (offers, sortType) => {
   switch (sortType) {
-    case SortType.POPULAR:
-      return offers;
     case SortType.PRICE_TO_HIGH:
       return getOffersSortedByPriceToHigh(offers);
     case SortType.PRICE_TO_LOW:
       return getOffersSortedByPriceToLow(offers);
     case SortType.TOPRATED:
       return getOffersSortedByTopRating(offers);
+    default:
+      return offers;
   }
-
-  return offers;
 };
 
 export {getSortedOffers};
