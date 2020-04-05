@@ -50,7 +50,27 @@ const INITIAL_CITY = {
   }
 };
 
+const AuthorizationStatus = {
+  NO_AUTH: `NO_AUTH`,
+  AUTH: `AUTH`,
+};
+
+const AppPaths = {
+  getLogin: () => `/login`,
+  getOffers: () => `/hotels`,
+  getOffer: (id) => `/offer/${id}`,
+  getRoot: () => `/`,
+};
+
+
+const ServerError = {
+  UNAUTHORIZED: 401,
+  BAD_REQUEST: 400,
+};
+
 const END_POINT = `https://htmlacademy-react-3.appspot.com/six-cities`;
 const TIMEOUT = 1000 * 5;
 
-export {features, SortType, sortTypes, AppViewMode, END_POINT, TIMEOUT, INITIAL_CITY};
+export {features, SortType, sortTypes, AppPaths, AppViewMode, END_POINT,
+  TIMEOUT, INITIAL_CITY, AuthorizationStatus, ServerError
+};

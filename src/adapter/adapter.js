@@ -25,6 +25,16 @@ export default class Adapter {
     };
   }
 
+  static userRawToData(data) {
+    return {
+      id: data[`id`],
+      name: data[`name`],
+      avatar: data[`avatar_url`],
+      isPro: data[`is_pro`],
+      email: data[`email`],
+    }
+  }
+
   static parseOffer(data) {
     return new Adapter(data);
   }
