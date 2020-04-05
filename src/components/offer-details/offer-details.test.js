@@ -4,7 +4,7 @@ import {OfferDetails} from "./offer-details.jsx";
 import {features} from '../../const';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
-import {BrowserRouter} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 import NameSpace from '../../store/name-space';
 
 const mockDate = new Date(1583591483969).valueOf();
@@ -374,9 +374,9 @@ const store = mockStore({
 it(`Should OfferDetails component render correctly`, () => {
   const tree = renderer.create(
       <Provider store={store}>
-        <BrowserRouter>
+        <Router>
           <OfferDetails currentOffer={mock} currentCity={mocks[0].city} nearByOffers={nearByOfferMocks}/>
-        </BrowserRouter>
+        </Router>
       </Provider>, {
         createNodeMock: () => {
           return document.createElement(`div`);

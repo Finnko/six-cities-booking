@@ -1,23 +1,48 @@
 import React from 'react';
+import PropTypes from "prop-types";
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import UserPropType from '../../prop-types/user';
+import {getAuthStatus, getUserInfo} from '../../store/reducers/user/selectors';
+import {AppPaths, END_POINT} from '../../const';
 
-const Header = () => {
+const Header = ({isAuthorized, user}) => {
+  const userName = isAuthorized
+    ? <span className="header__user-name user__name">{user.email}</span>
+    : <span className="header__login">Sign in</span>;
+
+  const activeLogo = (
+    <Link to={AppPaths.getRoot()} className="header__logo-link header__logo-link--active">
+      <img className="header__logo" src="/img/logo.svg" alt="6 cities logo" width="81" height="41"/>
+    </Link>);
+
+  const inactiveLogo = (
+    <a className="header__logo-link">
+      <img className="header__logo" src="/img/logo.svg" alt="6 cities logo" width="81" height="41"/>
+    </a>);
+
   return (
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <a className="header__logo-link header__logo-link--active">
-              <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
-            </a>
+            {isAuthorized ? activeLogo : inactiveLogo}
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <a className="header__nav-link header__nav-link--profile" href="#">
-                  <div className="header__avatar-wrapper user__avatar-wrapper">
-                  </div>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                </a>
+                {isAuthorized ? (
+                  <Link to={AppPaths.getRoot()} className="header__nav-link header__nav-link--profile" href="#">
+                    <div
+                      className={`header__avatar-wrapper ${user.isPro ? `header__avatar-wrapper--pro` : ``} user__avatar-wrapper`}
+                      style={{backgroundImage: `url(${END_POINT}${user.avatar})`}}
+                    >
+                    </div>
+                    {userName}
+                  </Link>
+                ) : (
+                  <Link to={AppPaths.getLogin()}>Sign in</Link>
+                )}
               </li>
             </ul>
           </nav>
@@ -27,4 +52,16 @@ const Header = () => {
   );
 };
 
-export default Header;
+
+Header.propTypes = {
+  isAuthorized: PropTypes.bool.isRequired,
+  user: UserPropType,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthorized: getAuthStatus(state),
+  user: getUserInfo(state),
+});
+
+export {Header};
+export default connect(mapStateToProps)(Header);

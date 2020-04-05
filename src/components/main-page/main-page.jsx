@@ -2,14 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/actions/action-creator';
-import NameSpace from '../../store/name-space';
 import CityPropType from '../../prop-types/city';
 import OfferPropType from '../../prop-types/offer';
 import Header from '../header/header.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
 import MainOffers from '../main-offers/main-offers.jsx';
 import MainEmpty from '../main-empty/main-empty.jsx';
-import {getCitiesList, getCurrentCity, getCurrentOffers} from '../../store/reducers/data/selectors';
+import Loader from '../loader/loader.jsx';
+import {
+  getCitiesList,
+  getCurrentCity,
+  getCurrentOffers,
+} from '../../store/reducers/data/selectors';
 
 
 const MainPage = (props) => {
@@ -20,6 +24,7 @@ const MainPage = (props) => {
       <Header/>
 
       <main className="page__main page__main--index">
+        <Loader/>
         <h1 className="visually-hidden">Cities</h1>
         <CitiesList cities={cities} currentCity={currentCity} onChangeCity={onChangeCity}/>
         {currentOffers.length > 0

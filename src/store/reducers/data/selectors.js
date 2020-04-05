@@ -4,21 +4,13 @@ import {getSortedOffers} from '../../../utils/sorting';
 
 const NAME_SPACE = NameSpace.DATA;
 
-const getOffers = (state) => {
-  return state[NAME_SPACE].offers;
-};
+const getOffers = (state) => state[NAME_SPACE].offers;
 
-const getCurrentCity = (state) => {
-  return state[NAME_SPACE].currentCity;
-};
+const getCurrentCity = (state) => state[NAME_SPACE].currentCity;
 
-const getCitiesList = (state) => {
-  return state[NAME_SPACE].cities;
-};
+const getCitiesList = (state) => state[NAME_SPACE].cities;
 
-const getActiveSortType = (state) => {
-  return state[NAME_SPACE].sortType;
-};
+const getActiveSortType = (state) => state[NAME_SPACE].sortType;
 
 const getCurrentOffers = createSelector(
     [getCurrentCity, getActiveSortType, getOffers],

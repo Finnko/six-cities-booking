@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {features} from '../../const';
 import OffersList from './offers-list.jsx';
-import {BrowserRouter} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 
 const mockDate = new Date(1583591483969).valueOf();
 const mocks = [
@@ -188,12 +188,12 @@ const mocks = [
 it(`Should OffersList component render correctly`, () => {
   const tree = renderer
     .create(
-        <BrowserRouter>
+        <Router>
           <OffersList
             isNearByView={false}
             offersCards={mocks}
           />
-        </BrowserRouter>)
+        </Router>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

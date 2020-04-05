@@ -4,7 +4,7 @@ import {MainPage} from './main-page.jsx';
 import {features, SortType} from '../../const';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
-import {BrowserRouter} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 import NameSpace from '../../store/name-space';
 
 const mockDate = new Date(1583591483969).valueOf();
@@ -211,9 +211,9 @@ it(`Should MainPage component render correctly`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <BrowserRouter>
+          <Router>
             <MainPage {...props}/>
-          </BrowserRouter>
+          </Router>
         </Provider>, {
           createNodeMock: () => {
             return document.createElement(`div`);
