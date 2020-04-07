@@ -5,8 +5,8 @@ import OfferPropType from '../../prop-types/offer';
 import Map from '../map/map.jsx';
 import OffersSorting from '../offers-sorting/offers-sorting.jsx';
 import OffersList from '../offers-list/offers-list.jsx';
-import withActiveFlag from '../../hocs/withActiveFlag/withActiveFlag.js';
-import withHoveredItem from '../../hocs/withHoveredItem/withHoveredItem.js';
+import withActiveFlag from '../../hocs/withActiveFlag/with-active-flag.js';
+import withHoveredItem from '../../hocs/withHoveredItem/with-hovered-item.js';
 
 const OffersSortingWithActiveFlag = withActiveFlag(OffersSorting);
 
@@ -31,7 +31,7 @@ const MainOffers = ({currentCity, currentOffers, hoveredItem, onMouseEnter, onMo
 
 MainOffers.propTypes = {
   currentCity: CityPropType.isRequired,
-  hoveredItem: PropTypes.string,
+  hoveredItem: PropTypes.number,
   onMouseLeave: PropTypes.func,
   onMouseEnter: PropTypes.func,
   currentOffers: PropTypes.arrayOf(OfferPropType).isRequired,

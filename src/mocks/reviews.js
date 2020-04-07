@@ -1,4 +1,4 @@
-import {getRandomRating, getRandomDate} from '../utils';
+import {getRandomRating, getRandomDate} from '../utils/common';
 
 
 const reviews = [

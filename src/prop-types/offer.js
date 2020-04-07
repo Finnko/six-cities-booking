@@ -4,7 +4,7 @@ import ReviewPropType from './review';
 
 
 const OfferPropType = PropTypes.shape({
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   coords: PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
@@ -12,7 +12,7 @@ const OfferPropType = PropTypes.shape({
   }),
   city: CityPropType.isRequired,
   title: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
   promoImage: PropTypes.string.isRequired,
   isFavorite: PropTypes.bool,
@@ -23,12 +23,13 @@ const OfferPropType = PropTypes.shape({
   images: PropTypes.arrayOf(PropTypes.string),
   features: PropTypes.arrayOf(PropTypes.string).isRequired,
   owner: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
-    description: PropTypes.arrayOf(PropTypes.string).isRequired,
-    isPro: PropTypes.bool.isRequired
+    id: PropTypes.number,
+    name: PropTypes.string,
+    avatar: PropTypes.string,
+    description: PropTypes.arrayOf(PropTypes.string),
+    isPro: PropTypes.bool
   }).isRequired,
-  reviews: PropTypes.arrayOf(ReviewPropType).isRequired,
+  reviews: PropTypes.arrayOf(ReviewPropType),
 });
 
 export default OfferPropType;

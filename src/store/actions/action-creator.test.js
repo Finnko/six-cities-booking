@@ -1,4 +1,4 @@
-import {actionTypes} from './actionTypes';
+import {actionTypes} from './action-types';
 import {ActionCreator} from './action-creator';
 
 describe(`Test ActionCreator works correctly`, () => {

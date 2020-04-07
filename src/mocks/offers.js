@@ -1,5 +1,5 @@
 import nanoid from 'nanoid';
-import {getRandomRating, getRandomArray} from '../utils';
+import {getRandomRating, getRandomArray} from '../utils/common';
 import {features} from '../const';
 import reviews from './reviews';
 

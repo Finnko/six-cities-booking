@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getNearByOffers, getOfferById} from '../../store/reducers/data/data-reducer';
+import {getOfferById} from '../../store/reducers/data/data-reducer';
 import NameSpace from '../../store/name-space';
 import OfferPropType from '../../prop-types/offer';
 import CityPropType from '../../prop-types/city';
@@ -21,7 +21,7 @@ const OfferDetails = ({currentOffer, nearByOffers, currentCity}) => {
         <div className="property__container container">
           <div className="property__wrapper">
             <Offer offer={currentOffer}/>
-            <ReviewsList reviews={reviews}/>
+            {/*<ReviewsList reviews={reviews}/>*/}
           </div>
         </div>
         <Map isNearByView={true} currentCity={currentCity} offers={nearByOffers}/>

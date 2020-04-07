@@ -1,10 +1,10 @@
 import React, {Fragment} from 'react';
 import OfferPropType from '../../prop-types/offer';
-import {getRatingPercentage} from '../../utils';
+import {getRatingPercentage} from '../../utils/common';
 
 const Offer = ({offer}) => {
-  const {title, type, price, isPremium, rating, roomsCount, guestsCount, features} = offer;
-  const {name, avatar, description, isPro} = offer.owner;
+  const {title, type, price, isPremium, rating, roomsCount, guestsCount, features, description} = offer;
+  const {name, avatar, isPro} = offer.owner;
 
   const premium = !isPremium ? `` : (
     <div className="property__mark">
@@ -68,9 +68,9 @@ const Offer = ({offer}) => {
           </span>
         </div>
         <div className="property__description">
-          {description.map((paragraph, index) => (
-            <p key={paragraph + index} className="property__text">{paragraph}</p>
-          ))}
+          <p className="property__text">
+            {description}
+          </p>
         </div>
       </div>
     </Fragment>
