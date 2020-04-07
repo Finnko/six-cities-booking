@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OffersCard from '../offers-card/offers-card.jsx';
+import {AppViewMode} from '../../const';
 import OfferPropType from '../../prop-types/offer';
+import OffersCard from '../offers-card/offers-card.jsx';
 
 const OffersList = (props) => {
-  const {offersCards, isNearByView, onMouseEnter, onMouseLeave} = props;
+  const {offersCards, viewMode, onMouseEnter, onMouseLeave} = props;
+  const isNearByView = viewMode === AppViewMode.DETAILS;
 
   return (
     <div className={`places__list ${isNearByView ? `near-places__list` : `cities__places-list tabs__content` }`}>
@@ -23,7 +25,7 @@ const OffersList = (props) => {
 OffersList.propTypes = {
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
-  isNearByView: PropTypes.bool.isRequired,
+  viewMode: PropTypes.string.isRequired,
   offersCards: PropTypes.arrayOf(OfferPropType).isRequired,
 };
 

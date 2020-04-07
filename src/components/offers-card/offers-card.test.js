@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {BrowserRouter} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 import OffersCard from './offers-card.jsx';
 
 const mockDate = new Date(1583591483969).valueOf();
@@ -69,14 +69,14 @@ const mock = {
 it(`Should OffersCard component render correctly`, () => {
   const tree = renderer
     .create(
-        <BrowserRouter>
+        <Router>
           <OffersCard
             offer={mock}
             isNearByView={false}
             onCardMouseEnter={() => {}}
             onCardMouseLeave={() => {}}
           />)
-        </BrowserRouter>)
+        </Router>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
