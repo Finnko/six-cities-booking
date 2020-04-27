@@ -19,8 +19,6 @@ const Operation = {
 
         dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.changeAuthData(authData));
-
-        history.push(`/`);
       })
       .catch((err) => {
         if (err.response.status === ServerError.UNAUTHORIZED) {
@@ -35,6 +33,8 @@ const Operation = {
 
         dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.changeAuthData(authData));
+
+        history.push(`/`);
       })
       .catch((err) => {
         if (err.response.status === ServerError.BAD_REQUEST) {

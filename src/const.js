@@ -36,6 +36,14 @@ const sortTypes = [
   SortType.TOPRATED
 ];
 
+const REVIEW_RATING_VALUES = [
+  {value: 5, title: `perfect`},
+  {value: 4, title: `good`},
+  {value: 3, title: `not bad`},
+  {value: 2, title: `badly`},
+  {value: 1, title: `terribly`},
+];
+
 const AppViewMode = {
   MAIN: `Main`,
   DETAILS: `Details`
@@ -72,5 +80,5 @@ const END_POINT = `https://htmlacademy-react-3.appspot.com/six-cities`;
 const TIMEOUT = 1000 * 5;
 
 export {features, SortType, sortTypes, AppPaths, AppViewMode, END_POINT,
-  TIMEOUT, INITIAL_CITY, AuthorizationStatus, ServerError
+  TIMEOUT, INITIAL_CITY, AuthorizationStatus, ServerError, REVIEW_RATING_VALUES
 };

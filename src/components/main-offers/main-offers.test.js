@@ -2,10 +2,11 @@ import React from "react";
 import renderer from "react-test-renderer";
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
-import {Router} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 import {features, SortType} from '../../const';
 import NameSpace from '../../store/name-space';
 import MainOffers from './main-offers.jsx';
+
 
 const mockDate = new Date(1583591483969).valueOf();
 const mocks = [
@@ -209,9 +210,9 @@ it(`Should MainOffers component render correctly`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <Router>
+          <BrowserRouter>
             <MainOffers {...props}/>
-          </Router>
+          </BrowserRouter>
         </Provider>, {
           createNodeMock: () => {
             return document.createElement(`div`);
