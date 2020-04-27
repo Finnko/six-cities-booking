@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {getRatingPercentage} from '../../utils/common';
+import {getRatingPercentage, getUpperCaseFirstLetter} from '../../utils/common';
 import OfferPropType from '../../prop-types/offer';
 
 const OffersCard = ({offer, isNearByView, onCardMouseEnter, onCardMouseLeave}) => {
@@ -51,7 +51,7 @@ const OffersCard = ({offer, isNearByView, onCardMouseEnter, onCardMouseLeave}) =
         <h2 className="place-card__name">
           <Link to={`/offer/${id}`} >{title}</Link>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{getUpperCaseFirstLetter(type)}</p>
       </div>
     </article>
   );
