@@ -184,12 +184,17 @@ const mocks = [
   },
 ];
 
-it(`<Map /> should be render correctly`, () => {
-  const tree = renderer.create(<Map offers={mocks} currentCity={mocks[0].city} isNearByView={false}/>, {
-    createNodeMock: () => {
-      return document.createElement(`div`);
-    }
-  }).toJSON();
+it(`Map should be render correctly`, () => {
+  const tree = renderer.create(
+      <Map
+        offers={mocks}
+        currentCity={mocks[0].city}
+        isNearByView={false}
+      />, {
+        createNodeMock: () => {
+          return document.createElement(`div`);
+        }
+      }).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

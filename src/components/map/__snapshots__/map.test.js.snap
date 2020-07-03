@@ -14,3 +14,18 @@ exports[`<Map /> should be render correctly 1`] = `
   />
 </section>
 `;
+
+exports[`Map should be render correctly 1`] = `
+<section
+  className="map cities__map"
+>
+  <div
+    id="map"
+    style={
+      Object {
+        "height": "100%",
+      }
+    }
+  />
+</section>
+`;
