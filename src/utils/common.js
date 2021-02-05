@@ -1,5 +1,3 @@
-import moment from "moment";
-
 const OFFER_MAX_RATING = 5;
 
 const extend = (a, b) => {
@@ -38,18 +36,18 @@ const getRandomDate = () => {
   return targetDate.getTime() + diffValue;
 };
 
-const getTimeTagFormatted = (date) => {
-  return moment(date).format(`YYYY-MM-DD`);
-};
-
-const getFormattedDate = (date) => {
-  return moment(date).format(`MMMM, YYYY`);
-};
+// const getTimeTagFormatted = (date) => {
+//   return moment(date).format(`YYYY-MM-DD`);
+// };
+//
+// const getFormattedDate = (date) => {
+//   return moment(date).format(`MMMM, YYYY`);
+// };
 
 const getRandomRating = () => parseFloat((Math.random() * OFFER_MAX_RATING).toFixed(1));
 
 const getRatingPercentage = (rating) => rating * 100 / OFFER_MAX_RATING;
 
 export {extend, getRandomRating, getRandomArray, getRatingPercentage, getRandomDate,
-  getTimeTagFormatted, getFormattedDate, getUpperCaseFirstLetter, getCities,
+ getUpperCaseFirstLetter, getCities,
 };

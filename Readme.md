@@ -7,9 +7,6 @@
 Запуск в prod режиме `npm run build`
 
 ---
-Минимально работающая версия
-
-[WIP:Демо](http://sixcities.alexkhab.ru)
 
 ---
 
