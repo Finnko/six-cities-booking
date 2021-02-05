@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import UserPropType from '../../prop-types/user';
+import UserPropType from '../../interfaces/user';
 import {getAuthStatus, getUserInfo} from '../../store/reducers/user/selectors';
 import {AppPaths, END_POINT} from '../../const';
 

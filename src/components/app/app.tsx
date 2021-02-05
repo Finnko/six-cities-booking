@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 
 interface AppProps {
-  name: boolean;
+  name: string;
 }
 
-const App: React.FC<AppProps> = (props: AppProps) => <h1>{props.name}</h1>;
+const App: React.FC<AppProps> = ({name}) => <h1>{name}</h1>;
 
 export default App;

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Operation as UserOperation} from '../../store/reducers/user/user-reducer';
 import Header from '../header/header.jsx';
 import {getCurrentCity} from '../../store/reducers/data/selectors';
-import CityPropType from '../../prop-types/city';
+import CityPropType from '../../interfaces/city';
 
 class SignIn extends PureComponent {
   constructor(props) {

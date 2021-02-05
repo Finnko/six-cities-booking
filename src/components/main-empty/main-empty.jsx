@@ -1,5 +1,5 @@
 import React from 'react';
-import CityPropType from '../../prop-types/city';
+import CityPropType from '../../interfaces/city';
 
 const MainEmpty = ({currentCity}) => {
 

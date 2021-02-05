@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import OfferPropType from '../../prop-types/offer';
+import OfferPropType from '../../interfaces/offer';
 import {getRatingPercentage} from '../../utils/common';
 
 const Offer = ({offer}) => {

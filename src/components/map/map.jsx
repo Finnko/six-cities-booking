@@ -1,6 +1,6 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
-import CityPropType from '../../prop-types/city';
+import CityPropType from '../../interfaces/city';
 import leaflet from "leaflet";
 import {AppViewMode} from '../../const';
 

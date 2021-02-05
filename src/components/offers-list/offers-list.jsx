@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {AppViewMode} from '../../const';
-import OfferPropType from '../../prop-types/offer';
+import OfferPropType from '../../interfaces/offer';
 import OffersCard from '../offers-card/offers-card.jsx';
 
 const OffersList = (props) => {
