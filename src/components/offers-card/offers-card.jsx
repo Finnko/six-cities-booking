@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {getRatingPercentage, getUpperCaseFirstLetter} from '../../utils/common';
-import OfferPropType from '../../prop-types/offer';
+import OfferPropType from '../../interfaces/offer';
 
 const OffersCard = ({offer, isNearByView, onCardMouseEnter, onCardMouseLeave}) => {
   const {id, title, type, price, promoImage, rating, isPremium, isFavorite} = offer;

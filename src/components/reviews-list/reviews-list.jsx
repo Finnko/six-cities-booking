@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReviewPropType from '../../prop-types/review';
+import ReviewPropType from '../../interfaces/review';
 import Review from '../review/review.jsx';
 
 const MAX_REVIEWS_TO_SHOW = 10;
