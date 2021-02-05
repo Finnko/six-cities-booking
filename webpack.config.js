@@ -1,18 +1,20 @@
-const path = require(`path`);
+const path = require('path');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = (env) => {
-  const isDev = env.mode === `development`;
+  const isDev = env.mode === 'development';
   const isProd = !isDev;
 
   return {
-    entry: `./src/index.js`,
-    mode: isProd ? `production` : isDev && `development`,
+    entry: './src/index.tsx',
+    mode: isProd ? 'production' : isDev && 'development',
     output: {
-      filename: `bundle.js`,
-      path: path.join(__dirname, `public/`)
+      filename: 'bundle.js',
+      path: path.join(__dirname, 'public/')
     },
+    devtool: isDev ? 'eval-source-map' : false,
     devServer: {
-      contentBase: `public`,
+      contentBase: 'public',
       hot: true,
       open: true,
       port: 1337,
@@ -21,21 +23,19 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(js|jsx|tsx|ts)$/,
           exclude: /node_modules/,
           use: {
-            loader: `babel-loader`,
+            loader: 'babel-loader',
           },
-        },
-        {
-          test: /\.(tsx|ts)?$/,
-          loader: `ts-loader`,
-        },
+        }
       ],
     },
     resolve: {
-      extensions: [`.ts`, `.tsx`, `.js`, `json`]
+      extensions: ['.ts', '.tsx', '.js', 'json']
     },
-    devtool: isDev ? `eval-source-map` : false,
+    plugins: [
+      new ForkTsCheckerWebpackPlugin()
+    ],
   };
 };

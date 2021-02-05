@@ -1,6 +1,6 @@
 import React from 'react';
 import {getFormattedDate, getRatingPercentage, getTimeTagFormatted} from '../../utils/common';
-import ReviewPropType from '../../prop-types/review';
+import ReviewPropType from '../../interfaces/review';
 
 const Review = ({review}) => {
   const {name, avatar, rating, description, date} = review;
