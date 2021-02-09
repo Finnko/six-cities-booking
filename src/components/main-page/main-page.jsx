@@ -24,7 +24,6 @@ const MainPage = (props) => {
       <Header/>
 
       <main className="page__main page__main--index">
-        <Loader/>
         <h1 className="visually-hidden">Cities</h1>
         <CitiesList cities={cities} currentCity={currentCity} onChangeCity={onChangeCity}/>
         {currentOffers.length > 0
