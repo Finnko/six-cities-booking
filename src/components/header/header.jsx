@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import UserPropType from '../../interfaces/user';
-import {getAuthStatus, getUserInfo} from '../../store/reducers/user/selectors';
+
 import {AppPaths, END_POINT} from '../../const';
+import UserPropType from '../../interfaces/user';
+import {getAuthStatus, getUserInfo} from '../../redux/reducers/user/selectors';
 
 const Header = ({isAuthorized, user}) => {
   const userName = isAuthorized
@@ -34,14 +35,14 @@ const Header = ({isAuthorized, user}) => {
                 {isAuthorized ? (
                   <Link to={AppPaths.getRoot()} className="header__nav-link header__nav-link--profile" href="#">
                     <div
-                      className={`header__avatar-wrapper ${user.isPro ? `header__avatar-wrapper--pro` : ``} user__avatar-wrapper`}
+                      className={`header__avatar-wrapper ${user.isPro ? 'header__avatar-wrapper--pro' : ''} user__avatar-wrapper`}
                       style={{backgroundImage: `url(${END_POINT}${user.avatar})`}}
                     >
                     </div>
                     {userName}
                   </Link>
                 ) : (
-                  <Link to={AppPaths.getLogin()}>Sign in</Link>
+                  <Link to={AppPaths.getRoot()}>Sign in</Link>
                 )}
               </li>
             </ul>
@@ -58,7 +59,7 @@ Header.propTypes = {
   user: UserPropType,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isAuthorized: getAuthStatus(state),
   user: getUserInfo(state),
 });

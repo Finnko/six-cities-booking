@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {SortType} from '../../const';
-import NameSpace from '../../store/name-space';
-import {ActionCreator} from '../../store/actions/action-creator';
+import NameSpace from '../../redux/name-space';
+import {ActionCreator} from '../../redux/actions/action-creator';
 
 const OffersSorting = ({isActive, activeSortType, onSortTypeChange, onActiveChange}) => {
   const renderSortOptions = () => {

@@ -1,9 +1,5 @@
 const OFFER_MAX_RATING = 5;
 
-const extend = (a, b) => {
-  return Object.assign({}, a, b);
-};
-
 const getUpperCaseFirstLetter = (str) => str.substr(0, 1).toUpperCase() + str.slice(1);
 
 const getCities = (items) => {
@@ -16,13 +12,6 @@ const getCities = (items) => {
   });
 
   return Object.values(cityMap);
-};
-
-const getRandomArrayNumber = (array) => Math.floor(Math.random() * array.length);
-
-const getRandomArray = (array) => {
-  const randomNumber = getRandomArrayNumber(array);
-  return array.slice(0, randomNumber);
 };
 
 const getRandomInRange = function (min, max) {
@@ -48,6 +37,6 @@ const getRandomRating = () => parseFloat((Math.random() * OFFER_MAX_RATING).toFi
 
 const getRatingPercentage = (rating) => rating * 100 / OFFER_MAX_RATING;
 
-export {extend, getRandomRating, getRandomArray, getRatingPercentage, getRandomDate,
+export {getRandomRating, getRatingPercentage, getRandomDate,
  getUpperCaseFirstLetter, getCities,
 };

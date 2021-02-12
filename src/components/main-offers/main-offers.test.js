@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 import {features, SortType} from '../../const';
-import NameSpace from '../../store/name-space';
+import NameSpace from '../../redux/name-space';
 import MainOffers from './main-offers.jsx';
 
 

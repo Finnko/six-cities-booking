@@ -1,12 +1,13 @@
 import {ICity} from './city';
 
-interface IOffer extends ICity {
+interface IOffer {
   id: number;
   coords: {
     latitude: number;
     longitude: number;
     zoom: number;
   };
+  city: ICity;
   title: string;
   price: number;
   type: string;
