@@ -1,9 +1,8 @@
 import React from 'react';
+
 import CityPropType from '../../interfaces/city';
 
-const MainEmpty = ({currentCity}) => {
-
-  return (
+const MainEmpty = ({currentCity}) => (
     <div className="cities">
       <div className="cities__places-container cities__places-container--empty container">
         <section className="cities__no-places">
@@ -18,7 +17,6 @@ const MainEmpty = ({currentCity}) => {
       </div>
     </div>
   );
-};
 
 MainEmpty.propTypes = {
   currentCity: CityPropType.isRequired,
