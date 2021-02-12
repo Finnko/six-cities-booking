@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 import {AppPaths, END_POINT} from '../../const';
 import UserPropType from '../../interfaces/user';
-import {getAuthStatus, getUserInfo} from '../../store/reducers/user/selectors';
+import {getAuthStatus, getUserInfo} from '../../redux/reducers/user/selectors';
 
 const Header = ({isAuthorized, user}) => {
   const userName = isAuthorized

@@ -4,7 +4,7 @@ import {OffersSorting} from './offers-sorting.jsx';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {SortType} from '../../const';
-import NameSpace from '../../store/name-space';
+import NameSpace from '../../redux/name-space';
 
 const mockStore = configureStore([]);
 

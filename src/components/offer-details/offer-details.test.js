@@ -5,7 +5,7 @@ import {features} from '../../const';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {Router} from 'react-router-dom';
-import NameSpace from '../../store/name-space';
+import NameSpace from '../../redux/name-space';
 
 const mockDate = new Date(1583591483969).valueOf();
 const mock = {

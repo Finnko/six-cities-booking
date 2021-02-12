@@ -45,22 +45,23 @@ const AuthorizationStatus = {
   AUTH: 'AUTH',
 };
 
-const AppPaths = {
-  getAuth: (): string => '/login',
-  getOffers: (): string => '/hotels',
-  getOffer: (id: number): string => `/offer/${id}`,
-  getOffersNearby: (id: number): string => `/hotels/${id}/nearby`,
-  getRoot: (): string => '/',
-};
-
 const ServerError = {
   UNAUTHORIZED: 401,
   BAD_REQUEST: 400,
 };
 
 const END_POINT = 'https://6.react.pages.academy/six-cities';
+
 const TIMEOUT = 1000 * 5;
 
-export {Features, SortType, AppPaths, AppViewMode, END_POINT,
-  TIMEOUT, INITIAL_CITY, AuthorizationStatus, ServerError, REVIEW_RATING_VALUES
+export {
+  Features,
+  SortType,
+  AppViewMode,
+  END_POINT,
+  TIMEOUT,
+  INITIAL_CITY,
+  AuthorizationStatus,
+  ServerError,
+  REVIEW_RATING_VALUES,
 };
