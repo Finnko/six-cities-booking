@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CityPropType from '../../interfaces/city';
 
-const CitiesList = ({cities, currentCity, onChangeCity}) => {
+const CityTabs = ({cities, currentCity, onChangeCity}) => {
   return (
     <div className="tabs">
       <section className="locations container">
@@ -29,10 +29,10 @@ const CitiesList = ({cities, currentCity, onChangeCity}) => {
   );
 };
 
-CitiesList.propTypes = {
+CityTabs.propTypes = {
   onChangeCity: PropTypes.func.isRequired,
   currentCity: CityPropType,
   cities: PropTypes.arrayOf(CityPropType).isRequired,
 };
 
-export default CitiesList;
+export default CityTabs;

@@ -5,7 +5,7 @@ import OfferPropType from '../../interfaces/offer';
 import {AppViewMode} from '../../const';
 import Map from '../map/map.jsx';
 import OffersSorting from '../offers-sorting/offers-sorting.jsx';
-import OffersList from '../offers-list/offers-list.jsx';
+import OffersList from '../OffersList/offers-list.jsx';
 import withActiveFlag from '../../hocs/withActiveFlag/with-active-flag.js';
 import withHoveredItem from '../../hocs/withHoveredItem/with-hovered-item.js';
 

@@ -2,7 +2,7 @@ import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Operation as UserOperation} from '../../redux/reducers/user/user-reducer';
-import Header from '../header/header.jsx';
+import Header from '../Header/header.jsx';
 import {getCurrentCity} from '../../redux/reducers/data/selectors';
 import CityPropType from '../../interfaces/city';
 

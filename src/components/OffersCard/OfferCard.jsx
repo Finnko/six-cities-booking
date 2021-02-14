@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {getRatingPercentage, getUpperCaseFirstLetter} from '../../utils/common';
 import OfferPropType from '../../interfaces/offer';
 
-const OffersCard = ({offer, isNearByView, onCardMouseEnter, onCardMouseLeave}) => {
+const OfferCard = ({offer, isNearByView, onCardMouseEnter, onCardMouseLeave}) => {
   const {id, title, type, price, promoImage, rating, isPremium, isFavorite} = offer;
 
   const handleMouseEnter = () => onCardMouseEnter(id);
@@ -57,11 +57,11 @@ const OffersCard = ({offer, isNearByView, onCardMouseEnter, onCardMouseLeave}) =
   );
 };
 
-OffersCard.propTypes = {
+OfferCard.propTypes = {
   onCardMouseEnter: PropTypes.func,
   onCardMouseLeave: PropTypes.func,
   isNearByView: PropTypes.bool.isRequired,
   offer: OfferPropType.isRequired,
 };
 
-export default OffersCard;
+export default OfferCard;
