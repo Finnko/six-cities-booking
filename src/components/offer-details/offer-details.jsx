@@ -7,7 +7,7 @@ import OfferPropType from '../../interfaces/offer';
 import CityPropType from '../../interfaces/city';
 import Offer from '../offer/offer.jsx';
 import OffersList from '../OffersList/offers-list.jsx';
-import Map from '../map/map.jsx';
+import Map from '../Map/map.jsx';
 import OfferGallery from '../offer-gallery/offer-gallery.jsx';
 import ReviewsList from '../reviews-list/reviews-list.jsx';
 

@@ -1,8 +1,9 @@
 import {ICity} from './city';
 
+
 interface IOffer {
   id: number;
-  coords: {
+  location: {
     latitude: number;
     longitude: number;
     zoom: number;
@@ -11,19 +12,19 @@ interface IOffer {
   title: string;
   price: number;
   type: string;
-  promoImage: string;
+  description: string;
+  previewImage: string;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
-  roomsCount: number;
-  guestsCount: number;
+  bedrooms: number;
+  maxAdults: number;
   images: string[];
-  features: string[];
-  owner: {
+  goods: string[];
+  host: {
     id: number;
     name: string;
-    avatar: string;
-    description: string[];
+    avatarUrl: string;
     isPro: boolean;
   };
 }

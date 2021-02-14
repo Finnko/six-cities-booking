@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {fetchOffers} from '../../redux/features/offersSlice';
-import { RootState} from '../../redux/rootReducer';
+import Header from '../../components/Header/Header';
+import MainOffers from '../../components/main-offers/MainOffers';
+import { fetchOffers } from '../../redux/features/offersSlice';
+import { RootState } from '../../redux/rootReducer';
 
 
-const Main = () => {
+const Main: React.FC = () => {
   const dispatch = useDispatch();
 
   const {
@@ -27,22 +29,20 @@ const Main = () => {
     );
   }
 
-  const renderedList = isPending ? (
-    <h3>Loading...</h3>
-  ) : (
-    offers.map((offer, i) => <h3 key={i}>{offer.title}</h3>)
-  );
+  if (isPending) {
+    return <h3>Loading...</h3>;
+  }
 
   return (
     <div className="page page--gray page--main">
-      {/* <Header/>*/}
+      <Header/>
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        {renderedList}
         {/* <CitiesList cities={cities} currentCity={currentCity} onChangeCity={onChangeCity}/>*/}
-        {/* {currentOffers.length > 0*/}
-        {/*  ? <MainOffers currentCity={currentCity} currentOffers={currentOffers}/>*/}
+
+        {/* {offers.length > 0*/}
+        <MainOffers offers={offers} />
         {/*  : <MainEmpty currentCity={currentCity}/>}*/}
       </main>
     </div>

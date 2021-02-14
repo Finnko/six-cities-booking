@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+
 import {END_POINT} from '../const';
 import {IOffer} from '../interfaces/offer';
+import {renameKeys} from '../utils/common';
 
 interface OffersResult {
   offers: IOffer[];
@@ -21,9 +23,10 @@ async function getOffers(): Promise<OffersResult> {
 
   try {
     const offersResponse = await axios.get<IOffer[]>(url);
+    const adaptedData = offersResponse.data.map(renameKeys);
 
     return {
-      offers: offersResponse.data
+      offers: adaptedData
     };
   } catch (err) {
     throw err;
