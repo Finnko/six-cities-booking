@@ -1,5 +1,5 @@
-import {SortType} from '../const';
-import {IOffer} from '../interfaces/offer';
+import { SortType } from '../const';
+import { IOffer } from '../interfaces/offer';
 
 const sortOffers = (offers: IOffer[], sortType: string): IOffer[] => {
   switch (sortType) {
@@ -14,4 +14,4 @@ const sortOffers = (offers: IOffer[], sortType: string): IOffer[] => {
   }
 };
 
-export {sortOffers};
+export { sortOffers };

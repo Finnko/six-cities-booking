@@ -1,34 +1,30 @@
 import { createSelector } from 'reselect';
 
 import { RootState } from '../../app/rootReducer';
+import { ICity } from '../../interfaces/city';
+import { sortOffers } from '../../utils/sort';
+import { selectActiveCity, selectSortType } from '../ui/uiSlice';
 
 const selectOffers = (state: RootState) => state.offers.offers;
 
-const selectCurrentCity = createSelector(
-  selectOffers,
-  offers => offers[0] ? offers[0].city : [52.37454, 4.897976]
-);
-
 const selectCities = createSelector(
   selectOffers,
-  offers => new Set([...offers.map(offer => offer.city.name)])
+  offers => [...new Set(offers.map(({city}) => city))]
 );
 
-// const getCurrentOffers = createSelector(
-//   [getCurrentCity, getActiveSortType, getOffers],
-//   (activeCity, activeSortType, offers) => {
-//     const filteredOffers = offers.filter((offer) => offer.city.name === activeCity.name);
-//
-//     return getSortedOffers(filteredOffers, activeSortType);
-//   }
-// );
-
+const selectActualCity = createSelector(
+  [selectCities, selectActiveCity],
+  (cities: ICity[], activeCity: string) => cities.find(city => city.name === activeCity)
+);
 
 const selectCurrentOffers = createSelector(
-  selectOffers,
-  selectCurrentCity,
-  (offers, city) => offers.filter(offer => offer.city.name === city)
+  [selectActiveCity, selectSortType, selectOffers],
+  (activeCity, activeSortType, offers) => {
+    const filteredOffers = offers.filter(({city}) => city.name === activeCity);
+
+    return sortOffers(filteredOffers, activeSortType);
+  }
 );
 
-export { selectCities, selectCurrentCity };
+export { selectActualCity, selectCurrentOffers };
 

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import {SortType, DEFAULT_CITY} from '../../const';
+import { RootState } from '../../app/rootReducer';
+import { SortType, DEFAULT_CITY } from '../../const';
 
 
 interface uiDisplayState {
@@ -26,11 +27,18 @@ const ui = createSlice({
   }
 });
 
+const selectActiveCity = (state: RootState): string => state.ui.activeCity;
+const selectSortType = (state: RootState): string => state.ui.sortType;
 
 export const {
   changeCity,
   changeSortType,
 } = ui.actions;
+
+export {
+  selectActiveCity,
+  selectSortType,
+};
 
 export default ui.reducer;
 

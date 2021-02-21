@@ -19,7 +19,7 @@ const DEFAULT_CITY = {
   }
 };
 
-const Features = {
+const Features: { [unit: string]: string } = {
   WIFI: 'Wi-Fi',
   WASHING_MACHINE: 'Washing machine',
   TOWELS: 'Towels',
@@ -32,7 +32,7 @@ const Features = {
   FRIDGE: 'Fridge',
 };
 
-const SortType = {
+const SortType: { [unit: string]: string } = {
   POPULAR: 'Popular',
   PRICE_TO_HIGH: 'Price: low to high',
   PRICE_TO_LOW: 'Price: high to low',
@@ -47,12 +47,12 @@ const SortType = {
 //   {value: 1, title: 'terribly'},
 // ];
 
-const AuthorizationStatus = {
+const AuthorizationStatus: { [unit: string]: string } = {
   NO_AUTH: 'NO_AUTH',
   AUTH: 'AUTH',
 };
 
-const ServerError = {
+const ServerError: { [unit: string]: number} = {
   UNAUTHORIZED: 401,
   BAD_REQUEST: 400,
 };
