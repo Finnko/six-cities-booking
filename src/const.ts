@@ -1,4 +1,25 @@
-const Features = {
+const END_POINT = 'https://6.react.pages.academy/six-cities';
+const TIMEOUT = 1000 * 5;
+
+const DEFAULT_CITIES = [
+  'Paris',
+  'Cologne',
+  'Brussels',
+  'Amsterdam',
+  'Hamburg',
+  'Dusseldorf',
+];
+
+const DEFAULT_CITY = {
+  name: 'Paris',
+  location: {
+    latitude: 48.85661,
+    longitude: 2.351499,
+    zoom: 13,
+  }
+};
+
+const Features: { [unit: string]: string } = {
   WIFI: 'Wi-Fi',
   WASHING_MACHINE: 'Washing machine',
   TOWELS: 'Towels',
@@ -8,60 +29,42 @@ const Features = {
   KITCHEN: 'Kitchen',
   DISHWASHER: 'Dishwasher',
   CABLE_TV: 'Cabel TV',
-  FRIDGE: 'Fridge'
+  FRIDGE: 'Fridge',
 };
 
-const SortType = {
+const SortType: { [unit: string]: string } = {
   POPULAR: 'Popular',
   PRICE_TO_HIGH: 'Price: low to high',
   PRICE_TO_LOW: 'Price: high to low',
-  TOP_RATED: 'Top rated first'
+  TOP_RATED: 'Top rated first',
 };
 
-const REVIEW_RATING_VALUES = [
-  {value: 5, title: 'perfect'},
-  {value: 4, title: 'good'},
-  {value: 3, title: 'not bad'},
-  {value: 2, title: 'badly'},
-  {value: 1, title: 'terribly'},
-];
+// const REVIEW_RATING_VALUES = [
+//   {value: 5, title: 'perfect'},
+//   {value: 4, title: 'good'},
+//   {value: 3, title: 'not bad'},
+//   {value: 2, title: 'badly'},
+//   {value: 1, title: 'terribly'},
+// ];
 
-const AppViewMode = {
-  MAIN: 'Main',
-  DETAILS: 'Details'
-};
-
-const INITIAL_CITY = {
-  'name': 'Amsterdam',
-  'coords': {
-    'latitude': 52.37454,
-    'longitude': 4.897976,
-    'zoom': 13
-  }
-};
-
-const AuthorizationStatus = {
+const AuthorizationStatus: { [unit: string]: string } = {
   NO_AUTH: 'NO_AUTH',
   AUTH: 'AUTH',
 };
 
-const ServerError = {
+const ServerError: { [unit: string]: number} = {
   UNAUTHORIZED: 401,
   BAD_REQUEST: 400,
 };
 
-const END_POINT = 'https://6.react.pages.academy/six-cities';
-
-const TIMEOUT = 1000 * 5;
 
 export {
   Features,
   SortType,
-  AppViewMode,
   END_POINT,
   TIMEOUT,
-  INITIAL_CITY,
+  DEFAULT_CITIES,
+  DEFAULT_CITY,
   AuthorizationStatus,
   ServerError,
-  REVIEW_RATING_VALUES,
 };
