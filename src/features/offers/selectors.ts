@@ -14,6 +14,16 @@ const selectCities = createSelector(
   offers => new Set([...offers.map(offer => offer.city.name)])
 );
 
+// const getCurrentOffers = createSelector(
+//   [getCurrentCity, getActiveSortType, getOffers],
+//   (activeCity, activeSortType, offers) => {
+//     const filteredOffers = offers.filter((offer) => offer.city.name === activeCity.name);
+//
+//     return getSortedOffers(filteredOffers, activeSortType);
+//   }
+// );
+
+
 const selectCurrentOffers = createSelector(
   selectOffers,
   selectCurrentCity,
