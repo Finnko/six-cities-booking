@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 
-import {getRatingPercentage, getUpperCaseFirstLetter} from '../../utils/common';
+import { getRatingPercentage, getUpperCaseFirstLetter } from '../../utils/common';
 
 interface CardProps {
   id: number;
@@ -67,7 +67,7 @@ const OfferCard: React.FC<CardProps> = ({
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${id}`} >{title}</Link>
+          <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{getUpperCaseFirstLetter(type)}</p>
       </div>

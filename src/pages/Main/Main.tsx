@@ -1,37 +1,25 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { RootState } from '../../app/rootReducer';
 import Header from '../../components/Header/Header';
-import MainOffers from '../../components/main-offers/MainOffers';
-import { fetchOffers } from '../../redux/features/offersSlice';
-import { RootState } from '../../redux/rootReducer';
+import MainOffers from '../../components/MainOffers/MainOffers';
+import { fetchOffers } from '../../features/offers/offersSlice';
+import { selectOffers } from '../../features/offers/selectors';
 
 
 const Main: React.FC = () => {
   const dispatch = useDispatch();
 
   const {
-    offers,
     isPending,
     error: offersError,
   } = useSelector((state: RootState) => state.offers);
+  // const offers = useSelector(selectOffers);
 
   useEffect(() => {
     dispatch(fetchOffers());
   }, [dispatch]);
-
-  if (offersError) {
-    return (
-      <div>
-        <h1>Something went wrong...</h1>
-        <div>{offersError.toString()}</div>
-      </div>
-    );
-  }
-
-  if (isPending) {
-    return <h3>Loading...</h3>;
-  }
 
   return (
     <div className="page page--gray page--main">
@@ -39,11 +27,27 @@ const Main: React.FC = () => {
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        {/* <CitiesList cities={cities} currentCity={currentCity} onChangeCity={onChangeCity}/>*/}
 
-        {/* {offers.length > 0*/}
-        <MainOffers offers={offers} />
-        {/*  : <MainEmpty currentCity={currentCity}/>}*/}
+        {isPending && <h3>Loading...</h3>}
+
+        {offersError &&
+        <div>
+          <h1>Something went wrong...</h1>
+          <div>{offersError.toString()}</div>
+        </div>
+        }
+
+        {/* {!isPending && !offersError &&*/}
+        {/* <>*/}
+        {/*  /!* <CitiesList cities={cities} currentCity={currentCity} onChangeCity={onChangeCity}/>*!/*/}
+
+        {/*  /!* {offers.length > 0*!/*/}
+        {/*  <MainOffers offers={offers} />*/}
+        {/*  /!*  : <MainEmpty currentCity={currentCity}/>}*!/*/}
+        {/* </>*/}
+        {/* }*/}
+
+
       </main>
     </div>
   );

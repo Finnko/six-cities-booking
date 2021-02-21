@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import offersReducer from './features/offersSlice';
+import offersReducer from '../features/offers/offersSlice';
 
 const rootReducer = combineReducers({
   offers: offersReducer

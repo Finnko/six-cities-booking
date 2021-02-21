@@ -1,12 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import CityPropType from '../../interfaces/city';
 
-const CityTabs = () => {
-  return (
+const CityTabs: React.FC = () => (
     <div className="tabs">
       <section className="locations container">
-        {/*<ul className="locations__list tabs__list">*/}
+        {/* <ul className="locations__list tabs__list">*/}
         {/*  {cities.map((city, index) => {*/}
         {/*    const isActive = city.name === currentCity.name;*/}
         {/*    return (*/}
@@ -23,10 +20,9 @@ const CityTabs = () => {
         {/*      </li>*/}
         {/*    );*/}
         {/*  })}*/}
-        {/*</ul>*/}
+        {/* </ul>*/}
       </section>
     </div>
   );
-};
 
 export default CityTabs;

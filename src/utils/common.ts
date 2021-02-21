@@ -38,12 +38,9 @@ const renameKeys = obj => {
 //   return moment(date).format(`MMMM, YYYY`);
 // };
 
-const getRandomRating = (): number => parseFloat((Math.random() * OFFER_MAX_RATING).toFixed(1));
-
 const getRatingPercentage = (rating: number): number => rating * 100 / OFFER_MAX_RATING;
 
 export {
-  getRandomRating,
   getRatingPercentage,
   getUpperCaseFirstLetter,
   renameKeys,

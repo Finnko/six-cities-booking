@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {IOffer} from '../../interfaces/offer';
+import { IOffer } from '../../interfaces/offer';
 import Map from '../Map/Map';
 import OffersList from '../OffersList/OffersList';
 import OffersSort from '../OffersSort/OffersSort';

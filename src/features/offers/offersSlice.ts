@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import {getOffers, OffersResult} from '../../api/api';
+import { AppThunk } from '../../app/store';
 import {IOffer} from '../../interfaces/offer';
-import { AppThunk } from '../store';
 
 interface offersDisplayState {
   offers: IOffer[];
@@ -53,8 +53,5 @@ const {
 export default offers.reducer;
 
 export {
-  getOffersLoadingStart,
-  getOffersSuccess,
-  getOffersFailed,
   fetchOffers,
 };

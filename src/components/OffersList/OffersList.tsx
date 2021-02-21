@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import {IOffer} from '../../interfaces/offer';
+import { IOffer } from '../../interfaces/offer';
 import OfferCard from '../OfferCard/OfferCard';
 
 interface ListProps {

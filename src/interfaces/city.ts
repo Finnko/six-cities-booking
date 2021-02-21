@@ -1,6 +1,6 @@
 interface ICity {
   name: string;
-  coords: {
+  location: {
     latitude: number;
     longitude: number;
     zoom: number;
