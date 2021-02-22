@@ -7,11 +7,13 @@ import { SortType, DEFAULT_CITY } from '../../const';
 interface uiDisplayState {
   activeCity: string;
   sortType: string;
+  activeOffer: number | null;
 }
 
 const initialState = {
   activeCity: DEFAULT_CITY.name,
   sortType: SortType.POPULAR,
+  activeOffer: null,
 } as uiDisplayState;
 
 const ui = createSlice({
@@ -24,6 +26,9 @@ const ui = createSlice({
     changeSortType(state, action: PayloadAction<string>) {
       state.sortType = action.payload;
     },
+    changeActiveOffer(state, action: PayloadAction<number | null>) {
+      state.activeOffer = action.payload;
+    },
   }
 });
 
@@ -33,6 +38,7 @@ const selectSortType = (state: RootState): string => state.ui.sortType;
 export const {
   changeCity,
   changeSortType,
+  changeActiveOffer,
 } = ui.actions;
 
 export {

@@ -1,7 +1,10 @@
 import React, { memo } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { changeActiveOffer } from '../../features/ui/uiSlice';
 import { getRatingPercentage, getUpperCaseFirstLetter } from '../../utils/common';
+
 
 interface CardProps {
   id: number;
@@ -24,6 +27,8 @@ const OfferCard: React.FC<CardProps> = ({
   isPremium,
   isFavorite
 }) => {
+  const dispatch = useDispatch();
+
   const premium = !isPremium ? '' : (
     <div className="place-card__mark">
       <span>Premium</span>
@@ -34,6 +39,8 @@ const OfferCard: React.FC<CardProps> = ({
   return (
     <article
       className="place-card cities__place-card"
+      onMouseEnter={() => dispatch(changeActiveOffer(id))}
+      onMouseLeave={() => dispatch(changeActiveOffer(null))}
     >
       {premium}
       <div className="place-card__image-wrapper cities__image-wrapper">
