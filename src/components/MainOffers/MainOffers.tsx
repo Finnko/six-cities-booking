@@ -19,7 +19,7 @@ const MainOffers: React.FC<MainOffersProps> = ({offers, activeCity}) => (
           <OffersSort />
           <OffersList offers={offers} />
         </section>
-        <Map />
+        <Map offers={offers}/>
       </div>
     </div>
   );

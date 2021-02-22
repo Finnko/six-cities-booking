@@ -9,10 +9,10 @@ const selectOffers = (state: RootState) => state.offers.offers;
 
 const selectCities = createSelector(
   selectOffers,
-  offers => [...new Set(offers.map(({city}) => city))]
+  offers => Object.values(offers.reduce((acc, { city }) => ({...acc, [city.name]: city }), {}) as ICity[])
 );
 
-const selectActualCity = createSelector(
+const selectCurrentCity = createSelector(
   [selectCities, selectActiveCity],
   (cities: ICity[], activeCity: string) => cities.find(city => city.name === activeCity)
 );
@@ -26,5 +26,5 @@ const selectCurrentOffers = createSelector(
   }
 );
 
-export { selectActualCity, selectCurrentOffers };
+export { selectCurrentCity, selectCurrentOffers };
 

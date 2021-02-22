@@ -1,5 +1,4 @@
 import cx from 'classnames';
-import { nanoid } from 'nanoid';
 import React, { useCallback, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -48,14 +47,14 @@ const OffersSorting: React.FC = () => {
       </span>
 
       <ul className={selectCls}>
-        {Object.values(SortType).map(option => {
+        {Object.values(SortType).map((option, index) => {
           const optionCls = cx('places__option', {
               'places__option--active': option === activeSortOption,
           });
 
           return (
             <li
-              key={nanoid()}
+              key={`${option}-${index}`}
               className={optionCls}
               tabIndex={0}
               onClick={() => handleSortOptionClick(option)}

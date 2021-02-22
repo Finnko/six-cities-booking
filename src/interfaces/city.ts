@@ -7,4 +7,4 @@ interface ICity {
   };
 }
 
-export {ICity};
+export { ICity };
