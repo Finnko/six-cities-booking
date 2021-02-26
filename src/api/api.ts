@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import {END_POINT} from '../const';
-import {IOffer} from '../interfaces/offer';
-import {renameKeys} from '../utils/common';
+import { END_POINT } from '../const';
+import { IOffer } from '../interfaces/offer';
+import { renameKeys } from '../utils/common';
 
 interface OffersResult {
   offers: IOffer[];

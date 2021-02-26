@@ -94,8 +94,7 @@ const ChangeView: React.FC<ChangeViewProps> = ({latitude, longitude, zoom}) => {
 
 
 const Map: React.FC<MapProps> = ({offers}) => {
-  const city = useSelector(selectCurrentCity);
-  console.log(city);
+  const city: any = useSelector(selectCurrentCity);
   const {activeOffer} = useSelector((state: RootState) => state.ui);
 
   const {
@@ -113,11 +112,11 @@ const Map: React.FC<MapProps> = ({offers}) => {
         zoom={zoom}
         className="cities__map map"
       >
-        <ChangeView
-          latitude={latitude}
-          longitude={longitude}
-          zoom={zoom}
-        />
+        {/* <ChangeView*/}
+        {/*  latitude={latitude}*/}
+        {/*  longitude={longitude}*/}
+        {/*  zoom={zoom}*/}
+        {/* />*/}
         <TileLayer
           attribution={LeafletProperties.ATTRIBUTION}
           url={LeafletProperties.TILE_LAYER}

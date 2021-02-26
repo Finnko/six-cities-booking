@@ -57,6 +57,11 @@ const ServerError: { [unit: string]: number} = {
   BAD_REQUEST: 400,
 };
 
+const AppPaths = {
+  ROOT: '/',
+  LOGIN: '/login',
+};
+
 
 export {
   Features,
@@ -67,4 +72,5 @@ export {
   DEFAULT_CITY,
   AuthorizationStatus,
   ServerError,
+  AppPaths,
 };
