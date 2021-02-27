@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import {getOffers, OffersResult} from '../../api/api';
+import { getOffers, OffersResult } from '../../api/api';
 import { AppThunk } from '../../app/store';
-import {IOffer} from '../../interfaces/offer';
+import { IOffer } from '../../interfaces/offer';
 
 interface offersDisplayState {
   offers: IOffer[];
@@ -38,6 +38,7 @@ const fetchOffers = (): AppThunk => async dispatch => {
   try {
     dispatch(getOffersLoadingStart());
     const offers = await getOffers();
+
     dispatch(getOffersSuccess(offers));
   } catch (err) {
     dispatch(getOffersFailed(err.toString()));

@@ -1,9 +1,9 @@
 interface IUser {
-  latitude: number;
+  id: number;
   name: string;
   email: string;
-  avatar: string;
+  avatarUrl: string;
   isPro: boolean;
 }
 
-export {IUser};
+export { IUser };

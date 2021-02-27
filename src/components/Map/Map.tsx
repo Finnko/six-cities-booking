@@ -8,7 +8,7 @@ import {selectCurrentCity} from '../../features/offers/selectors';
 import {IOffer} from '../../interfaces/offer';
 
 const LeafletProperties = {
-  TILE_LAYER: 'http://{s}.tiles.maps.sputnik.ru/{z}/{x}/{y}.png',
+  TILE_LAYER: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
   ATTRIBUTION: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 };
 

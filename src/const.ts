@@ -1,6 +1,3 @@
-const END_POINT = 'https://6.react.pages.academy/six-cities';
-const TIMEOUT = 1000 * 5;
-
 const DEFAULT_CITIES = [
   'Paris',
   'Cologne',
@@ -47,7 +44,7 @@ const SortType: { [unit: string]: string } = {
 //   {value: 1, title: 'terribly'},
 // ];
 
-const AuthorizationStatus: { [unit: string]: string } = {
+const AuthStatus: { [unit: string]: string } = {
   NO_AUTH: 'NO_AUTH',
   AUTH: 'AUTH',
 };
@@ -60,17 +57,16 @@ const ServerError: { [unit: string]: number} = {
 const AppPaths = {
   ROOT: '/',
   LOGIN: '/login',
+  FAVORITE: '/favorite',
 };
 
 
 export {
   Features,
   SortType,
-  END_POINT,
-  TIMEOUT,
   DEFAULT_CITIES,
   DEFAULT_CITY,
-  AuthorizationStatus,
+  AuthStatus,
   ServerError,
   AppPaths,
 };

@@ -7,7 +7,7 @@ export const Debug: React.FC = () => (
       margin: '3rem 1rem',
       borderRadius: 4,
       background: '#f6f8fa',
-      boxShadow: '0 0 1px  #eee inset',
+      boxShadow: '0 0 1px #eee inset',
     }}
   >
     <div

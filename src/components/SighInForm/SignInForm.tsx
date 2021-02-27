@@ -1,6 +1,8 @@
-import { Formik, Form, useField, FieldInputProps, FieldHookConfig } from 'formik';
+import {Formik, Form, FormikHelpers, FormikHandlers, FormikFormProps} from 'formik';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
+import { authenticateUser } from '../../features/user/userSlice';
 import BaseTextField from '../TextField/TextField';
 
 import { Debug } from './Debug';
@@ -12,8 +14,13 @@ interface FormValues {
 }
 
 const SignInForm: React.FC = () => {
-  const handleSubmit = (values: FormValues) => {
+  const dispatch = useDispatch();
 
+  const handleSubmit = (values: FormValues, { resetForm }: any) => {
+    const { email, password } = values;
+
+    dispatch(authenticateUser(email, password));
+    resetForm();
   };
 
 
@@ -55,9 +62,8 @@ const SignInForm: React.FC = () => {
               type="submit"
               disabled={isSubmitting}
             >
-              Sign in
+              {!isSubmitting ? 'Sign in' : 'Signing in'}
             </button>
-          <Debug/>
           </Form>
         )}
       </Formik>
