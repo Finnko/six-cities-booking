@@ -5,11 +5,11 @@ import {getOfferById} from '../../redux/reducers/data/data-reducer';
 import NameSpace from '../../redux/name-space';
 import OfferPropType from '../../interfaces/offer';
 import CityPropType from '../../interfaces/city';
-import Offer from '../offer/offer.jsx';
+import Offer from '../Offer/offer.jsx';
 import OffersList from '../OffersList/offers-list.jsx';
 import Map from '../Map/map.jsx';
 import OfferGallery from '../offer-gallery/offer-gallery.jsx';
-import ReviewsList from '../reviews-list/reviews-list.jsx';
+import ReviewsList from '../ReviewsList/reviews-list.jsx';
 
 const OfferDetails = ({currentOffer, nearByOffers, currentCity}) => {
   const {images, reviews} = currentOffer;
@@ -24,13 +24,13 @@ const OfferDetails = ({currentOffer, nearByOffers, currentCity}) => {
             {/*<ReviewsList reviews={reviews}/>*/}
           </div>
         </div>
-        <Map isNearByView={true} currentCity={currentCity} offers={nearByOffers}/>
+        <Map isNearByView currentCity={currentCity} offers={nearByOffers}/>
       </section>
 
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
-          <OffersList offersCards={nearByOffers} isNearByView={true}/>
+          <OffersList offersCards={nearByOffers} isNearByView/>
         </section>
       </div>
     </Fragment>

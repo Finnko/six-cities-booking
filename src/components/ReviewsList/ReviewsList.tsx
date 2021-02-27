@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import ReviewPropType from '../../interfaces/review';
-import Review from '../review/review.jsx';
+
+import Review from '../Review/review.jsx';
 
 const MAX_REVIEWS_TO_SHOW = 10;
 
@@ -12,7 +11,7 @@ const ReviewsList = ({reviews}) => {
     <section className="property__reviews reviews">
       <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
       <ul className="reviews__list">
-        {sortedReviews.map((review) =>
+        {sortedReviews.map(review =>
           <Review
             review={review}
             key={review.id}
@@ -21,10 +20,6 @@ const ReviewsList = ({reviews}) => {
       </ul>
     </section>
   );
-};
-
-ReviewsList.propTypes = {
-  reviews: PropTypes.arrayOf(ReviewPropType).isRequired,
 };
 
 export default ReviewsList;
