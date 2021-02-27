@@ -22,8 +22,10 @@ const Main: React.FC = () => {
   const city = useSelector(selectActiveCity);
 
   useEffect(() => {
-    dispatch(fetchOffers());
-  }, [dispatch]);
+    if (offers.length === 0) {
+      dispatch(fetchOffers());
+    }
+  }, [dispatch, offers.length]);
 
   return (
     <div className="page page--gray page--main">
