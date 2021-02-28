@@ -13,12 +13,11 @@ interface ReviewsListProps {
 
 const ReviewsList: React.FC<ReviewsListProps> = ({id}) => {
   const dispatch = useDispatch();
-  const { comments: reviews } = useSelector((state: RootState) => state.comments);
+  const { comments: reviews, status } = useSelector((state: RootState) => state.comments);
 
   useEffect(() => {
     dispatch(fetchComments(id));
   }, [dispatch, id]);
-
 
   const sortedReviews = reviews.slice(0, MAX_REVIEWS_TO_SHOW);
     // .sort((a, b) => b.date - a.date);
@@ -33,7 +32,9 @@ const ReviewsList: React.FC<ReviewsListProps> = ({id}) => {
       </h2>
 
       <ul className="reviews__list">
-        {sortedReviews.map(review =>
+        {status === 'pending' && <p>Comments loading...</p>}
+
+        {status === 'succeeded' && sortedReviews.map(review =>
           <Review
             key={review.id}
             review={review}
