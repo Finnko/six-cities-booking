@@ -12,9 +12,9 @@ const App: React.FC = () => (
         <Route exact path={`${AppPaths.LOGIN}`}>
           <Auth />
         </Route>
-        <Route path={`${AppPaths.OFFER}`}>
-          <OfferDetails />
-        </Route>
+        {/* <Route path={`${AppPaths.OFFER}`}>*/}
+        {/*  <OfferDetails />*/}
+        {/* </Route>*/}
         <Route exact path={`${AppPaths.ROOT}`}>
           <Main />
         </Route>

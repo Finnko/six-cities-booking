@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
 import {
   getOffer,
@@ -12,80 +12,76 @@ import { IOffer } from '../../interfaces/offer';
 interface offersDisplayState {
   offers: IOffer[];
   offer: unknown | IOffer;
-  isPending: boolean;
+  status: 'idle' | 'pending' | 'succeeded' | 'failed';
   error: string | boolean;
 }
 
 const initialState = {
   offers: [],
   offer: {},
-  isPending: false,
+  status: 'idle',
   error: false,
 } as offersDisplayState;
+
+const fetchOffers = createAsyncThunk(
+  'offers/fetchOffers',
+  () => getOffers()
+);
+
+// const fetchOffers = (): AppThunk => async dispatch => {
+//   try {
+//     dispatch(getOffersLoadingStart());
+//     const offers = await getOffers();
+//
+//     dispatch(getOffersSuccess(offers));
+//   } catch (err) {
+//     dispatch(getOffersFailed(err.toString()));
+//   }
+// };
 
 const offers = createSlice({
   name: 'offers',
   initialState,
-  reducers: {
-    getOffersLoadingStart(state) {
-      state.isPending = true;
-    },
-    getOffersSuccess(state, action: PayloadAction<OffersResult>) {
-      state.offers = action.payload.offers;
-      state.isPending = false;
-    },
-    getOffersFailed(state, action: PayloadAction<string>) {
-      state.isPending = false;
-      state.error = action.payload;
-    },
-    getOfferLoadingStart(state) {
-      state.isPending = true;
-    },
-    getOfferSuccess(state, action: PayloadAction<OfferResult>) {
-      state.offer = action.payload.offer;
-      state.isPending = false;
-    },
-    getOfferFailed(state, action: PayloadAction<string>) {
-      state.isPending = false;
-      state.error = action.payload;
-    }
+  reducers: {},
+  extraReducers: builder => {
+    builder.addCase(fetchOffers.pending, state => {
+      state.status = 'pending';
+    });
+    builder.addCase(fetchOffers.fulfilled, (state, { payload }) => {
+      state.status = 'succeeded';
+      state.offers = payload.offers;
+    });
+    builder.addCase(fetchOffers.rejected, state => {
+      state.status = 'failed';
+      state.error = true;
+    });
   }
 });
 
-const fetchOffers = (): AppThunk => async dispatch => {
-  try {
-    dispatch(getOffersLoadingStart());
-    const offers = await getOffers();
 
-    dispatch(getOffersSuccess(offers));
-  } catch (err) {
-    dispatch(getOffersFailed(err.toString()));
-  }
-};
+// const fetchOffer = (id: string): AppThunk => async dispatch => {
+//   try {
+//     dispatch(getOfferLoadingStart());
+//     const offer = await getOffer(id);
+//
+//     dispatch(getOfferSuccess(offer));
+//   } catch (err) {
+//     dispatch(getOfferFailed(err.toString()));
+//   }
+// };
 
-const fetchOffer = (id: string): AppThunk => async dispatch => {
-  try {
-    dispatch(getOfferLoadingStart());
-    const offer = await getOffer(id);
-
-    dispatch(getOfferSuccess(offer));
-  } catch (err) {
-    dispatch(getOfferFailed(err.toString()));
-  }
-};
-
-const {
-  getOffersLoadingStart,
-  getOffersSuccess,
-  getOffersFailed,
-  getOfferLoadingStart,
-  getOfferSuccess,
-  getOfferFailed,
-} = offers.actions;
+// const {
+//   getOffersLoadingStart,
+//   getOffersSuccess,
+//   getOffersFailed,
+//   getOfferLoadingStart,
+//   getOfferSuccess,
+//   getOfferFailed,
+// } = offers.actions;
 
 export default offers.reducer;
 
 export {
   fetchOffers,
-  fetchOffer,
+  // fetchOffer,
 };

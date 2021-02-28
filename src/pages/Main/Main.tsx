@@ -15,17 +15,17 @@ const Main: React.FC = () => {
   const dispatch = useDispatch();
 
   const {
-    isPending,
-    error: offersError,
+    status,
+    error,
   } = useSelector((state: RootState) => state.offers);
   const offers = useSelector(selectCurrentOffers);
   const city = useSelector(selectActiveCity);
 
   useEffect(() => {
-    if (offers.length === 0) {
+    if (offers.length === 0 && status === 'idle') {
       dispatch(fetchOffers());
     }
-  }, [dispatch, offers.length]);
+  }, [dispatch, offers.length, status]);
 
   return (
     <div className="page page--gray page--main">
@@ -34,16 +34,15 @@ const Main: React.FC = () => {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
 
-        {isPending && <h3>Loading...</h3>}
+        {status === 'idle' && <h3>Loading...</h3>}
 
-        {offersError &&
+        {error &&
           <div>
             <h1>Something went wrong...</h1>
-            <div>{offersError.toString()}</div>
           </div>
         }
 
-        {!isPending && !offersError &&
+        {status === 'succeeded' &&
           <>
             <Cities activeCity={city}/>
 

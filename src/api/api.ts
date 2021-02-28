@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from 'axios';
+import axios from 'axios';
 
 import { IOffer } from '../interfaces/offer';
 import { IUser } from '../interfaces/user';
