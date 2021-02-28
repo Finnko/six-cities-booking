@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { IOffer } from '../interfaces/offer';
+import { IReview } from '../interfaces/review';
 import { IUser } from '../interfaces/user';
 import { renameKeys } from '../utils/common';
 
@@ -11,8 +12,8 @@ interface OffersResult {
   offers: IOffer[];
 }
 
-interface OfferResult {
-  offer: IOffer;
+interface CommentsResult {
+  comments: IReview[];
 }
 
 interface UserResult {
@@ -22,9 +23,8 @@ interface UserResult {
 const ApiPaths = {
   getPathAuth: (): string => '/login',
   getPathOffers: (): string => '/hotels',
-  getPathOffer: (id: string): string => `/offer/${id}`,
-  getPathOffersNearby: (id: number): string => `/hotels/${id}/nearby`,
-  getPathRoot: (): string => '/',
+  getPathOffersNearby: (id: string): string => `/hotels/${id}/nearby`,
+  getPathComments: (id: string): string => `/comments/${id}`,
 };
 
 const createAPI = () => axios.create({
@@ -37,7 +37,7 @@ const apiInstance = createAPI();
 
 
 async function getOffers(): Promise<OffersResult> {
-  const url = `${END_POINT}${ApiPaths.getPathOffers()}`;
+  const url = `${ApiPaths.getPathOffers()}`;
 
   try {
     const offersResponse = await apiInstance.get<IOffer[]>(url);
@@ -51,15 +51,30 @@ async function getOffers(): Promise<OffersResult> {
   }
 }
 
-async function getOffer(id: string): Promise<OfferResult> {
-  const url = `${END_POINT}${ApiPaths.getPathOffer(id)}`;
+async function getOffersNearby(id: string): Promise<OffersResult> {
+  const url = `${ApiPaths.getPathOffersNearby(id)}`;
 
   try {
-    const offersResponse = await apiInstance.get<IOffer>(url);
+    const offersResponse = await apiInstance.get<IOffer[]>(url);
     const adaptedData = renameKeys(offersResponse.data);
 
     return {
-      offer: adaptedData
+      offers: adaptedData
+    };
+  } catch (err) {
+    throw err;
+  }
+}
+
+async function getComments(id: string): Promise<CommentsResult> {
+  const url = `${ApiPaths.getPathComments(id)}`;
+
+  try {
+    const commentsResponse = await apiInstance.get<IReview[]>(url);
+    const adaptedData = renameKeys(commentsResponse.data);
+
+    return {
+      comments: adaptedData
     };
   } catch (err) {
     throw err;
@@ -67,7 +82,7 @@ async function getOffer(id: string): Promise<OfferResult> {
 }
 
 async function checkAuthorization(): Promise<UserResult> {
-  const url = `${END_POINT}${ApiPaths.getPathOffers()}`;
+  const url = `${ApiPaths.getPathOffers()}`;
 
   try {
     const data = await apiInstance.get<UserResult>(url);
@@ -81,8 +96,7 @@ async function checkAuthorization(): Promise<UserResult> {
 }
 
 async function authorizeUser(email: string, password: string): Promise<UserResult> {
-  const url = `${END_POINT}${ApiPaths.getPathAuth()}`;
-
+  const url = `${ApiPaths.getPathAuth()}`;
 
   try {
     const response = await apiInstance.post<IUser>(url, {email, password});
@@ -99,10 +113,10 @@ async function authorizeUser(email: string, password: string): Promise<UserResul
 
 export {
   OffersResult,
-  OfferResult,
   UserResult,
   getOffers,
-  getOffer,
+  getOffersNearby,
+  getComments,
   authorizeUser,
   checkAuthorization,
 };

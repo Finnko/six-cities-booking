@@ -1,10 +1,15 @@
 interface IReview {
   id: number;
-  name: string;
-  avatar: string;
+  comment: string;
   rating: number;
-  description: string;
-  date: number;
+  date: string;
+  user: {
+    id: number;
+    name: string;
+    avatarUrl: string;
+    isPro: boolean;
+  };
+
 }
 
-export {IReview};
+export { IReview };

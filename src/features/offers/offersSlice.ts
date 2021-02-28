@@ -1,26 +1,26 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import {
-  getOffer,
-  getOffers,
-  OfferResult,
-  OffersResult,
-} from '../../api/api';
-import { AppThunk } from '../../app/store';
+import { getOffers, getOffersNearby } from '../../api/api';
 import { IOffer } from '../../interfaces/offer';
 
 interface offersDisplayState {
   offers: IOffer[];
-  offer: unknown | IOffer;
   status: 'idle' | 'pending' | 'succeeded' | 'failed';
   error: string | boolean;
+  offer: unknown | IOffer;
+  offersNearby: IOffer[];
+  offersNearbyStatus: 'idle' | 'pending' | 'succeeded' | 'failed';
+  offersNearbyError: string | boolean;
 }
 
 const initialState = {
   offers: [],
   offer: {},
+  offersNearby: [],
   status: 'idle',
   error: false,
+  offersNearbyStatus: 'idle',
+  offersNearbyError: false,
 } as offersDisplayState;
 
 const fetchOffers = createAsyncThunk(
@@ -28,16 +28,11 @@ const fetchOffers = createAsyncThunk(
   () => getOffers()
 );
 
-// const fetchOffers = (): AppThunk => async dispatch => {
-//   try {
-//     dispatch(getOffersLoadingStart());
-//     const offers = await getOffers();
-//
-//     dispatch(getOffersSuccess(offers));
-//   } catch (err) {
-//     dispatch(getOffersFailed(err.toString()));
-//   }
-// };
+const fetchOffersNearby = createAsyncThunk(
+  'offers/fetchOffersNearby',
+  (id: string) => getOffersNearby(id)
+);
+
 
 const offers = createSlice({
   name: 'offers',
@@ -55,33 +50,20 @@ const offers = createSlice({
       state.status = 'failed';
       state.error = true;
     });
+    builder.addCase(fetchOffersNearby.pending, state => {
+      state.offersNearbyStatus = 'pending';
+    });
+    builder.addCase(fetchOffersNearby.fulfilled, (state, { payload }) => {
+      state.offersNearbyStatus = 'succeeded';
+      state.offersNearby = payload.offers;
+    });
+    builder.addCase(fetchOffersNearby.rejected, state => {
+      state.offersNearbyStatus = 'failed';
+      state.offersNearbyError = true;
+    });
   }
 });
 
-
-// const fetchOffer = (id: string): AppThunk => async dispatch => {
-//   try {
-//     dispatch(getOfferLoadingStart());
-//     const offer = await getOffer(id);
-//
-//     dispatch(getOfferSuccess(offer));
-//   } catch (err) {
-//     dispatch(getOfferFailed(err.toString()));
-//   }
-// };
-
-// const {
-//   getOffersLoadingStart,
-//   getOffersSuccess,
-//   getOffersFailed,
-//   getOfferLoadingStart,
-//   getOfferSuccess,
-//   getOfferFailed,
-// } = offers.actions;
-
 export default offers.reducer;
 
-export {
-  fetchOffers,
-  // fetchOffer,
-};
+export { fetchOffers, fetchOffersNearby };

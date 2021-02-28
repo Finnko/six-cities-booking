@@ -7,9 +7,11 @@ interface GalleryProps {
 }
 
 const OfferGallery: React.FC<GalleryProps> = ({ images }) => {
+  if (!images.length) return null;
+
   const displayedImages = images.slice(0, MAX_IMAGES_TO_DISPLAY);
 
-  return (images.length &&
+  return (
     <div className="property__gallery-container container">
       <div className="property__gallery">
         {displayedImages.map((src, index) => (

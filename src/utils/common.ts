@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 const OFFER_MAX_RATING = 5;
 
 const getUpperCaseFirstLetter = (str: string): string => str.slice(0, 1).toUpperCase() + str.slice(1);
@@ -23,18 +25,16 @@ const renameKeys = (obj: any) => {
   return obj;
 };
 
-// const getTimeTagFormatted = (date) => {
-//   return moment(date).format(`YYYY-MM-DD`);
-// };
-//
-// const getFormattedDate = (date) => {
-//   return moment(date).format(`MMMM, YYYY`);
-// };
+const getTimeTagFormatted = (date: string) => dayjs(date).format('YYYY-MM-DD');
+
+const getFormattedDate = (date: string) => dayjs(date).format('MMMM, YYYY');
 
 const getRatingPercentage = (rating: number): number => rating * 100 / OFFER_MAX_RATING;
 
 export {
   getRatingPercentage,
   getUpperCaseFirstLetter,
+  getTimeTagFormatted,
+  getFormattedDate,
   renameKeys,
 };

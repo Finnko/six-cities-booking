@@ -1,35 +1,25 @@
-
-
-import React, { useEffect } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom';
 
 import { RootState } from '../../app/rootReducer';
 import Header from '../../components/Header/Header';
-import Offer from '../../components/Offer/Offer.tsx';
+import Offer from '../../components/Offer/Offer';
 import OfferGallery from '../../components/OfferGallery/OfferGallery';
+import ReviewsList from '../../components/ReviewsList/ReviewsList';
 import { AppPaths } from '../../const';
-import { fetchOffer } from '../../features/offers/offersSlice';
 import { selectOffer } from '../../features/offers/selectors';
-import Map from '../Map/map.jsx';
-import OffersList from '../OffersList/offers-list.jsx';
-import ReviewsList from '../ReviewsList/reviews-list.jsx';
+
 
 interface OfferRouteParams {
   id: string;
 }
 
 const OfferDetails: React.FC = () => {
-  const dispatch = useDispatch();
   const { id } = useParams<OfferRouteParams>();
   const offer = useSelector((state: RootState) => selectOffer(state, id));
 
-  useEffect(() => {
-    if (!offer) {
-      dispatch(fetchOffer(id));
-    }
-  }, [dispatch, id, offer]);
-
+  console.log(offer);
   if (!offer) {
     return <Redirect to={AppPaths.ROOT}/>;
   }
@@ -46,7 +36,7 @@ const OfferDetails: React.FC = () => {
           <div className="property__container container">
             <div className="property__wrapper">
               <Offer offer={offer}/>
-              {/* <ReviewsList reviews={reviews}/>*/}
+              <ReviewsList id={id}/>
             </div>
           </div>
           {/* <Map isNearByView currentCity={currentCity} offers={nearByOffers}/>*/}

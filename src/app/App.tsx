@@ -7,19 +7,19 @@ import Main from '../pages/Main/Main';
 import OfferDetails from '../pages/OfferDetails/OfferDetails';
 
 const App: React.FC = () => (
-    <Router>
-      <Switch>
-        <Route exact path={`${AppPaths.LOGIN}`}>
-          <Auth />
-        </Route>
-        {/* <Route path={`${AppPaths.OFFER}`}>*/}
-        {/*  <OfferDetails />*/}
-        {/* </Route>*/}
-        <Route exact path={`${AppPaths.ROOT}`}>
-          <Main />
-        </Route>
-      </Switch>
-    </Router>
-  );
+  <Router>
+    <Switch>
+      <Route exact path={`${AppPaths.LOGIN}`}>
+        <Auth/>
+      </Route>
+      <Route path={`${AppPaths.OFFER}`}>
+        <OfferDetails/>
+      </Route>
+      <Route exact path={`${AppPaths.ROOT}`}>
+        <Main/>
+      </Route>
+    </Switch>
+  </Router>
+);
 
 export default App;
