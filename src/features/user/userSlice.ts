@@ -46,16 +46,16 @@ const user = createSlice({
   }
 });
 
-const checkAuth = (): AppThunk => async dispatch => {
-  try {
-    const userData = await checkAuth();
-
-    dispatch(setAuth(AuthStatus.AUTH));
-    // dispatch(authenticateUserSuccess(userData);
-  } catch (err) {
-    throw err.toString();
-  }
-};
+// const checkAuth = (): AppThunk => async dispatch => {
+//   try {
+//     const userData = await checkAuth();
+//
+//     dispatch(setAuth(AuthStatus.AUTH));
+//     // dispatch(authenticateUserSuccess(userData);
+//   } catch (err) {
+//     throw err.toString();
+//   }
+// };
 
 const authenticateUser = (email: string, password: string): AppThunk => async dispatch => {
   try {
@@ -86,7 +86,6 @@ const {
 export default user.reducer;
 
 export {
-  checkAuth,
   authenticateUser,
   selectUserInfo,
 };

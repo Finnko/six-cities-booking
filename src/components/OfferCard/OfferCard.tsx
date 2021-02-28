@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import React, { memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -15,6 +16,7 @@ interface CardProps {
   rating: number;
   isPremium: boolean;
   isFavorite: boolean;
+  isNearByView: boolean;
 }
 
 const OfferCard: React.FC<CardProps> = ({
@@ -25,9 +27,20 @@ const OfferCard: React.FC<CardProps> = ({
   previewImage,
   rating,
   isPremium,
-  isFavorite
+  isFavorite,
+  isNearByView,
 }) => {
   const dispatch = useDispatch();
+
+  const cardCls = cx('place-card', {
+    'cities__place-card': !isNearByView,
+    'near-places__card': isNearByView,
+  });
+
+  const imageWrapperCls = cx('place-card__image-wrapper', {
+    'cities__image-wrapper': !isNearByView,
+    'near-places__image-wrapper': isNearByView,
+  });
 
   const premium = !isPremium ? '' : (
     <div className="place-card__mark">
@@ -38,13 +51,13 @@ const OfferCard: React.FC<CardProps> = ({
 
   return (
     <article
-      className="place-card cities__place-card"
+      className={cardCls}
       onMouseEnter={() => dispatch(changeActiveOffer(id))}
       onMouseLeave={() => dispatch(changeActiveOffer(null))}
     >
       {premium}
-      <div className="place-card__image-wrapper cities__image-wrapper">
-        <a href="#">
+      <div className={imageWrapperCls}>
+        <Link to={`/offer/${id}`}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -52,7 +65,7 @@ const OfferCard: React.FC<CardProps> = ({
             height={200}
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">

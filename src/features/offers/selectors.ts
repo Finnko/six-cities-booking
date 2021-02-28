@@ -26,5 +26,11 @@ const selectCurrentOffers = createSelector(
   }
 );
 
-export { selectCurrentCity, selectCurrentOffers };
+const selectOffer = createSelector(
+  selectOffers,
+  (_: RootState, id: string) => Number(id),
+  (offers, id) => offers.find(offer => offer.id === id)
+);
+
+export { selectCurrentCity, selectCurrentOffers, selectOffer };
 

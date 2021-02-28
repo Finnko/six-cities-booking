@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import store from './app/store';
+import { fetchOffers } from './features/offers/offersSlice';
 
+store.dispatch(fetchOffers());
 
 const render = () => {
   const App = require('./app/App').default;

@@ -1,6 +1,7 @@
-import axios, {AxiosResponse} from 'axios';
+import axios from 'axios';
 
 import { IOffer } from '../interfaces/offer';
+import { IReview } from '../interfaces/review';
 import { IUser } from '../interfaces/user';
 import { renameKeys } from '../utils/common';
 
@@ -11,6 +12,10 @@ interface OffersResult {
   offers: IOffer[];
 }
 
+interface CommentsResult {
+  comments: IReview[];
+}
+
 interface UserResult {
   authInfo: IUser;
 }
@@ -18,9 +23,8 @@ interface UserResult {
 const ApiPaths = {
   getPathAuth: (): string => '/login',
   getPathOffers: (): string => '/hotels',
-  getPathOffer: (id: number): string => `/offer/${id}`,
-  getPathOffersNearby: (id: number): string => `/hotels/${id}/nearby`,
-  getPathRoot: (): string => '/',
+  getPathOffersNearby: (id: string): string => `/hotels/${id}/nearby`,
+  getPathComments: (id: string): string => `/comments/${id}`,
 };
 
 const createAPI = () => axios.create({
@@ -33,7 +37,7 @@ const apiInstance = createAPI();
 
 
 async function getOffers(): Promise<OffersResult> {
-  const url = `${END_POINT}${ApiPaths.getPathOffers()}`;
+  const url = `${ApiPaths.getPathOffers()}`;
 
   try {
     const offersResponse = await apiInstance.get<IOffer[]>(url);
@@ -47,8 +51,38 @@ async function getOffers(): Promise<OffersResult> {
   }
 }
 
+async function getOffersNearby(id: string): Promise<OffersResult> {
+  const url = `${ApiPaths.getPathOffersNearby(id)}`;
+
+  try {
+    const offersResponse = await apiInstance.get<IOffer[]>(url);
+    const adaptedData = renameKeys(offersResponse.data);
+
+    return {
+      offers: adaptedData
+    };
+  } catch (err) {
+    throw err;
+  }
+}
+
+async function getComments(id: string): Promise<CommentsResult> {
+  const url = `${ApiPaths.getPathComments(id)}`;
+
+  try {
+    const commentsResponse = await apiInstance.get<IReview[]>(url);
+    const adaptedData = renameKeys(commentsResponse.data);
+
+    return {
+      comments: adaptedData
+    };
+  } catch (err) {
+    throw err;
+  }
+}
+
 async function checkAuthorization(): Promise<UserResult> {
-  const url = `${END_POINT}${ApiPaths.getPathOffers()}`;
+  const url = `${ApiPaths.getPathOffers()}`;
 
   try {
     const data = await apiInstance.get<UserResult>(url);
@@ -62,8 +96,7 @@ async function checkAuthorization(): Promise<UserResult> {
 }
 
 async function authorizeUser(email: string, password: string): Promise<UserResult> {
-  const url = `${END_POINT}${ApiPaths.getPathAuth()}`;
-
+  const url = `${ApiPaths.getPathAuth()}`;
 
   try {
     const response = await apiInstance.post<IUser>(url, {email, password});
@@ -82,6 +115,8 @@ export {
   OffersResult,
   UserResult,
   getOffers,
+  getOffersNearby,
+  getComments,
   authorizeUser,
   checkAuthorization,
 };
