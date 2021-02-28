@@ -44,7 +44,7 @@ const OfferCard: React.FC<CardProps> = ({
     >
       {premium}
       <div className="place-card__image-wrapper cities__image-wrapper">
-        <a href="#">
+        <Link to={`/offer/${id}`}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -52,7 +52,7 @@ const OfferCard: React.FC<CardProps> = ({
             height={200}
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">

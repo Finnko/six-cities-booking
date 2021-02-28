@@ -1,20 +1,39 @@
-import React, {Fragment} from 'react';
-import OfferPropType from '../../interfaces/offer';
-import {getRatingPercentage} from '../../utils/common';
+import React from 'react';
 
-const Offer = ({offer}) => {
-  const {title, type, price, isPremium, rating, roomsCount, guestsCount, features, description} = offer;
-  const {name, avatar, isPro} = offer.owner;
+import { IOffer } from '../../interfaces/offer';
+import { getRatingPercentage } from '../../utils/common';
 
-  const premium = !isPremium ? `` : (
+interface OfferProps {
+  offer: IOffer;
+}
+
+const Offer: React.FC<OfferProps> = ({ offer }) => {
+  const {
+    title,
+    type,
+    price,
+    isPremium,
+    rating,
+    bedrooms,
+    maxAdults,
+    goods,
+    description,
+    host: {
+      name,
+      avatarUrl,
+      isPro
+    }
+  } = offer;
+
+  const premium = isPremium ? (
     <div className="property__mark">
       <span>Premium</span>
-    </div>);
+    </div>) : null;
 
   const ratingPercent = getRatingPercentage(rating);
 
   return (
-    <Fragment>
+    <>
       {premium}
       <div className="property__name-wrapper">
         <h1 className="property__name">
@@ -39,10 +58,10 @@ const Offer = ({offer}) => {
           {type}
         </li>
         <li className="property__feature property__feature--bedrooms">
-          {roomsCount} Bedrooms
+          {bedrooms} Bedrooms
         </li>
         <li className="property__feature property__feature--adults">
-          Max {guestsCount} adults
+          Max {maxAdults} adults
         </li>
       </ul>
       <div className="property__price">
@@ -52,16 +71,16 @@ const Offer = ({offer}) => {
       <div className="property__inside">
         <h2 className="property__inside-title">What&apos;s inside</h2>
         <ul className="property__inside-list">
-          {features.map((feature, index) => (
-            <li key={feature + index} className="property__inside-item">{feature}</li>
+          {goods.map((good, index) => (
+            <li key={good + index} className="property__inside-item">{good}</li>
           ))}
         </ul>
       </div>
       <div className="property__host">
         <h2 className="property__host-title">Meet the host</h2>
         <div className="property__host-user user">
-          <div className={`property__avatar-wrapper user__avatar-wrapper ${isPro ? `property__avatar-wrapper--pro` : ``} `}>
-            <img className="property__avatar user__avatar" src={avatar} width="74" height="74" alt="Host avatar"/>
+          <div className={`property__avatar-wrapper user__avatar-wrapper ${isPro ? 'property__avatar-wrapper--pro' : ''} `}>
+            <img className="property__avatar user__avatar" src={`/${avatarUrl}`} width="74" height="74" alt="Host avatar"/>
           </div>
           <span className="property__user-name">
             {name}
@@ -73,12 +92,8 @@ const Offer = ({offer}) => {
           </p>
         </div>
       </div>
-    </Fragment>
+    </>
   );
-};
-
-Offer.propTypes = {
-  offer: OfferPropType.isRequired,
 };
 
 export default Offer;

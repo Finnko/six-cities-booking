@@ -11,6 +11,10 @@ interface OffersResult {
   offers: IOffer[];
 }
 
+interface OfferResult {
+  offer: IOffer;
+}
+
 interface UserResult {
   authInfo: IUser;
 }
@@ -18,7 +22,7 @@ interface UserResult {
 const ApiPaths = {
   getPathAuth: (): string => '/login',
   getPathOffers: (): string => '/hotels',
-  getPathOffer: (id: number): string => `/offer/${id}`,
+  getPathOffer: (id: string): string => `/offer/${id}`,
   getPathOffersNearby: (id: number): string => `/hotels/${id}/nearby`,
   getPathRoot: (): string => '/',
 };
@@ -41,6 +45,21 @@ async function getOffers(): Promise<OffersResult> {
 
     return {
       offers: adaptedData
+    };
+  } catch (err) {
+    throw err;
+  }
+}
+
+async function getOffer(id: string): Promise<OfferResult> {
+  const url = `${END_POINT}${ApiPaths.getPathOffer(id)}`;
+
+  try {
+    const offersResponse = await apiInstance.get<IOffer>(url);
+    const adaptedData = renameKeys(offersResponse.data);
+
+    return {
+      offer: adaptedData
     };
   } catch (err) {
     throw err;
@@ -80,8 +99,10 @@ async function authorizeUser(email: string, password: string): Promise<UserResul
 
 export {
   OffersResult,
+  OfferResult,
   UserResult,
   getOffers,
+  getOffer,
   authorizeUser,
   checkAuthorization,
 };

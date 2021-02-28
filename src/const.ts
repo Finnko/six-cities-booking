@@ -57,6 +57,7 @@ const ServerError: { [unit: string]: number} = {
 const AppPaths = {
   ROOT: '/',
   LOGIN: '/login',
+  OFFER: '/offer/:id',
   FAVORITE: '/favorite',
 };
 
